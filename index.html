@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IJVRAS – International Journal of Versatile Research & Analytic Studies</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:    #0e1a2b;
+      --ink2:   #1c3150;
+      --azure:  #1a5cb5;
+      --azure2: #2272d4;
+      --amber:  #d4952a;
+      --amber2: #f0b444;
+      --fog:    #f0f4fa;
+      --white:  #ffffff;
+      --border: #dce4f0;
+      --muted:  #6b7e96;
+      --card-r: 14px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--fog); color: var(--ink); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announce {
+      background: var(--ink);
+      color: var(--amber2);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 7px 16px;
+      font-weight: 500;
+    }
+    .announce span { color: rgba(255,255,255,0.55); margin: 0 10px; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 16px rgba(14,26,43,0.06);
+    }
+    .header-wrap {
+      max-width: 1240px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px; height: 70px;
+    }
+
+    /* Logo */
+    .logo { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    .logo-mark {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      flex-shrink: 0;
+    }
+    .logo-mark::before {
+      content: '';
+      position: absolute; bottom: -6px; right: -6px;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--amber); opacity: 0.25;
+    }
+    .logo-mark svg { width: 28px; height: 28px; position: relative; z-index: 1; }
+    .logo-words { line-height: 1; }
+    .logo-abbr {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem; font-weight: 700;
+      color: var(--ink); letter-spacing: 0.03em;
+    }
+    .logo-full {
+      font-size: 0.62rem; color: var(--muted); font-weight: 500;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      margin-top: 2px; line-height: 1.4;
+    }
+
+    /* Nav */
+    nav { display: flex; align-items: center; gap: 2px; }
+    .nav-item { position: relative; }
+    .nav-link {
+      display: flex; align-items: center; gap: 5px;
+      padding: 8px 13px; border-radius: 8px;
+      font-size: 0.875rem; font-weight: 500; color: var(--ink);
+      transition: background 0.15s, color 0.15s; white-space: nowrap;
+    }
+    .nav-link:hover { background: var(--fog); color: var(--azure); }
+    .chevron { font-size: 0.55rem; opacity: 0.6; }
+    .nav-cta {
+      background: var(--azure); color: var(--white) !important;
+      padding: 8px 18px !important; border-radius: 8px;
+      font-weight: 600 !important; margin-left: 8px;
+      transition: background 0.15s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--azure2) !important; transform: translateY(-1px); }
+
+    /* Dropdown */
+    .drop {
+      display: none; position: absolute; top: calc(100% + 8px); left: 0;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; min-width: 210px;
+      box-shadow: 0 16px 40px rgba(14,26,43,0.12); z-index: 300; overflow: hidden;
+    }
+    .nav-item:hover .drop { display: block; }
+    .drop a {
+      display: block; padding: 11px 18px;
+      font-size: 0.855rem; color: var(--ink);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.13s, color 0.13s;
+    }
+    .drop a:last-child { border-bottom: none; }
+    .drop a:hover { background: var(--fog); color: var(--azure); }
+
+    /* Hamburger */
+    .ham { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .ham span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.2s; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(150deg, var(--ink) 0%, var(--ink2) 55%, #0e2d5c 100%);
+      color: var(--white); padding: 80px 28px 90px;
+      position: relative; overflow: hidden;
+    }
+    /* subtle grid texture */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    /* glowing orb */
+    .hero::after {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 420px; height: 420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,149,42,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1240px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(212,149,42,0.15); border: 1px solid rgba(212,149,42,0.35);
+      color: var(--amber2); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 22px;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 600; line-height: 1.18;
+      margin-bottom: 18px;
+    }
+    .hero h2 em { font-style: normal; color: var(--amber2); }
+    .hero p {
+      color: rgba(255,255,255,0.65); font-size: 0.97rem;
+      line-height: 1.8; max-width: 480px; margin-bottom: 34px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--amber) 0%, var(--amber2) 100%);
+      color: var(--ink); font-weight: 700; font-size: 0.9rem;
+      padding: 13px 28px; border-radius: 10px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(212,149,42,0.4); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: var(--white); font-size: 0.9rem; font-weight: 500;
+      padding: 13px 28px; border-radius: 10px;
+      transition: background 0.15s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); }
+
+    /* Hero CFP panel */
+    .cfp-panel {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 28px; backdrop-filter: blur(10px);
+    }
+    .cfp-panel h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; margin-bottom: 20px; color: var(--amber2);
+    }
+    .cfp-row {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .cfp-row:last-of-type { border-bottom: none; margin-bottom: 20px; }
+    .cfp-ico {
+      width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    }
+    .cfp-row small { font-size: 0.7rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; }
+    .cfp-row strong { display: block; font-size: 0.92rem; color: var(--white); margin-top: 2px; }
+    .btn-submit-hero {
+      display: block; text-align: center;
+      background: var(--white); color: var(--ink);
+      font-weight: 700; font-size: 0.9rem;
+      padding: 13px; border-radius: 10px;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .btn-submit-hero:hover { background: var(--fog); transform: translateY(-1px); }
+
+    /* ── STATS BAR ── */
+    .stats-bar { background: var(--white); border-bottom: 1px solid var(--border); }
+    .stats-inner {
+      max-width: 1240px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr);
+    }
+    .stat {
+      padding: 26px 20px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.1rem; font-weight: 700; color: var(--azure); line-height: 1;
+    }
+    .stat-l { font-size: 0.78rem; color: var(--muted); margin-top: 5px; font-weight: 500; letter-spacing: 0.04em; }
+
+    /* ── PAGE BODY ── */
+    .page-body {
+      max-width: 1240px; margin: 0 auto;
+      padding: 48px 28px;
+      display: grid; grid-template-columns: 1fr 310px; gap: 30px;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--card-r);
+      overflow: hidden; margin-bottom: 24px;
+    }
+    .card:last-child { margin-bottom: 0; }
+    .card-head {
+      padding: 20px 26px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .card-head-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--azure); flex-shrink: 0;
+    }
+    .card-head h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 600; color: var(--ink);
+    }
+    .sec-tag {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--azure); margin-bottom: 8px;
+    }
+    .card-body { padding: 24px 26px; }
+    .card-body p { font-size: 0.9rem; line-height: 1.85; color: var(--muted); }
+
+    /* Detail rows inside card */
+    .detail-row {
+      display: flex; align-items: center; gap: 14px;
+      padding: 13px 0; border-bottom: 1px solid var(--border);
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-ico {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: var(--fog);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .detail-text small { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+    .detail-text strong { display: block; font-size: 0.9rem; color: var(--ink); margin-top: 2px; }
+    .btn-blue {
+      display: block; text-align: center;
+      background: var(--azure); color: var(--white);
+      font-weight: 600; font-size: 0.9rem;
+      padding: 13px; border-radius: 9px; margin-top: 20px;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .btn-blue:hover { background: var(--azure2); transform: translateY(-1px); }
+
+    /* Topics */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag {
+      background: var(--fog); border: 1px solid var(--border);
+      border-radius: 100px; padding: 5px 14px;
+      font-size: 0.78rem; font-weight: 500; color: var(--ink);
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .tag:hover { background: var(--azure); color: var(--white); border-color: var(--azure); }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display: flex; flex-direction: column; gap: 22px; }
+
+    .sb-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--card-r); overflow: hidden;
+    }
+    .sb-head {
+      padding: 15px 20px;
+      background: var(--ink);
+      color: var(--white);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sb-body { padding: 20px; }
+
+
+    /* Info boxes */
+    .info-box {
+      background: var(--fog); border-radius: 9px;
+      padding: 13px 15px; margin-bottom: 10px;
+    }
+    .info-box:last-child { margin-bottom: 0; }
+    .info-box small { font-size: 0.68rem; color: var(--muted); font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; }
+    .info-box strong { display: block; font-size: 0.95rem; color: var(--ink); font-family: 'Cormorant Garamond', serif; font-weight: 600; margin-top: 3px; }
+
+    /* News */
+    .news-item { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .news-item:last-child { border-bottom: none; }
+    .news-date { font-size: 0.68rem; color: var(--azure); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+    .news-item p { font-size: 0.83rem; color: var(--muted); line-height: 1.55; }
+
+    /* Indexing logos placeholder */
+    .index-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .index-chip {
+      background: var(--fog); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px; text-align: center;
+      font-size: 0.78rem; font-weight: 600; color: var(--ink);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 44px 28px 32px; }
+    .footer-inner { max-width: 1240px; margin: 0 auto; }
+    .footer-top {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 40px; padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .fa { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--white); font-weight: 700; }
+    .footer-brand .fs { font-size: 0.72rem; color: rgba(255,255,255,0.4); line-height: 1.5; margin-top: 8px; }
+    .footer-brand .issn-tag {
+      display: inline-block; margin-top: 14px;
+      background: rgba(212,149,42,0.15); border: 1px solid rgba(212,149,42,0.3);
+      color: var(--amber2); font-size: 0.73rem; font-weight: 600;
+      padding: 5px 12px; border-radius: 6px;
+    }
+    .footer-col h5 { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 14px; }
+    .footer-col a { display: block; font-size: 0.84rem; color: rgba(255,255,255,0.4); margin-bottom: 9px; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { padding-top: 24px; font-size: 0.78rem; text-align: center; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .cfp-panel { display: none; }
+      .page-body { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .stat:nth-child(2) { border-right: none; }
+      .footer-top { grid-template-columns: 1fr; }
+      nav { display: none; }
+      nav.open {
+        display: flex; flex-direction: column; align-items: stretch;
+        position: absolute; top: 70px; left: 0; right: 0;
+        background: var(--white); border-bottom: 1px solid var(--border);
+        padding: 10px 16px; z-index: 299;
+      }
+      nav.open .nav-link { padding: 12px 10px; }
+      nav.open .drop { position: static; box-shadow: none; border: none; border-radius: 0; padding-left: 14px; }
+      .ham { display: flex; }
+      header { position: relative; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="announce">
+  📢 Call For Paper — Submission Deadline: 30 April 2026
+  <span>|</span> DOI Services Now Available
+  <span>|</span> ISSN: 2582-5208
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-wrap">
+    <div class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="9" height="12" rx="2" fill="#d4952a"/>
+          <rect x="16" y="3" width="9" height="12" rx="2" fill="rgba(255,255,255,0.7)"/>
+          <rect x="3" y="18" width="22" height="7" rx="2" fill="rgba(255,255,255,0.35)"/>
+          <line x1="14" y1="3" x2="14" y2="15" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="logo-words">
+        <div class="logo-abbr">IJVRAS</div>
+        <div class="logo-full">International Journal of<br>Versatile Research &amp; Analytic Studies</div>
+      </div>
+    </div>
+
+    <button class="ham" id="hamBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="navMenu">
+      <div class="nav-item"><a class="nav-link" href="#">Home</a></div>
+      <div class="nav-item">
+        <a class="nav-link" href="#">About <span class="chevron">▾</span></a>
+        <div class="drop">
+          <a href="#">About the Journal</a>
+          <a href="#">Editorial Board</a>
+          <a href="#">Peer Review Policy</a>
+          <a href="#">Ethics & Plagiarism</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" href="#">Author <span class="chevron">▾</span></a>
+        <div class="drop">
+          <a href="#">Publication Process</a>
+          <a href="#">Submit Paper Online</a>
+          <a href="#">Pay Publication Fee</a>
+          <a href="#">Track Your Paper</a>
+          <a href="#">Copyright Form</a>
+          <a href="#">Paper Format / Template</a>
+          <a href="#">Research Topics</a>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link" href="#">Indexing</a></div>
+      <div class="nav-item"><a class="nav-link" href="#">Fee</a></div>
+      <div class="nav-item">
+        <a class="nav-link" href="#">Archives <span class="chevron">▾</span></a>
+        <div class="drop">
+          <a href="#">2025 Issues</a>
+          <a href="#">2024 Issues</a>
+          <a href="#">All Archives</a>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nav-link" href="#">FAQ</a></div>
+      <div class="nav-item"><a class="nav-link nav-cta" href="#">Submit Paper</a></div>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">Peer-Reviewed &middot; Open Access &middot; Fast Publication</div>
+      <h2>Advancing <em>Versatile Research</em> Across Every Discipline</h2>
+      <p>IJVRAS is a globally recognized, low-cost, peer-reviewed open access journal publishing original research in engineering, science, management, and technology — with DOI services and free reader access.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-gold">Submit Your Paper →</a>
+        <a href="#" class="btn-ghost">Browse Archives</a>
+      </div>
+    </div>
+    <div class="cfp-panel">
+      <h3>📋 Call For Paper</h3>
+      <div class="cfp-row">
+        <div class="cfp-ico">📅</div>
+        <div>
+          <small>Submission Deadline</small>
+          <strong>30 April 2026</strong>
+        </div>
+      </div>
+      <div class="cfp-row">
+        <div class="cfp-ico">⚡</div>
+        <div>
+          <small>Review Turnaround</small>
+          <strong>24 – 48 Hours</strong>
+        </div>
+      </div>
+      <div class="cfp-row">
+        <div class="cfp-ico">🚀</div>
+        <div>
+          <small>Publication Speed</small>
+          <strong>As Fast as 4 Hours</strong>
+        </div>
+      </div>
+      <div class="cfp-row">
+        <div class="cfp-ico">🔗</div>
+        <div>
+          <small>DOI Service</small>
+          <strong>Now Available</strong>
+        </div>
+      </div>
+      <a href="#" class="btn-submit-hero">Submit Paper Online →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-n">8.187</div>
+      <div class="stat-l">Impact Factor</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">4 hrs</div>
+      <div class="stat-l">Fast Publication</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">48 hrs</div>
+      <div class="stat-l">Review Turnaround</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">Free</div>
+      <div class="stat-l">Open Access</div>
+    </div>
+  </div>
+</div>
+
+<!-- Body -->
+<div class="page-body">
+  <div class="main-col">
+
+    <!-- Call For Paper card (visible on mobile) -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-head-dot"></div>
+        <h4>Call For Paper — April 2026</h4>
+      </div>
+      <div class="card-body">
+        <div class="detail-row">
+          <div class="detail-ico">📅</div>
+          <div class="detail-text"><small>Last Date</small><strong>30 April 2026</strong></div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-ico">⚡</div>
+          <div class="detail-text"><small>Review Status</small><strong>24 to 48 Hours</strong></div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-ico">🚀</div>
+          <div class="detail-text"><small>Publication Speed</small><strong>As fast as 4 Hours</strong></div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-ico">🔗</div>
+          <div class="detail-text"><small>DOI Service</small><strong>Now Available for All Papers</strong></div>
+        </div>
+        <a href="#" class="btn-blue">Submit Paper Online →</a>
+      </div>
+    </div>
+
+    <!-- Topics -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-head-dot"></div>
+        <h4>Research Areas &amp; Topics</h4>
+      </div>
+      <div class="card-body">
+        <p>We accept original research and review articles across a wide range of disciplines:</p>
+        <div class="tags">
+          <span class="tag">Computer Science</span>
+          <span class="tag">Electronics &amp; Comm.</span>
+          <span class="tag">Civil Engineering</span>
+          <span class="tag">Mechanical Engg.</span>
+          <span class="tag">Management Studies</span>
+          <span class="tag">Biotechnology</span>
+          <span class="tag">Chemical Engg.</span>
+          <span class="tag">Information Tech.</span>
+          <span class="tag">Applied Physics</span>
+          <span class="tag">Mathematics</span>
+          <span class="tag">Environmental Sci.</span>
+          <span class="tag">Data Analytics</span>
+          <span class="tag">AI &amp; Machine Learning</span>
+          <span class="tag">Pharmacy</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+
+    
+    <!-- Journal Info -->
+    <div class="sb-card">
+      <div class="sb-head">🔖 Journal Info</div>
+      <div class="sb-body">
+        <div class="info-box">
+          <small>ISSN Number</small>
+          <strong>2582-5208</strong>
+        </div>
+        <div class="info-box">
+          <small>Journal Type</small>
+          <strong>International — Open Access</strong>
+        </div>
+        <div class="info-box">
+          <small>Review Type</small>
+          <strong>Double-Blind Peer Review</strong>
+        </div>
+        <div class="info-box">
+          <small>Frequency</small>
+          <strong>Monthly</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Latest News -->
+    <div class="sb-card">
+      <div class="sb-head">📰 Latest News</div>
+      <div class="sb-body">
+        <div class="news-item">
+          <div class="news-date">Apr 2026</div>
+          <p>DOI services now available for all previously published and new submission papers.</p>
+        </div>
+        <div class="news-item">
+          <div class="news-date">Mar 2026</div>
+          <p>New volume now open. Fast-track review available within 24 hours of submission.</p>
+        </div>
+        <div class="news-item">
+          <div class="news-date">Feb 2026</div>
+          <p>Impact factor updated to 8.187 — highest in journal history.</p>
+        </div>
+      </div>
+    </div>
+
+  
+
+  </aside>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fa">IJVRAS</div>
+        <div class="fs">International Journal of Versatile Research &amp; Analytic Studies<br>Peer-Reviewed · Open Access · Fast Publication</div>
+        <div class="issn-tag">ISSN: 2582-5208</div>
+      </div>
+      <div class="footer-col">
+        <h5>For Authors</h5>
+        <a href="#">Publication Process</a>
+        <a href="#">Submit Paper Online</a>
+        <a href="#">Paper Format / Template</a>
+        <a href="#">Copyright Form</a>
+        <a href="#">Pay Publication Fee</a>
+        <a href="#">Track Your Paper</a>
+      </div>
+      <div class="footer-col">
+        <h5>Journal</h5>
+        <a href="#">About IJVRAS</a>
+        <a href="#">Editorial Board</a>
+        <a href="#">Indexing</a>
+        <a href="#">Archives</a>
+        <a href="#">Conference</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 IJVRAS — International Journal of Versatile Research &amp; Analytic Studies. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile hamburger
+  const hamBtn = document.getElementById('hamBtn');
+  const navMenu = document.getElementById('navMenu');
+  hamBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+  document.addEventListener('click', e => {
+    if (!hamBtn.contains(e.target) && !navMenu.contains(e.target))
+      navMenu.classList.remove('open');
+  });
+</script>
+</body>
+</html>
