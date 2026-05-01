@@ -24,17 +24,13 @@
       --card-r: 14px;
     }
 
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -42,108 +38,85 @@
       background: #f5f6f8;
       color: var(--ink);
       overflow-x: hidden;
+      font-size: 16px; /* base for rem */
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
 
-    ul {
-      list-style: none;
-    }
-
-    /* ANNOUNCEMENT BAR */
+    /* ── ANNOUNCEMENT BAR ── */
     .announce {
       background: var(--azure);
       color: var(--white);
-      font-size: 0.76rem;
-      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
       text-align: center;
-      padding: 7px 16px;
+      padding: 7px 12px;
       font-weight: 500;
     }
-
-    .announce span {
-      color: rgba(255, 255, 255, 0.55);
-     
+    .announce span { color: rgba(255,255,255,0.55); }
+    .published_by {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
-    /* HEADER */
+    /* ── HEADER ── */
     header {
       background: var(--white);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 200;
-      box-shadow: 0 2px 16px rgba(14, 26, 43, 0.06);
+      box-shadow: 0 2px 16px rgba(14,26,43,0.06);
     }
-
     .header-wrap {
       max-width: 1240px;
       margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 0 28px;
-      height: 70px;
+      justify-content: space-between;
+      padding: 0 16px;
+      height: 60px;
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-shrink: 0;
+    .logo-text {
+      font-family: 'Merriweather', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--azure);
     }
-
     nav {
       display: flex;
       align-items: center;
       gap: 2px;
     }
-
-    .nav-item {
-      position: relative;
-    }
-
+    .nav-item { position: relative; }
     .nav-link {
       display: flex;
       align-items: center;
       gap: 5px;
-      padding: 8px 13px;
+      padding: 8px 11px;
       border-radius: 8px;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       font-weight: 500;
       color: var(--ink);
       transition: background 0.15s, color 0.15s;
       white-space: nowrap;
     }
-
-    .nav-link:hover {
-      background: var(--white);
-      color: var(--azure);
-    }
-
-    .chevron {
-      font-size: 0.55rem;
-      opacity: 0.6;
-    }
-
+    .nav-link:hover { background: var(--fog); color: var(--azure); }
+    .chevron { font-size: 0.55rem; opacity: 0.6; }
     .nav-cta {
       background: var(--azure);
       color: var(--white) !important;
-      padding: 8px 18px !important;
+      padding: 8px 16px !important;
       border-radius: 8px;
       font-weight: 600 !important;
-      margin-left: 8px;
+      margin-left: 6px;
       transition: background 0.15s, transform 0.15s !important;
     }
-
-    .nav-cta:hover {
-      background: var(--azure2) !important;
-      transform: translateY(-1px);
-    }
-
+    .nav-cta:hover { background: var(--azure2) !important; transform: translateY(-1px); }
     .drop {
       display: none;
       position: absolute;
@@ -153,38 +126,25 @@
       background: transparent;
       z-index: 300;
     }
-
     .drop-inner {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 12px;
-      min-width: 210px;
-      box-shadow: 0 16px 40px rgba(14, 26, 43, 0.12);
+      min-width: 200px;
+      box-shadow: 0 16px 40px rgba(14,26,43,0.12);
       overflow: hidden;
     }
-
-    .nav-item:hover .drop {
-      display: block;
-    }
-
+    .nav-item:hover .drop { display: block; }
     .drop a {
       display: block;
-      padding: 11px 18px;
-      font-size: 0.855rem;
+      padding: 11px 16px;
+      font-size: 0.84rem;
       color: var(--ink);
       border-bottom: 1px solid var(--border);
       transition: background 0.13s, color 0.13s;
     }
-
-    .drop a:last-child {
-      border-bottom: none;
-    }
-
-    .drop a:hover {
-      background: var(--white);
-      color: var(--azure);
-    }
-
+    .drop a:last-child { border-bottom: none; }
+    .drop a:hover { background: var(--fog); color: var(--azure); }
     .ham {
       display: none;
       flex-direction: column;
@@ -192,9 +152,9 @@
       background: none;
       border: none;
       cursor: pointer;
-      padding: 6px;
+      padding: 8px;
+      border-radius: 8px;
     }
-
     .ham span {
       display: block;
       width: 22px;
@@ -204,1144 +164,508 @@
       transition: 0.2s;
     }
 
-    /* HERO */
+    /* ── JOURNAL TITLE BANNER ── */
+    .journal-title-banner {
+      background: var(--white);
+      border-bottom: 2px solid var(--border);
+    }
+    .jtb-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .jtb-logo-col { flex-shrink: 0; display: flex; align-items: center; }
+    .jtb-real-logo { height: 80px; width: auto; display: block; }
+    .jtb-title-col {
+      flex: 1;
+      text-align: center;
+      border-left: 2px solid var(--border);
+      border-right: 2px solid var(--border);
+      padding: 0 20px;
+    }
+    .jtb-name {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(0.85rem, 2vw, 1.35rem);
+      font-weight: 700;
+      color: var(--azure);
+      letter-spacing: 0.02em;
+      line-height: 1.35;
+    }
+    .jtb-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 5px;
+      font-style: italic;
+    }
+    .jtb-issn-col { flex-shrink: 0; text-align: right; min-width: 140px; }
+    .jtb-issn-label { font-size: 1rem; font-weight: 700; color: var(--amber); letter-spacing: 0.04em; }
+    .jtb-issn-url { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── HERO ── */
     .hero {
       background: linear-gradient(135deg, #dce8f8 0%, #e8f0fb 50%, #d6e4f7 100%);
-      padding: 70px 28px 80px;
+      padding: 50px 16px 60px;
       position: relative;
       overflow: hidden;
     }
-
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(rgba(26, 92, 181, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26, 92, 181, 0.04) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(26,92,181,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(26,92,181,0.04) 1px,transparent 1px);
       background-size: 48px 48px;
       pointer-events: none;
     }
-
     .hero::after {
       content: '';
       position: absolute;
-      top: -80px;
-      right: -80px;
-      width: 420px;
-      height: 420px;
+      top: -80px; right: -80px;
+      width: 380px; height: 380px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(26, 92, 181, 0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(26,92,181,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
-
     .hero-inner {
       max-width: 1240px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 60px;
+      grid-template-columns: 1fr 360px;
+      gap: 50px;
       align-items: center;
       position: relative;
       z-index: 1;
     }
-
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(26, 92, 181, 0.1);
-      border: 1px solid rgba(26, 92, 181, 0.25);
+      background: rgba(26,92,181,0.1);
+      border: 1px solid rgba(26,92,181,0.25);
       color: var(--azure);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.09em;
       text-transform: uppercase;
       padding: 6px 14px;
       border-radius: 100px;
-      margin-bottom: 22px;
-    }
-
-    .hero-badge::before {
-      content: '●';
-      font-size: 0.5rem;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1
-      }
-
-      50% {
-        opacity: 0.3
-      }
-    }
-
-    .hero h2 {
-      font-family: 'Merriweather', serif;
-      letter-spacing: -0.5px;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 600;
-      line-height: 1.18;
       margin-bottom: 18px;
     }
-
-    .hero h2 em {
-      font-style: normal;
-      color: var(--azure);
+    .hero-badge::before { content:'●'; font-size:0.5rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero h2 {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.9rem);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
     }
-
+    .hero h2 em { font-style: normal; color: var(--azure); }
     .hero p {
       color: var(--muted);
-      font-size: 0.97rem;
+      font-size: 0.93rem;
       line-height: 1.8;
       max-width: 480px;
-      margin-bottom: 34px;
+      margin-bottom: 28px;
     }
-
-    .hero-btns {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-gold {
       background: linear-gradient(135deg, var(--amber) 0%, var(--amber2) 100%);
       color: var(--ink);
       font-weight: 700;
-      font-size: 0.9rem;
-      padding: 13px 28px;
+      font-size: 0.88rem;
+      padding: 12px 24px;
       border-radius: 10px;
       transition: transform 0.15s, box-shadow 0.15s;
     }
-
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(212, 149, 42, 0.4);
-    }
-
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(212,149,42,0.4); }
     .btn-ghost {
-      background: rgba(26, 92, 181, 0.08);
-      border: 1.5px solid rgba(26, 92, 181, 0.3);
+      background: rgba(26,92,181,0.08);
+      border: 1.5px solid rgba(26,92,181,0.3);
       color: var(--azure);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
-      padding: 13px 28px;
+      padding: 12px 24px;
       border-radius: 10px;
       transition: background 0.15s;
     }
-
-    .btn-ghost:hover {
-      background: rgba(26, 92, 181, 0.15);
-    }
+    .btn-ghost:hover { background: rgba(26,92,181,0.15); }
 
     /* CFP PANEL */
     .cfp-panel {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 8px 32px rgba(26, 92, 181, 0.10);
-      position: relative;
-      z-index: 1;
+      padding: 24px;
+      box-shadow: 0 8px 32px rgba(26,92,181,0.10);
+      position: relative; z-index: 1;
     }
-
     .cfp-panel h3 {
       font-family: 'Merriweather', serif;
-      font-size: 1.3rem;
-      margin-bottom: 20px;
+      font-size: 1.2rem;
+      margin-bottom: 18px;
       color: var(--azure);
+      text-align: center;
     }
-
     .cfp-row {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 13px 0;
+      gap: 12px;
+      padding: 11px 0;
       border-bottom: 1px solid var(--border);
     }
-
-    .cfp-row:last-of-type {
-      border-bottom: none;
-      margin-bottom: 20px;
-    }
-
+    .cfp-row:last-of-type { border-bottom: none; margin-bottom: 18px; }
     .cfp-ico {
-      width: 36px;
-      height: 36px;
-      border-radius: 9px;
-      flex-shrink: 0;
-      background: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      color: var(--azure);
+      width: 34px; height: 34px; border-radius: 9px;
+      flex-shrink: 0; background: var(--fog);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; color: var(--azure);
     }
-
-    .cfp-row small {
-      font-size: 0.7rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      font-weight: 600;
-    }
-
-    .cfp-row strong {
-      display: block;
-      font-size: 0.92rem;
-      color: var(--ink);
-      margin-top: 2px;
-    }
-
+    .cfp-row small { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; }
+    .cfp-row strong { display: block; font-size: 0.88rem; color: var(--ink); margin-top: 2px; }
     .btn-submit-hero {
-      display: block;
-      text-align: center;
-      background: var(--azure);
-      color: var(--white);
-      font-weight: 700;
-      font-size: 0.9rem;
-      padding: 13px;
-      border-radius: 10px;
+      display: block; text-align: center;
+      background: var(--azure); color: var(--white);
+      font-weight: 700; font-size: 0.88rem;
+      padding: 12px; border-radius: 10px;
       transition: background 0.15s, transform 0.15s;
     }
+    .btn-submit-hero:hover { background: var(--azure2); transform: translateY(-1px); }
 
-    .btn-submit-hero:hover {
-      background: var(--azure2);
-      transform: translateY(-1px);
-    }
-
-    /* STATS BAR */
-    .stats-bar {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-    }
-
+    /* ── STATS BAR ── */
+    .stats-bar { background: var(--white); border-bottom: 1px solid var(--border); }
     .stats-inner {
       max-width: 1240px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
     }
-
     .stat {
-      padding: 26px 20px;
+      padding: 22px 16px;
       text-align: center;
       border-right: 1px solid var(--border);
     }
+    .stat:last-child { border-right: none; }
+    .stat-n { font-family: 'Merriweather', serif; font-size: 1.9rem; font-weight: 700; color: var(--azure); line-height: 1; }
+    .stat-l { font-size: 0.74rem; color: var(--muted); margin-top: 5px; font-weight: 500; letter-spacing: 0.04em; }
 
-    .stat:last-child {
-      border-right: none;
-    }
-
-    .stat-n {
-      font-family: 'Merriweather', serif;
-      font-size: 2.1rem;
-      font-weight: 700;
-      color: var(--azure);
-      line-height: 1;
-    }
-
-    .stat-l {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 5px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-    }
-
-    /* PAGE BODY — now 3 col: left sidebar | main | right sidebar */
+    /* ── PAGE BODY ── */
     .page-body {
       max-width: 1500px;
       margin: 0 auto;
-      padding: 48px 28px;
+      padding: 40px 16px;
       display: grid;
-      grid-template-columns: 400px 4fr 400px;
-      gap: 20px;
+      grid-template-columns: 360px 4fr 360px;
+      gap: 18px;
     }
 
-    /* ---- LEFT SIDEBAR (Journal Features + Publication Process) ---- */
-    .left-sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-    }
-
+    /* ── LEFT SIDEBAR ── */
+    .left-sidebar { display: flex; flex-direction: column; gap: 20px; }
     .ls-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--card-r);
       overflow: hidden;
     }
-
     .ls-head {
-      padding: 16px 20px;
+      padding: 14px 18px;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       gap: 10px;
       font-family: 'Merriweather', serif;
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--ink);
     }
-
-    .ls-head i {
-      color: var(--azure);
-    }
-
-    .ls-body {
-      padding: 20px;
-    }
-
-    /* Journal Features 2x2 grid */
-    .features-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .feature-item {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
+    .ls-head i { color: var(--azure); }
+    .ls-body { padding: 18px; }
+    .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .feature-item { display: flex; flex-direction: column; gap: 7px; }
     .feature-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      color: #fff;
-      flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; color: #fff; flex-shrink: 0;
     }
-
-    .fi-blue {
-      background: var(--azure);
-    }
-
-    .fi-green {
-      background: #1a9b6c;
-    }
-
-    .fi-cyan {
-      background: #0ea5e9;
-    }
-
-    .fi-amber {
-      background: var(--amber);
-    }
-
-    .feature-title {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--azure);
-      margin-top: 4px;
-    }
-
-    .feature-desc {
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    /* Publication Process */
-    .proc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .proc-item {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
+    .fi-blue{background:var(--azure)} .fi-green{background:#1a9b6c} .fi-cyan{background:#0ea5e9} .fi-amber{background:var(--amber)}
+    .feature-title { font-size: 0.84rem; font-weight: 600; color: var(--azure); margin-top: 3px; }
+    .feature-desc { font-size: 0.77rem; color: var(--muted); line-height: 1.5; }
+    .proc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .proc-item { display: flex; flex-direction: column; gap: 7px; }
     .proc-num {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--azure);
-      color: #fff;
-      font-weight: 700;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--azure); color: #fff;
+      font-weight: 700; font-size: 0.95rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-
-    .proc-num.green {
-      background: #1a9b6c;
-    }
-
-    .proc-title {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--azure);
-      margin-top: 4px;
-    }
-
-    .proc-desc {
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .proc-btns {
-      width: 100%;
-      margin-top: 10px;
-    }
-
-    .proc-btns .btn-outline {
-      display: block;
-      width: 100%;
-      text-align: center;
-    }
-
+    .proc-num.green { background: #1a9b6c; }
+    .proc-title { font-size: 0.84rem; font-weight: 600; color: var(--azure); margin-top: 3px; }
+    .proc-desc { font-size: 0.77rem; color: var(--muted); line-height: 1.5; }
+    .proc-btns { width: 100%; margin-top: 8px; }
     .btn-outline {
-      display: block;
-      text-align: center;
-      border: 1.5px solid var(--border);
-      color: var(--ink);
-      font-size: 0.8rem;
-      font-weight: 500;
-      padding: 9px 10px;
-      border-radius: 8px;
+      display: block; text-align: center;
+      border: 1.5px solid var(--border); color: var(--ink);
+      font-size: 0.77rem; font-weight: 500;
+      padding: 8px 10px; border-radius: 8px;
       transition: border-color 0.15s, color 0.15s;
     }
-
-    .btn-outline:hover {
-      border-color: var(--azure);
-      color: var(--azure);
-    }
-
+    .btn-outline:hover { border-color: var(--azure); color: var(--azure); }
     .btn-filled {
-      display: block;
-      text-align: center;
-      background: var(--azure);
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 9px 10px;
-      border-radius: 8px;
+      display: block; text-align: center;
+      background: var(--azure); color: #fff;
+      font-size: 0.77rem; font-weight: 600;
+      padding: 8px 10px; border-radius: 8px;
       transition: background 0.15s;
     }
+    .btn-filled:hover { background: var(--azure2); }
 
-    .btn-filled:hover {
-      background: var(--azure2);
-    }
-
-    /* ---- MAIN COLUMN (Latest Publications) ---- */
-    .main-col {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    /* Legacy cards kept */
+    /* ── MAIN COLUMN ── */
+    .main-col { display: flex; flex-direction: column; gap: 22px; }
     .card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--card-r);
       overflow: hidden;
-      margin-bottom: 0;
     }
-
     .card-head {
-      padding: 20px 26px 18px;
+      padding: 18px 22px 16px;
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: flex; align-items: center; gap: 10px;
     }
-
-    .card-head-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--azure);
-      flex-shrink: 0;
-    }
-
-    .card-head h4 {
-      font-family: 'Merriweather', serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .card-body {
-      padding: 24px 26px;
-    }
-
-    .card-body p {
-      font-size: 0.9rem;
-      line-height: 1.85;
-      color: var(--muted);
-    }
-
-    .detail-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .detail-row:last-child {
-      border-bottom: none;
-    }
-
-    .detail-ico {
-      width: 36px;
-      height: 36px;
-      border-radius: 9px;
-      background: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    .detail-text small {
-      font-size: 0.7rem;
-      color: var(--muted);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .detail-text strong {
-      display: block;
-      font-size: 0.9rem;
-      color: var(--ink);
-      margin-top: 2px;
-    }
-
-    .btn-blue {
-      display: block;
-      text-align: center;
-      background: var(--azure);
-      color: var(--white);
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 13px;
-      border-radius: 9px;
-      margin-top: 20px;
-      transition: background 0.15s, transform 0.15s;
-    }
-
-    .btn-blue:hover {
-      background: var(--azure2);
-      transform: translateY(-1px);
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .tag {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 5px 14px;
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--ink);
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
-    }
-
-    .tag:hover {
-      background: var(--azure);
-      color: var(--white);
-      border-color: var(--azure);
-    }
-
-    /* Latest Publications card */
+    .card-head-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--azure); flex-shrink: 0; }
+    .card-head h4 { font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); }
+    .card-body { padding: 22px; }
+    .card-body p { font-size: 0.88rem; line-height: 1.85; color: var(--muted); }
     .pub-head {
-      padding: 18px 22px;
+      padding: 16px 20px;
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: flex; align-items: center; gap: 10px;
       font-family: 'Merriweather', serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--ink);
+      font-size: 1rem; font-weight: 700; color: var(--ink);
     }
-
-    .pub-head i {
-      color: var(--muted);
-    }
-
-    .pub-item {
-      padding: 20px 22px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pub-item:last-child {
-      border-bottom: none;
-    }
-
-    .pub-title {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--azure);
-      line-height: 1.5;
-      margin-bottom: 10px;
-    }
-
-    .pub-title:hover {
-      text-decoration: underline;
-    }
-
-    .pub-meta {
-      display: flex;
-      gap: 20px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-bottom: 6px;
-      flex-wrap: wrap;
-    }
-
-    .pub-meta span {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .pub-area {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .pub-authors {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .pub-abstract {
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.6;
-      font-style: italic;
-      margin-bottom: 12px;
-    }
-
-    .pub-btns {
-      display: flex;
-      gap: 10px;
-    }
-
+    .pub-head i { color: var(--muted); }
+    .pub-item { padding: 18px 20px; border-bottom: 1px solid var(--border); }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-title { font-size: 0.9rem; font-weight: 600; color: var(--azure); line-height: 1.5; margin-bottom: 9px; display: block; }
+    .pub-title:hover { text-decoration: underline; }
+    .pub-meta { display: flex; gap: 14px; font-size: 0.76rem; color: var(--muted); margin-bottom: 6px; flex-wrap: wrap; }
+    .pub-meta span { display: flex; align-items: center; gap: 5px; }
+    .pub-area { font-size: 0.76rem; color: var(--muted); margin-bottom: 4px; }
+    .pub-authors { font-size: 0.76rem; color: var(--muted); margin-bottom: 8px; }
+    .pub-abstract { font-size: 0.78rem; color: var(--muted); line-height: 1.6; font-style: italic; margin-bottom: 11px; }
+    .pub-btns { display: flex; gap: 8px; flex-wrap: wrap; }
     .pbtn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      padding: 7px 16px;
-      border-radius: 7px;
-      border: 1.5px solid var(--border);
-      color: var(--ink);
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.78rem; font-weight: 500;
+      padding: 7px 14px; border-radius: 7px;
+      border: 1.5px solid var(--border); color: var(--ink);
       transition: border-color 0.15s, color 0.15s;
     }
+    .pbtn:hover { border-color: var(--azure); color: var(--azure); }
+    .pbtn-dl { border-color: var(--azure); color: var(--azure); }
+    .pbtn-dl:hover { background: var(--azure); color: #fff; }
 
-    .pbtn:hover {
-      border-color: var(--azure);
-      color: var(--azure);
-    }
-
-    .pbtn-dl {
-      border-color: var(--azure);
-      color: var(--azure);
-    }
-
-    .pbtn-dl:hover {
-      background: var(--azure);
-      color: #fff;
-    }
-
-    /* ---- RIGHT SIDEBAR ---- */
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-    }
-
-    .sb-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--card-r);
-      overflow: hidden;
-    }
-
+    /* ── RIGHT SIDEBAR ── */
+    .sidebar { display: flex; flex-direction: column; gap: 20px; }
+    .sb-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--card-r); overflow: hidden; }
     .sb-head {
-      padding: 15px 20px;
-      background: var(--azure);
-      color: var(--white);
+      padding: 14px 18px;
+      background: var(--azure); color: var(--white);
       font-family: 'Merriweather', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-size: 0.95rem; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
     }
-
-    .sb-body {
-      padding: 20px;
-    }
-
-    .info-box {
-      background: var(--white);
-      border-radius: 9px;
-      padding: 13px 15px;
-      margin-bottom: 10px;
-    }
-
-    .info-box:last-child {
-      margin-bottom: 0;
-    }
-
-    .info-box small {
-      font-size: 0.68rem;
-      color: var(--muted);
-      font-weight: 600;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-    }
-
-    .info-box strong {
-      display: block;
-      font-size: 0.95rem;
-      color: var(--ink);
-      font-family: 'Merriweather', serif;
-      font-weight: 600;
-      margin-top: 3px;
-    }
-
-    .news-item {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .news-item:last-child {
-      border-bottom: none;
-    }
-
-    .news-date {
-      font-size: 0.68rem;
-      color: var(--azure);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 4px;
-    }
-
-    .news-item p {
-      font-size: 0.83rem;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    /* Call For Papers sidebar box */
-    .cfp-sb {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--card-r);
-      overflow: hidden;
-    }
-
+    .sb-body { padding: 18px; }
+    .cfp-sb { background: var(--white); border: 1px solid var(--border); border-radius: var(--card-r); overflow: hidden; }
     .cfp-sb-head {
-      background: var(--azure);
-      color: #fff;
-      padding: 14px 20px;
+      background: var(--azure); color: #fff;
+      padding: 14px 18px;
       font-family: 'Merriweather', serif;
-      font-size: 1rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-size: 0.95rem; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
     }
-
-    .cfp-sb-body {
-      padding: 18px 20px;
-    }
-
-    .cfp-sb-body p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
-
-    .cfp-sb-body p strong {
-      color: var(--ink);
-    }
-
+    .cfp-sb-body { padding: 16px 18px; }
+    .cfp-sb-body p { font-size: 0.83rem; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+    .cfp-sb-body p strong { color: var(--ink); }
     .cfp-info-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 0;
-      border-top: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 9px 0; border-top: 1px solid var(--border);
     }
-
-    .cfp-info-row i {
-      color: var(--azure);
-      margin-top: 3px;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-
-    .cfp-info-label {
-      font-size: 0.78rem;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
+    .cfp-info-row i { color: var(--azure); margin-top: 3px; font-size: 0.85rem; flex-shrink: 0; }
+    .cfp-info-label { font-size: 0.76rem; color: var(--muted); font-weight: 500; }
     .cfp-badge {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 5px;
-      margin-top: 3px;
+      display: inline-block; font-size: 0.7rem; font-weight: 600;
+      padding: 3px 9px; border-radius: 5px; margin-top: 3px;
     }
-
-    .badge-green {
-      background: #dcfce7;
-      color: #166534;
+    .badge-green{background:#dcfce7;color:#166534} .badge-blue{background:#dbeafe;color:#1e40af}
+    .badge-teal{background:#ccfbf1;color:#0f766e} .badge-amber{background:#fef3c7;color:#92400e}
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+    .tag {
+      background: var(--fog); border: 1px solid var(--border);
+      border-radius: 100px; padding: 5px 12px;
+      font-size: 0.76rem; font-weight: 500; color: var(--ink);
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
     }
+    .tag:hover { background: var(--azure); color: var(--white); border-color: var(--azure); }
+    .index-item img { max-width: 100%; height: auto; }
 
-    .badge-blue {
-      background: #dbeafe;
-      color: #1e40af;
-    }
-
-    .badge-teal {
-      background: #ccfbf1;
-      color: #0f766e;
-    }
-
-    .badge-amber {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
-    /* JOURNAL TITLE BANNER */
-    .journal-title-banner {
-      background: var(--white);
-      border-bottom: 2px solid var(--border);
-    }
-
-    .jtb-inner {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 14px 28px;
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .jtb-logo-col {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-    }
-
-    .jtb-real-logo {
-      height: 90px;
-      width: auto;
-      display: block;
-    }
-
-    .jtb-title-col {
-      flex: 1;
-      text-align: center;
-      border-left: 2px solid var(--border);
-      border-right: 2px solid var(--border);
-      padding: 0 28px;
-    }
-
-    .jtb-name {
-      font-family: 'Merriweather', serif;
-      font-size: clamp(1rem, 2vw, 1.45rem);
-      font-weight: 700;
-      color: var(--azure);
-      letter-spacing: 0.03em;
-      line-height: 1.3;
-    }
-
-    .jtb-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 6px;
-      font-style: italic;
-    }
-
-    .jtb-issn-col {
-      flex-shrink: 0;
-      text-align: right;
-      min-width: 160px;
-    }
-
-    .jtb-issn-label {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--amber);
-      letter-spacing: 0.04em;
-    }
-
-    .jtb-issn-url {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--ink);
-      color: rgba(255, 255, 255, 0.5);
-      padding: 44px 28px 32px;
-    }
-
-    .footer-inner {
-      max-width: 1240px;
-      margin: 0 auto;
-    }
-
+    /* ── FOOTER ── */
+    footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 40px 16px 28px; }
+    .footer-inner { max-width: 1240px; margin: 0 auto; }
     .footer-top {
       display: grid;
       grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 40px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      gap: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-
-    .footer-brand .fa {
-      font-family: 'Merriweather', serif;
-      font-size: 1.4rem;
-      color: var(--white);
-      font-weight: 700;
-    }
-
-    .footer-brand .fs {
-      font-size: 0.72rem;
-      color: rgba(255, 255, 255, 0.4);
-      line-height: 1.5;
-      margin-top: 8px;
-    }
-
+    .footer-brand .fa { font-family: 'Merriweather',serif; font-size: 1.3rem; color: var(--white); font-weight: 700; }
+    .footer-brand .fs { font-size: 0.7rem; color: rgba(255,255,255,0.4); line-height: 1.5; margin-top: 8px; }
     .footer-brand .issn-tag {
-      display: inline-block;
-      margin-top: 14px;
-      background: rgba(212, 149, 42, 0.15);
-      border: 1px solid rgba(212, 149, 42, 0.3);
-      color: var(--amber2);
-      font-size: 0.73rem;
-      font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 6px;
+      display: inline-block; margin-top: 12px;
+      background: rgba(212,149,42,0.15); border: 1px solid rgba(212,149,42,0.3);
+      color: var(--amber2); font-size: 0.71rem; font-weight: 600;
+      padding: 5px 10px; border-radius: 6px;
     }
+    .footer-col h5 { font-size: 0.77rem; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 12px; }
+    .footer-col a { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.4); margin-bottom: 8px; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { padding-top: 20px; font-size: 0.76rem; text-align: center; }
 
-    .footer-col h5 {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.7);
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .footer-col a {
-      display: block;
-      font-size: 0.84rem;
-      color: rgba(255, 255, 255, 0.4);
-      margin-bottom: 9px;
-      transition: color 0.15s;
-    }
-
-    .footer-col a:hover {
-      color: var(--white);
-    }
-
-    .footer-bottom {
-      padding-top: 24px;
-      font-size: 0.78rem;
-      text-align: center;
-    }
-
-    .published_by {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px; /* controls space between items */
-  flex-wrap: wrap; /* optional for responsiveness */
-}
-    
-    
-
-    /* RESPONSIVE */
+    /* ══════════════════════════════════
+       MOBILE STYLES — the main fix
+    ══════════════════════════════════ */
     @media (max-width: 1100px) {
-      .page-body {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .left-sidebar {
-        grid-column: 1;
-      }
-
-      .main-col {
-        grid-column: 2;
-      }
-
-      .sidebar {
-        grid-column: 1 / -1;
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-
-      .sidebar>* {
-        flex: 1 1 260px;
-      }
+      .page-body { grid-template-columns: 1fr 1fr; }
+      .sidebar { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; }
+      .sidebar > * { flex: 1 1 260px; }
     }
 
-    @media (max-width: 1000px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        padding: 36px 28px;
-      }
-
-      .cfp-panel {
-        display: none;
-      }
-
-      .page-body {
-        grid-template-columns: 1fr;
-      }
-
-      .left-sidebar,
-      .main-col,
-      .sidebar {
-        grid-column: 1;
-      }
-
-      .footer-top {
-        grid-template-columns: 1fr 1fr;
-      }
+    @media (max-width: 860px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .cfp-panel { display: none; }
+      .page-body { grid-template-columns: 1fr; }
+      .left-sidebar, .main-col, .sidebar { grid-column: 1; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
     }
 
-    @media (max-width: 700px) {
-      .stats-inner {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    @media (max-width: 640px) {
+      /* announcement */
+      .announce { font-size: 0.66rem; padding: 6px 10px; }
+      .published_by { gap: 5px; }
+      .published_by .sep { display: none; } /* hide separators */
 
-      .stat:nth-child(2) {
-        border-right: none;
-      }
-
-      .footer-top {
-        grid-template-columns: 1fr;
-      }
-
-      nav {
-        display: none;
-      }
-
+      /* header */
+      .header-wrap { height: 56px; padding: 0 12px; }
+      .logo-text { font-size: 1rem; }
+      nav { display: none; }
       nav.open {
         display: flex;
         flex-direction: column;
         align-items: stretch;
         position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
+        top: 56px; left: 0; right: 0;
         background: var(--white);
         border-bottom: 1px solid var(--border);
-        padding: 10px 16px;
+        padding: 8px 12px 16px;
         z-index: 299;
+        box-shadow: 0 8px 24px rgba(14,26,43,0.1);
+        max-height: 80vh;
+        overflow-y: auto;
       }
+      nav.open .nav-link { padding: 11px 10px; font-size: 0.9rem; border-radius: 8px; }
+      nav.open .nav-link:hover { background: var(--fog); }
+      nav.open .drop { position: static; box-shadow: none; border: none; border-radius: 0; padding: 0 0 0 12px; }
+      nav.open .drop-inner { box-shadow: none; border: none; border-radius: 0; }
+      nav.open .drop a { font-size: 0.84rem; padding: 9px 12px; border-radius: 6px; }
+      nav.open .nav-cta { margin: 8px 0 0; text-align: center; padding: 12px 16px !important; font-size: 0.9rem !important; }
+      .ham { display: flex; }
+      header { position: relative; }
 
-      nav.open .nav-link {
-        padding: 12px 10px;
-      }
-
-      nav.open .drop {
-        position: static;
-        box-shadow: none;
-        border: none;
-        border-radius: 0;
-        padding-left: 14px;
-        padding-top: 0;
-      }
-
-      nav.open .drop-inner {
-        box-shadow: none;
-        border: none;
-        border-radius: 0;
-      }
-
-      .ham {
-        display: flex;
-      }
-
-      header {
-        position: relative;
-      }
-
-      .jtb-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
-        padding: 16px 20px;
-      }
-
+      /* journal title banner */
+      .jtb-inner { flex-direction: column; text-align: center; gap: 10px; padding: 12px 14px; }
+      .jtb-logo-col { justify-content: center; }
+      .jtb-real-logo { height: 64px; }
       .jtb-title-col {
-        border-left: none;
-        border-right: none;
+        border-left: none; border-right: none;
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
-        padding: 12px 0;
+        padding: 10px 0;
+        width: 100%;
       }
+      .jtb-name { font-size: 0.88rem; letter-spacing: 0.01em; }
+      .jtb-sub { font-size: 0.7rem; }
+      .jtb-issn-col { text-align: center; min-width: unset; width: 100%; }
+      .jtb-issn-label { font-size: 0.95rem; }
+      .jtb-issn-url { font-size: 0.72rem; }
 
-      .jtb-issn-col {
-        text-align: center;
-        min-width: unset;
-      }
+      /* hero */
+      .hero { padding: 32px 14px 40px; }
+      .hero-badge { font-size: 0.65rem; padding: 5px 12px; margin-bottom: 14px; }
+      .hero h2 { font-size: 1.5rem; line-height: 1.25; margin-bottom: 12px; }
+      .hero p { font-size: 0.87rem; line-height: 1.75; margin-bottom: 22px; }
+      .hero-btns { gap: 10px; }
+      .btn-gold, .btn-ghost { font-size: 0.85rem; padding: 11px 20px; width: 100%; text-align: center; }
 
-      .jtb-real-logo {
-        height: 70px;
-      }
+      /* stats */
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat { padding: 16px 10px; }
+      .stat-n { font-size: 1.5rem; }
+      .stat-l { font-size: 0.7rem; }
+      .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(3) { border-top: 1px solid var(--border); }
+      .stat:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
 
-      .features-grid,
-      .proc-grid {
-        grid-template-columns: 1fr;
-      }
+      /* page body */
+      .page-body { padding: 20px 12px; gap: 16px; }
 
-      .proc-btns {
-        grid-template-columns: 1fr;
-      }
+      /* left sidebar */
+      .features-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .feature-icon { width: 36px; height: 36px; font-size: 0.85rem; }
+      .feature-title { font-size: 0.8rem; }
+      .feature-desc { font-size: 0.73rem; }
+      .proc-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .proc-title { font-size: 0.8rem; }
+      .proc-desc { font-size: 0.73rem; }
+      .btn-outline { font-size: 0.72rem; padding: 7px 8px; }
+      .ls-head { font-size: 0.93rem; padding: 12px 14px; }
+      .ls-body { padding: 14px; }
 
-      .left {
-        margin-left: 16px;
-      }
+      /* publications */
+      .pub-head { font-size: 0.93rem; padding: 14px 16px; }
+      .pub-item { padding: 16px; }
+      .pub-title { font-size: 0.87rem; line-height: 1.5; }
+      .pub-meta { font-size: 0.72rem; gap: 10px; }
+      .pub-area, .pub-authors { font-size: 0.72rem; }
+      .pub-abstract { font-size: 0.75rem; }
+      .pbtn { font-size: 0.75rem; padding: 6px 12px; }
 
-      .right {
-        margin-right: 16px;
-      }
+      /* sidebar */
+      .sb-head, .cfp-sb-head { font-size: 0.9rem; padding: 12px 16px; }
+      .sb-body, .cfp-sb-body { padding: 14px 16px; }
+      .cfp-sb-body p { font-size: 0.8rem; }
+      .cfp-info-label { font-size: 0.73rem; }
+      .cfp-badge { font-size: 0.67rem; padding: 3px 8px; }
+      .tag { font-size: 0.72rem; padding: 4px 10px; }
+
+      /* footer */
+      .footer-top { grid-template-columns: 1fr; gap: 24px; }
+      footer { padding: 32px 14px 24px; }
+      .footer-brand .fa { font-size: 1.2rem; }
+      .footer-brand .fs { font-size: 0.7rem; }
+      .footer-col h5 { font-size: 0.75rem; margin-bottom: 10px; }
+      .footer-col a { font-size: 0.8rem; margin-bottom: 7px; }
+      .footer-bottom { font-size: 0.72rem; }
+    }
+
+    /* Very small phones (≤ 380px) */
+    @media (max-width: 380px) {
+      .hero h2 { font-size: 1.3rem; }
+      .features-grid, .proc-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
     }
   </style>
 </head>
@@ -1350,19 +674,19 @@
 
   <div class="announce">
     <div class="published_by">
-      Published by Praseonix<span>|</span>
-     
-        <span><i class="fa-solid fa-file-lines"></i> Call For Paper — Submission Deadline: 30 April 2026</span>
-        <span>|</span>
-        <span>DOI Services Now Available</span>
-        <span>|</span>
-        <span>ISSN: 2582-5208</span>
-    
+      Published by Praseonix
+      <span class="sep">|</span>
+      <span><i class="fa-solid fa-file-lines"></i> Call For Paper — Deadline: 30 April 2026</span>
+      <span class="sep">|</span>
+      <span>DOI Services Available</span>
+      <span class="sep">|</span>
+      <span>ISSN: 2582-5208</span>
     </div>
   </div>
 
   <header>
     <div class="header-wrap">
+      <span class="logo-text">IJVRAS</span>
       <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
       <nav id="navMenu">
         <div class="nav-item"><a class="nav-link" href="#">Home</a></div>
@@ -1371,7 +695,7 @@
           <div class="drop">
             <div class="drop-inner">
               <a href="#">About the Journal</a><a href="#">Editorial Board</a>
-              <a href="#">Peer Review Policy</a><a href="#">Ethics & Plagiarism</a>
+              <a href="#">Peer Review Policy</a><a href="#">Ethics &amp; Plagiarism</a>
             </div>
           </div>
         </div>
@@ -1433,7 +757,7 @@
         </div>
       </div>
       <div class="cfp-panel">
-        <h3 style="text-align:center;"><i class="fa-solid fa-file-lines"></i> Call For Paper</h3>
+        <h3><i class="fa-solid fa-file-lines"></i> Call For Paper</h3>
         <div class="cfp-row">
           <div class="cfp-ico"><i class="fa-regular fa-calendar"></i></div>
           <div><small>Submission Deadline</small><strong>30 April 2026</strong></div>
@@ -1457,32 +781,17 @@
 
   <div class="stats-bar">
     <div class="stats-inner">
-      <div class="stat">
-        <div class="stat-n">8.187</div>
-        <div class="stat-l">Impact Factor</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">4 hrs</div>
-        <div class="stat-l">Fast Publication</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">48 hrs</div>
-        <div class="stat-l">Review Turnaround</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">Free</div>
-        <div class="stat-l">Open Access</div>
-      </div>
+      <div class="stat"><div class="stat-n">8.187</div><div class="stat-l">Impact Factor</div></div>
+      <div class="stat"><div class="stat-n">4 hrs</div><div class="stat-l">Fast Publication</div></div>
+      <div class="stat"><div class="stat-n">48 hrs</div><div class="stat-l">Review Turnaround</div></div>
+      <div class="stat"><div class="stat-n">Free</div><div class="stat-l">Open Access</div></div>
     </div>
   </div>
 
-  <!-- ===== PAGE BODY: 3 columns ===== -->
   <div class="page-body">
 
     <!-- LEFT SIDEBAR -->
     <div class="left-sidebar">
-
-      <!-- Journal Features -->
       <div class="ls-card">
         <div class="ls-head"><i class="fa-solid fa-star"></i> Journal Features</div>
         <div class="ls-body">
@@ -1490,138 +799,85 @@
             <div class="feature-item">
               <div class="feature-icon fi-blue"><i class="fa-solid fa-shield-halved"></i></div>
               <div class="feature-title">Rigorous Peer Review</div>
-              <div class="feature-desc">All submissions undergo thorough evaluation by experts in the field to ensure
-                quality and validity.</div>
+              <div class="feature-desc">All submissions undergo thorough evaluation by field experts.</div>
             </div>
             <div class="feature-item">
               <div class="feature-icon fi-green"><i class="fa-solid fa-globe"></i></div>
               <div class="feature-title">Global Reach</div>
-              <div class="feature-desc">Published papers reach an international audience of researchers, academics, and
-                industry professionals.</div>
+              <div class="feature-desc">Published papers reach an international audience of researchers.</div>
             </div>
             <div class="feature-item">
               <div class="feature-icon fi-cyan"><i class="fa-solid fa-bolt"></i></div>
               <div class="feature-title">Rapid Publication</div>
-              <div class="feature-desc">Efficient review process ensures timely publication of accepted papers without
-                compromising quality.</div>
+              <div class="feature-desc">Efficient review process ensures timely publication.</div>
             </div>
             <div class="feature-item">
               <div class="feature-icon fi-amber"><i class="fa-solid fa-lock-open"></i></div>
               <div class="feature-title">Open Access</div>
-              <div class="feature-desc">All published papers are freely accessible online, maximizing visibility and
-                impact of your research.</div>
+              <div class="feature-desc">All papers freely accessible online, maximizing visibility.</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Publication Process -->
       <div class="ls-card">
-        <div class="ls-head">
-          <i class="fa-solid fa-list-ol"></i> Publication Process
-        </div>
-
+        <div class="ls-head"><i class="fa-solid fa-list-ol"></i> Publication Process</div>
         <div class="ls-body">
           <div class="proc-grid">
-
-            <!-- Step 1 -->
             <div class="proc-item">
               <div class="proc-num">1</div>
               <div class="proc-title">Prepare Manuscript</div>
-              <div class="proc-desc">
-                Format your paper according to our guidelines.
-              </div>
-
-              <div class="proc-btns">
-                <a href="#" class="btn-outline">
-                  <i class="fa-regular fa-file-lines"></i> View Guidelines
-                </a>
-              </div>
+              <div class="proc-desc">Format your paper according to our guidelines.</div>
+              <div class="proc-btns"><a href="#" class="btn-outline"><i class="fa-regular fa-file-lines"></i> View Guidelines</a></div>
             </div>
-
-
             <div class="proc-item">
               <div class="proc-num green">2</div>
               <div class="proc-title">Submit Paper</div>
-              <div class="proc-desc">
-                Upload your paper through our secure system.
-              </div>
-
-              <div class="proc-btns">
-                <a href="#" class="btn-outline">
-                  <i class="fa-regular fa-file-lines"></i> Submit Now
-                </a>
-              </div>
+              <div class="proc-desc">Upload through our secure online submission system.</div>
+              <div class="proc-btns"><a href="#" class="btn-outline"><i class="fa-regular fa-file-lines"></i> Submit Now</a></div>
             </div>
-
-            <!-- Step 3 -->
             <div class="proc-item">
-              <div class="proc-num green">2</div>
-              <div class="proc-title">Submit Paper</div>
-              <div class="proc-desc">
-                Upload your manuscript through our secure online submission system.
-              </div>
-
-              <div class="proc-btns">
-                <a href="#" class="btn-outline">
-                  <i class="fa-regular fa-file-lines"></i> Track Status
-                </a>
-              </div>
+              <div class="proc-num green">3</div>
+              <div class="proc-title">Peer Review</div>
+              <div class="proc-desc">Your paper is reviewed by expert referees.</div>
+              <div class="proc-btns"><a href="#" class="btn-outline"><i class="fa-regular fa-file-lines"></i> Track Status</a></div>
             </div>
-
-            <!-- Step 4 -->
             <div class="proc-item">
-              <div class="proc-num green">2</div>
-              <div class="proc-title">Submit Paper</div>
-              <div class="proc-desc">
-                Upload your manuscript through our secure online submission system.
-              </div>
-
-              <div class="proc-btns">
-                <a href="#" class="btn-outline">
-                  <i class="fa-regular fa-file-lines"></i> View Publication
-                </a>
-              </div>
+              <div class="proc-num green">4</div>
+              <div class="proc-title">Publication</div>
+              <div class="proc-desc">Accepted papers are published with DOI assignment.</div>
+              <div class="proc-btns"><a href="#" class="btn-outline"><i class="fa-regular fa-file-lines"></i> View Archive</a></div>
             </div>
-
           </div>
         </div>
       </div>
 
-      <!--indexing-->
       <div class="ls-card">
-        <div class="ls-head"><i class="fa-solid fa-magnifying-glass"></i>Indexing &amp Abstraction</div>
+        <div class="ls-head"><i class="fa-solid fa-magnifying-glass"></i> Indexing &amp; Abstraction</div>
         <div class="ls-body">
-          <div class="proc-desc">
-            Our journal is indexed in leading academic databases and platforms:</div><br>
+          <div class="proc-desc">Our journal is indexed in leading academic databases:</div>
+          <br>
           <div class="index-item">
-            <img src="images/gs.jpg" alt="Google Scholar" width="150px" style="border:1px solid #0e1a2b; border-radius: 10px; padding:10px;">
+            <img src="images/gs.jpg" alt="Google Scholar" style="border:1px solid #dce4f0; border-radius:10px; padding:10px; max-width:150px;">
           </div>
         </div>
       </div>
-    </div><!-- /left-sidebar -->
+    </div>
 
     <!-- MAIN COLUMN -->
     <div class="main-col">
-
-      <!-- Latest Publications -->
       <div class="card">
         <div class="pub-head"><i class="fa-regular fa-clock"></i> Latest Publications</div>
 
         <div class="pub-item">
-          <a href="#" class="pub-title">Urban Heat Island Effect in Small Towns A Case Study of Jhargram in Jungle
-            Mahal, West Bengal, India, with Reference to Sustainable Development Goals</a>
+          <a href="#" class="pub-title">Urban Heat Island Effect in Small Towns — A Case Study of Jhargram in Jungle Mahal, West Bengal, India, with Reference to Sustainable Development Goals</a>
           <div class="pub-meta">
             <span><i class="fa-solid fa-tag"></i> Vol 2 Issue 4</span>
-            <span><i class="fa-regular fa-calendar"></i> Published: Apr 29, 2026</span>
+            <span><i class="fa-regular fa-calendar"></i> Apr 29, 2026</span>
           </div>
-          <div class="pub-area"><strong>Area:</strong> Geography, planning and development</div>
-          <div class="pub-authors"><i class="fa-solid fa-users"
-              style="color:var(--muted);margin-right:5px;"></i><strong>Authors:</strong> Dr. Samrat Pandit, Dr. Tapan
-            Kumar Pandit</div>
-          <div class="pub-abstract">Urban Heat Island (UHI) is typically associated with large metropolitan areas, but
-            emerging evidence suggests that small towns are increasingly experiencing similar thermal anomalies due to
-            rapid lan...</div>
+          <div class="pub-area"><strong>Area:</strong> Geography, Planning and Development</div>
+          <div class="pub-authors"><i class="fa-solid fa-users" style="color:var(--muted);margin-right:5px;"></i><strong>Authors:</strong> Dr. Samrat Pandit, Dr. Tapan Kumar Pandit</div>
+          <div class="pub-abstract">Urban Heat Island (UHI) is typically associated with large metropolitan areas, but emerging evidence suggests that small towns are increasingly experiencing similar thermal anomalies due to rapid land use changes...</div>
           <div class="pub-btns">
             <a href="#" class="pbtn"><i class="fa-regular fa-eye"></i> Read More</a>
             <a href="#" class="pbtn pbtn-dl"><i class="fa-solid fa-download"></i> Download</a>
@@ -1629,19 +885,14 @@
         </div>
 
         <div class="pub-item">
-          <a href="#" class="pub-title">The Digitalization Paradox: A Systematic Literature on The Impact of Digital
-            Transformation on Wealth Inequality Within BRICS Nation</a>
+          <a href="#" class="pub-title">The Digitalization Paradox: A Systematic Literature on The Impact of Digital Transformation on Wealth Inequality Within BRICS Nations</a>
           <div class="pub-meta">
             <span><i class="fa-solid fa-tag"></i> Vol 2 Issue 4</span>
-            <span><i class="fa-regular fa-calendar"></i> Published: Apr 29, 2026</span>
+            <span><i class="fa-regular fa-calendar"></i> Apr 29, 2026</span>
           </div>
           <div class="pub-area"><strong>Area:</strong> Other</div>
-          <div class="pub-authors"><i class="fa-solid fa-users"
-              style="color:var(--muted);margin-right:5px;"></i><strong>Authors:</strong> Tamanna Saini, Sarita Yadav
-          </div>
-          <div class="pub-abstract">While the scholarly field of digital inequality continues to expand in diverse
-            directions, the intricate relationship between digital disparities and traditional forms of wealth
-            inequality has yet to...</div>
+          <div class="pub-authors"><i class="fa-solid fa-users" style="color:var(--muted);margin-right:5px;"></i><strong>Authors:</strong> Tamanna Saini, Sarita Yadav</div>
+          <div class="pub-abstract">While the scholarly field of digital inequality continues to expand, the intricate relationship between digital disparities and traditional forms of wealth inequality has yet to be fully explored...</div>
           <div class="pub-btns">
             <a href="#" class="pbtn"><i class="fa-regular fa-eye"></i> Read More</a>
             <a href="#" class="pbtn pbtn-dl"><i class="fa-solid fa-download"></i> Download</a>
@@ -1649,106 +900,56 @@
         </div>
 
         <div class="pub-item">
-          <a href="#" class="pub-title">The Effect of Water Mass on Freezing Time Using a ½ HP Outdoor Air Conditioner
-            Unit</a>
+          <a href="#" class="pub-title">The Effect of Water Mass on Freezing Time Using a ½ HP Outdoor Air Conditioner Unit</a>
           <div class="pub-meta">
             <span><i class="fa-solid fa-tag"></i> Vol 2 Issue 4</span>
-            <span><i class="fa-regular fa-calendar"></i> Published: Apr 29, 2026</span>
+            <span><i class="fa-regular fa-calendar"></i> Apr 29, 2026</span>
           </div>
           <div class="pub-area"><strong>Area:</strong> Engineering</div>
-          <div class="pub-authors"><i class="fa-solid fa-users"
-              style="color:var(--muted);margin-right:5px;"></i><strong>Authors:</strong> Research Team</div>
-          <div class="pub-abstract">This study investigates the relationship between water mass and freezing time in a
-            controlled environment using a standard ½ HP outdoor air conditioner unit under varying load conditions...
-          </div>
+          <div class="pub-authors"><i class="fa-solid fa-users" style="color:var(--muted);margin-right:5px;"></i><strong>Authors:</strong> Research Team</div>
+          <div class="pub-abstract">This study investigates the relationship between water mass and freezing time in a controlled environment using a standard ½ HP outdoor air conditioner unit under varying load conditions...</div>
           <div class="pub-btns">
             <a href="#" class="pbtn"><i class="fa-regular fa-eye"></i> Read More</a>
             <a href="#" class="pbtn pbtn-dl"><i class="fa-solid fa-download"></i> Download</a>
           </div>
         </div>
-
-        <div class="pub-item">
-          <a href="#" class="pub-title">The Effect of Water Mass on Freezing Time Using a ½ HP Outdoor Air Conditioner
-            Unit</a>
-          <div class="pub-meta">
-            <span><i class="fa-solid fa-tag"></i> Vol 2 Issue 4</span>
-            <span><i class="fa-regular fa-calendar"></i> Published: Apr 29, 2026</span>
-          </div>
-          <div class="pub-area"><strong>Area:</strong> Engineering</div>
-          <div class="pub-authors"><i class="fa-solid fa-users"
-              style="color:var(--muted);margin-right:5px;"></i><strong>Authors:</strong> Research Team</div>
-          <div class="pub-abstract">This study investigates the relationship between water mass and freezing time in a
-            controlled environment using a standard ½ HP outdoor air conditioner unit under varying load conditions...
-          </div>
-          <div class="pub-btns">
-            <a href="#" class="pbtn"><i class="fa-regular fa-eye"></i> Read More</a>
-            <a href="#" class="pbtn pbtn-dl"><i class="fa-solid fa-download"></i> Download</a>
-          </div>
-        </div>
-
       </div>
-
-
-    </div><!-- /main-col -->
+    </div>
 
     <!-- RIGHT SIDEBAR -->
     <aside class="sidebar">
-
-      <!-- DOI + Crossref -->
-
-      <!-- Call For Papers -->
       <div class="cfp-sb">
         <div class="cfp-sb-head"><i class="fa-solid fa-bullhorn"></i> Call For Papers</div>
         <div class="cfp-sb-body">
-          <p>We are currently accepting submissions on a <strong>rolling basis</strong>. Authors are invited to submit
-            original research papers, reviews, and case studies in the field of <strong>technology and emerging
-              research</strong>.</p>
+          <p>We are currently accepting submissions on a <strong>rolling basis</strong>. Authors are invited to submit original research papers, reviews, and case studies in <strong>technology and emerging research</strong>.</p>
           <div class="cfp-info-row">
             <i class="fa-solid fa-calendar-days"></i>
-            <div>
-              <div class="cfp-info-label">Submission Status</div>
-              <span class="cfp-badge badge-green">Open (Rolling Basis)</span>
-            </div>
+            <div><div class="cfp-info-label">Submission Status</div><span class="cfp-badge badge-green">Open (Rolling Basis)</span></div>
           </div>
           <div class="cfp-info-row">
             <i class="fa-solid fa-circle-check"></i>
-            <div>
-              <div class="cfp-info-label">Peer Review</div>
-              <span class="cfp-badge badge-blue">Double-blind</span>
-            </div>
+            <div><div class="cfp-info-label">Peer Review</div><span class="cfp-badge badge-blue">Double-blind</span></div>
           </div>
           <div class="cfp-info-row">
             <i class="fa-solid fa-globe"></i>
-            <div>
-              <div class="cfp-info-label">Access Type</div>
-              <span class="cfp-badge badge-teal">Open Access</span>
-            </div>
+            <div><div class="cfp-info-label">Access Type</div><span class="cfp-badge badge-teal">Open Access</span></div>
           </div>
           <div class="cfp-info-row">
             <i class="fa-solid fa-gavel"></i>
-            <div>
-              <div class="cfp-info-label">License</div>
-              <span class="cfp-badge badge-blue">CC BY-NC-ND 4.0</span>
-            </div>
+            <div><div class="cfp-info-label">License</div><span class="cfp-badge badge-blue">CC BY-NC-ND 4.0</span></div>
           </div>
           <div class="cfp-info-row">
             <i class="fa-regular fa-clock"></i>
-            <div>
-              <div class="cfp-info-label">Avg. Review Time</div>
-              <span class="cfp-badge badge-amber">2–3 days</span>
-            </div>
+            <div><div class="cfp-info-label">Avg. Review Time</div><span class="cfp-badge badge-amber">2–3 days</span></div>
           </div>
         </div>
       </div>
 
-
-
-      <!-- Latest News -->
       <div class="sb-card">
         <div class="sb-head"><i class="fa-regular fa-newspaper"></i> Research Areas &amp; Topics</div>
         <div class="sb-body">
           <div class="card-body">
-            <p>We accept original research and review articles across a wide range of disciplines:</p>
+            <p style="font-size:0.83rem;color:var(--muted);">We accept original research and review articles across a wide range of disciplines:</p>
             <div class="tags">
               <span class="tag">Computer Science</span><span class="tag">Electronics &amp; Comm.</span>
               <span class="tag">Civil Engineering</span><span class="tag">Mechanical Engg.</span>
@@ -1761,18 +962,16 @@
           </div>
         </div>
       </div>
-
     </aside>
 
-  </div><!-- /page-body -->
+  </div>
 
   <footer>
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
           <div class="fa">IJVRAS</div>
-          <div class="fs">International Journal of Versatile Research &amp; Analytic Studies<br>Peer-Reviewed · Open
-            Access · Fast Publication</div>
+          <div class="fs">International Journal of Versatile Research &amp; Analytic Studies<br>Peer-Reviewed · Open Access · Fast Publication</div>
           <div class="issn-tag">ISSN: 2582-5208</div>
         </div>
         <div class="footer-col">
@@ -1801,5 +1000,4 @@
     });
   </script>
 </body>
-
 </html>
