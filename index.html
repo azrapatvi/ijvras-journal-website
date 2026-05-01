@@ -66,7 +66,7 @@
 
     .announce span {
       color: rgba(255, 255, 255, 0.55);
-      margin: 0 10px;
+     
     }
 
     /* HEADER */
@@ -1186,20 +1186,13 @@
 
     .published_by {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-    }
-
-    .left {
-      margin-left: 100px;
-    }
-
-    .right {
-      margin-right: 50px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
+      gap: 12px; /* controls space between items */
+  flex-wrap: wrap; /* optional for responsiveness */
+}
+    
+    
 
     /* RESPONSIVE */
     @media (max-width: 1100px) {
@@ -1357,14 +1350,14 @@
 
   <div class="announce">
     <div class="published_by">
-      <div class="left">Published by Praseonix</div>
-      <div class="right">
+      Published by Praseonix<span>|</span>
+     
         <span><i class="fa-solid fa-file-lines"></i> Call For Paper — Submission Deadline: 30 April 2026</span>
         <span>|</span>
         <span>DOI Services Now Available</span>
         <span>|</span>
         <span>ISSN: 2582-5208</span>
-      </div>
+    
     </div>
   </div>
 
