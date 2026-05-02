@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publication Ethics – IJVRAS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0e1a2b; --azure: #1a5cb5; --azure2: #2272d4;
+      --amber: #d4952a; --amber2: #f0b444;
+      --fog: #f0f4fa; --white: #ffffff; --border: #dce4f0; --muted: #6b7e96;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f5f6f8; color: var(--ink); line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+
+    .announce { background: var(--azure); color: #fff; font-size: 0.72rem; text-align: center; padding: 7px 12px; font-weight: 500; }
+    .announce span { color: rgba(255,255,255,0.55); }
+    .published_by { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+    header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 16px rgba(14,26,43,0.06); }
+    .header-wrap { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; height: 60px; }
+    .logo-text { font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: var(--azure); }
+    nav { display: flex; align-items: center; gap: 2px; }
+    .nav-item { position: relative; }
+    .nav-link { display: flex; align-items: center; gap: 5px; padding: 8px 11px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--ink); transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-link:hover { background: var(--fog); color: var(--azure); }
+    .chevron { font-size: 0.55rem; opacity: 0.6; }
+    .nav-cta { background: var(--azure); color: #fff !important; padding: 8px 16px !important; border-radius: 8px; font-weight: 600 !important; margin-left: 6px; }
+    .nav-cta:hover { background: var(--azure2) !important; }
+    .drop { display: none; position: absolute; top: 100%; left: 0; padding-top: 8px; z-index: 300; }
+    .drop-inner { background: #fff; border: 1px solid var(--border); border-radius: 12px; min-width: 200px; box-shadow: 0 16px 40px rgba(14,26,43,0.12); overflow: hidden; }
+    .nav-item:hover .drop { display: block; }
+    .drop a { display: block; padding: 11px 16px; font-size: 0.84rem; color: var(--ink); border-bottom: 1px solid var(--border); transition: background 0.13s; }
+    .drop a:last-child { border-bottom: none; }
+    .drop a:hover { background: var(--fog); color: var(--azure); }
+    .ham { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; border-radius: 8px; }
+    .ham span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
+
+    .journal-title-banner { background: #fff; border-bottom: 2px solid var(--border); }
+    .jtb-inner { max-width: 1240px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 20px; }
+    .jtb-logo-col { flex-shrink: 0; }
+    .jtb-real-logo { height: 80px; width: auto; display: block; }
+    .jtb-title-col { flex: 1; text-align: center; border-left: 2px solid var(--border); border-right: 2px solid var(--border); padding: 0 20px; }
+    .jtb-name { font-family: 'Merriweather', serif; font-size: clamp(0.85rem, 2vw, 1.35rem); font-weight: 700; color: var(--azure); letter-spacing: 0.02em; line-height: 1.35; }
+    .jtb-sub { font-size: 0.75rem; color: var(--muted); margin-top: 5px; font-style: italic; }
+    .jtb-issn-col { flex-shrink: 0; text-align: right; min-width: 140px; }
+    .jtb-issn-label { font-size: 1rem; font-weight: 700; color: var(--amber); }
+    .jtb-issn-url { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+    .page-hero { background: linear-gradient(135deg, #dce8f8 0%, #e8f0fb 50%, #d6e4f7 100%); padding: 40px 16px; border-bottom: 1px solid var(--border); }
+    .page-hero-inner { max-width: 1240px; margin: 0 auto; }
+    .breadcrumb { font-size: 0.78rem; color: var(--muted); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+    .breadcrumb a { color: var(--azure); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .page-hero h1 { font-family: 'Merriweather', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .page-hero p { font-size: 0.9rem; color: var(--muted); max-width: 600px; }
+
+    .layout { max-width: 1240px; margin: 0 auto; padding: 40px 16px; display: grid; grid-template-columns: 1fr 300px; gap: 28px; }
+    .main-col { display: flex; flex-direction: column; gap: 24px; }
+
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .card-head { padding: 18px 24px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    .card-head i { color: var(--azure); font-size: 1rem; }
+    .card-head h2 { font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); }
+    .card-body { padding: 24px; }
+    .card-body p { font-size: 0.9rem; line-height: 1.9; color: #3d4f63; margin-bottom: 16px; }
+    .card-body p:last-child { margin-bottom: 0; }
+    .intro-para { font-size: 0.95rem !important; color: var(--ink) !important; font-weight: 500; border-left: 3px solid var(--azure); padding-left: 16px; margin-bottom: 20px !important; }
+
+    /* RESPONSIBILITY TABS */
+    .resp-tabs { display: flex; gap: 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
+    .resp-tab { flex: 1; padding: 10px 8px; text-align: center; font-size: 0.82rem; font-weight: 600; color: var(--muted); background: var(--fog); cursor: pointer; border-right: 1px solid var(--border); transition: background 0.15s, color 0.15s; }
+    .resp-tab:last-child { border-right: none; }
+    .resp-tab.active { background: var(--azure); color: #fff; }
+    .resp-panel { display: none; }
+    .resp-panel.active { display: block; }
+    .resp-list { display: flex; flex-direction: column; gap: 10px; }
+    .resp-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; background: var(--fog); border: 1px solid var(--border); border-radius: 10px; }
+    .resp-item i { color: var(--azure); margin-top: 3px; flex-shrink: 0; }
+    .resp-item span { font-size: 0.86rem; color: #3d4f63; line-height: 1.6; }
+
+    /* WARNING BOX */
+    .warn-box { padding: 16px 18px; background: #fff7ed; border: 1px solid #fdba74; border-radius: 10px; display: flex; align-items: flex-start; gap: 12px; margin-top: 16px; }
+    .warn-box i { color: #ea580c; margin-top: 2px; flex-shrink: 0; }
+    .warn-box p { font-size: 0.85rem; color: #7c2d12; line-height: 1.7; margin-bottom: 0; }
+
+    .sidebar { display: flex; flex-direction: column; gap: 20px; }
+    .sb-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .sb-head { padding: 14px 18px; background: var(--azure); color: #fff; font-family: 'Merriweather', serif; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+    .sb-body { padding: 18px; }
+    .quick-fact { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border); }
+    .quick-fact:last-child { border-bottom: none; }
+    .qf-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--fog); display: flex; align-items: center; justify-content: center; color: var(--azure); font-size: 0.85rem; flex-shrink: 0; }
+    .qf-label { font-size: 0.72rem; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+    .qf-value { font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-top: 2px; }
+    .submit-cta { background: linear-gradient(135deg, var(--azure) 0%, var(--azure2) 100%); border-radius: 14px; padding: 22px 18px; text-align: center; color: #fff; }
+    .submit-cta h4 { font-family: 'Merriweather', serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .submit-cta p { font-size: 0.8rem; opacity: 0.8; line-height: 1.6; margin-bottom: 16px; }
+    .btn-white { display: block; background: #fff; color: var(--azure); font-weight: 700; font-size: 0.85rem; padding: 10px 16px; border-radius: 8px; transition: transform 0.15s; }
+    .btn-white:hover { transform: translateY(-1px); }
+    
+
+    footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 40px 16px 28px; }
+    .footer-inner { max-width: 1240px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-brand .fa { font-family: 'Merriweather', serif; font-size: 1.3rem; color: #fff; font-weight: 700; }
+    .footer-brand .fs { font-size: 0.7rem; color: rgba(255,255,255,0.4); line-height: 1.5; margin-top: 8px; }
+    .footer-brand .issn-tag { display: inline-block; margin-top: 12px; background: rgba(212,149,42,0.15); border: 1px solid rgba(212,149,42,0.3); color: var(--amber2); font-size: 0.71rem; font-weight: 600; padding: 5px 10px; border-radius: 6px; }
+    .footer-col h5 { font-size: 0.77rem; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 12px; }
+    .footer-col a { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.4); margin-bottom: 8px; transition: color 0.15s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { padding-top: 20px; font-size: 0.76rem; text-align: center; }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .announce { font-size: 0.66rem; }
+      .published_by .sep { display: none; }
+      .header-wrap { height: 56px; padding: 0 12px; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; align-items: stretch; position: absolute; top: 56px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 8px 12px 16px; z-index: 299; box-shadow: 0 8px 24px rgba(14,26,43,0.1); max-height: 80vh; overflow-y: auto; }
+      nav.open .nav-link { padding: 11px 10px; font-size: 0.9rem; }
+      nav.open .drop { position: static; box-shadow: none; border: none; padding: 0 0 0 12px; }
+      nav.open .drop-inner { box-shadow: none; border: none; border-radius: 0; }
+      nav.open .drop a { font-size: 0.84rem; padding: 9px 12px; }
+      nav.open .nav-cta { margin: 8px 0 0; text-align: center; }
+      .ham { display: flex; }
+      header { position: relative; }
+      .jtb-inner { flex-direction: column; text-align: center; gap: 10px; padding: 12px 14px; }
+      .jtb-logo-col { justify-content: center; }
+      .jtb-real-logo { height: 64px; }
+      .jtb-title-col { border-left: none; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; width: 100%; }
+      .jtb-issn-col { text-align: center; min-width: unset; width: 100%; }
+      .layout { padding: 20px 12px; gap: 16px; }
+      .footer-top { grid-template-columns: 1fr; gap: 24px; }
+      .resp-tab { font-size: 0.75rem; padding: 9px 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announce">
+    <div class="published_by">
+      Published by Praseonix <span class="sep">|</span>
+      <span><i class="fa-solid fa-file-lines"></i> Call For Paper — Deadline: 30 April 2026</span>
+      <span class="sep">|</span><span>DOI Services Available</span>
+      <span class="sep">|</span><span>ISSN: 2582-5208</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-wrap">
+      <span class="logo-text">IJVRAS</span>
+      <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav id="navMenu">
+        <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">About <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="about_the_journal.html">About the Journal</a>
+            <a href="plagiarism.html">Plagiarism Policy</a>
+            <a href="peer_review_policy.html">Peer Review Policy</a>
+            <a href="ethics.html">Publication Ethics</a>
+          </div></div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Author <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="#">Publication Process</a><a href="#">Submit Paper Online</a>
+            <a href="#">Pay Publication Fee</a><a href="#">Track Your Paper</a>
+            <a href="#">Copyright Form</a><a href="#">Paper Format / Template</a>
+            <a href="#">Research Topics</a>
+          </div></div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="#">Indexing</a></div>
+        <div class="nav-item"><a class="nav-link" href="#">Open Access</a></div>
+        <div class="nav-item"><a class="nav-link" href="#">DOI</a></div>
+        <div class="nav-item"><a class="nav-link" href="#">Fee</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Archives <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="#">2025 Issues</a><a href="#">2024 Issues</a><a href="#">All Archives</a>
+          </div></div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="#">FAQ</a></div>
+        <div class="nav-item"><a class="nav-link nav-cta" href="#">Submit Paper</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="journal-title-banner">
+    <div class="jtb-inner">
+      <div class="jtb-logo-col"><img src="images/logo1.PNG" alt="IJVRAS Logo" class="jtb-real-logo" /></div>
+      <div class="jtb-title-col">
+        <div class="jtb-name">INTERNATIONAL JOURNAL OF VERSATILE RESEARCH &amp; ANALYTIC STUDIES</div>
+        <div class="jtb-sub">(Peer-Reviewed, Open Access, Fully Referred International Journal)</div>
+      </div>
+      <div class="jtb-issn-col">
+        <div class="jtb-issn-label">ISSN: 2582-5208</div>
+        <div class="jtb-issn-url">www.ijvras.com</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa-solid fa-chevron-right" style="font-size:0.6rem;"></i>
+        <span>Publication Ethics</span>
+      </div>
+      <h1>Publication Ethics</h1>
+      <p>We hold our journal, our authors, our reviewers, and ourselves to a clear standard. Here's what that looks like in practice.</p>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="main-col">
+
+      <div class="card">
+        <div class="card-head"><i class="fa-solid fa-scale-balanced"></i><h2>Our Commitment</h2></div>
+        <div class="card-body">
+          <p class="intro-para">Publishing research is a responsibility, not just a service. IJVRAS is committed to maintaining honest, transparent, and fair publishing practices — because the credibility of research depends on it.</p>
+          <p>We follow internationally accepted guidelines for publication ethics. That means everyone involved — authors, reviewers, and editors — has a clear role to play and clear responsibilities to uphold. These aren't just rules on paper. They're how we actually operate, and we take breaches seriously.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><i class="fa-solid fa-users"></i><h2>Responsibilities of Everyone Involved</h2></div>
+        <div class="card-body">
+          <div class="resp-tabs">
+            <div class="resp-tab active" onclick="showTab('authors', this)">Authors</div>
+            <div class="resp-tab" onclick="showTab('reviewers', this)">Reviewers</div>
+            <div class="resp-tab" onclick="showTab('editors', this)">Editors</div>
+          </div>
+
+          <div id="tab-authors" class="resp-panel active">
+            <div class="resp-list">
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>Only submit work that is original and hasn't been published or submitted elsewhere at the same time.</span></div>
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>Cite all sources properly. If you used someone else's work as a foundation, give them credit.</span></div>
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>Don't fabricate, manipulate, or falsify any data, results, or images.</span></div>
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>List all people who genuinely contributed to the work as authors. Don't leave anyone out, and don't add people who didn't contribute.</span></div>
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>Declare any funding sources or conflicts of interest that could be seen as influencing your work.</span></div>
+            </div>
+          </div>
+
+          <div id="tab-reviewers" class="resp-panel">
+            <div class="resp-list">
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>Give honest, constructive, and objective feedback. The goal is to improve the work, not to dismiss it.</span></div>
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>Keep everything you read confidential. Don't share manuscript content with anyone outside the review process.</span></div>
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>If you have a conflict of interest — personal, financial, or professional — let us know and step back from the review.</span></div>
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>If you notice something that feels ethically off — plagiarism, fabricated data — report it to the editorial team right away.</span></div>
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>Complete your review within the agreed timeframe. Authors are waiting on your feedback.</span></div>
+            </div>
+          </div>
+
+          <div id="tab-editors" class="resp-panel">
+            <div class="resp-list">
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>Make decisions based on the quality of the work — not on who the authors are, where they're from, or who they know.</span></div>
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>Ensure the review process is fair, transparent, and consistent for every submission.</span></div>
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>Keep submitted manuscripts and reviewer identities confidential throughout the process.</span></div>
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>Take any ethical concerns raised — about a paper, a reviewer, or the process — seriously and act on them appropriately.</span></div>
+              <div class="resp-item"><i class="fa-solid fa-check"></i><span>Handle corrections, retractions, and expressions of concern promptly and openly when issues arise post-publication.</span></div>
+            </div>
+          </div>
+
+          <div class="warn-box">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <p>Any form of unethical behavior — including plagiarism, duplicate submission, data fabrication, or undisclosed conflicts of interest — will result in immediate rejection or, if discovered after publication, retraction of the paper. The authors involved may also be barred from future submissions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><i class="fa-solid fa-handshake"></i><h2>What "Transparent" Actually Means Here</h2></div>
+        <div class="card-body">
+          <p>We use the word "transparent" a lot in academic publishing, but it can easily become hollow. Here's what it actually means at IJVRAS:</p>
+          <p>If a published paper has an error, we correct it — publicly, with a clear note on the paper itself. If a paper needs to be retracted, we don't quietly remove it; we publish a retraction notice explaining why. If a reviewer or editor has a conflict of interest, they step aside. These aren't complicated rules. They're just what honest publishing looks like.</p>
+          <p>We're also open about our process. Any author who submits to us deserves to know how their paper will be evaluated and what the standards are. That's what this page is here for.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <aside class="sidebar">
+      <div class="sb-card">
+        <div class="sb-head"><i class="fa-solid fa-circle-info"></i> Ethics at a Glance</div>
+        <div class="sb-body">
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-copy"></i></div>
+            <div><div class="qf-label">Plagiarism</div><div class="qf-value">Zero Tolerance</div></div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-ban"></i></div>
+            <div><div class="qf-label">Duplicate Submission</div><div class="qf-value">Not Permitted</div></div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-eye-slash"></i></div>
+            <div><div class="qf-label">Review Type</div><div class="qf-value">Double-Blind</div></div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-rotate-left"></i></div>
+            <div><div class="qf-label">Post-Pub Issues</div><div class="qf-value">Retraction published</div></div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-globe"></i></div>
+            <div><div class="qf-label">Standards</div><div class="qf-value">Internationally recognized</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-cta">
+        <h4>Submit Ethically</h4>
+        <p>Original work, properly cited. That's all we ask. Submit your research today.</p>
+        <a href="#" class="btn-white">Submit Paper →</a>
+      </div>
+
+      
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="fa">IJVRAS</div>
+          <div class="fs">International Journal of Versatile Research &amp; Analytic Studies<br>Peer-Reviewed · Open Access · Fast Publication</div>
+          <div class="issn-tag">ISSN: 2582-5208</div>
+        </div>
+        <div class="footer-col">
+          <h5>For Authors</h5>
+          <a href="#">Publication Process</a><a href="#">Submit Paper Online</a>
+          <a href="#">Paper Format / Template</a><a href="#">Copyright Form</a>
+          <a href="#">Pay Publication Fee</a><a href="#">Track Your Paper</a>
+        </div>
+        <div class="footer-col">
+          <h5>Journal</h5>
+          <a href="#">About IJVRAS</a><a href="#">Editorial Board</a>
+          <a href="#">Indexing</a><a href="#">Archives</a>
+          <a href="#">Conference</a><a href="#">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">Copyright © 2026 Praseonix. All rights reserved</div>
+    </div>
+  </footer>
+
+  <script>
+    const hamBtn = document.getElementById('hamBtn');
+    const navMenu = document.getElementById('navMenu');
+    hamBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+    document.addEventListener('click', e => {
+      if (!hamBtn.contains(e.target) && !navMenu.contains(e.target)) navMenu.classList.remove('open');
+    });
+
+    function showTab(name, el) {
+      document.querySelectorAll('.resp-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.resp-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('tab-' + name).classList.add('active');
+      el.classList.add('active');
+    }
+  </script>
+</body>
+</html>

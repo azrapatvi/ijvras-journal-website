@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peer Review Policy – IJVRAS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0e1a2b;
+      --azure: #1a5cb5;
+      --azure2: #2272d4;
+      --amber: #d4952a;
+      --amber2: #f0b444;
+      --fog: #f0f4fa;
+      --white: #ffffff;
+      --border: #dce4f0;
+      --muted: #6b7e96;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f5f6f8; color: var(--ink); line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ANNOUNCEMENT */
+    .announce { background: var(--azure); color: #fff; font-size: 0.72rem; text-align: center; padding: 7px 12px; font-weight: 500; }
+    .announce span { color: rgba(255,255,255,0.55); }
+    .published_by { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+    /* HEADER */
+    header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 16px rgba(14,26,43,0.06); }
+    .header-wrap { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; height: 60px; }
+    .logo-text { font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: var(--azure); }
+    nav { display: flex; align-items: center; gap: 2px; }
+    .nav-item { position: relative; }
+    .nav-link { display: flex; align-items: center; gap: 5px; padding: 8px 11px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--ink); transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-link:hover { background: var(--fog); color: var(--azure); }
+    .chevron { font-size: 0.55rem; opacity: 0.6; }
+    .nav-cta { background: var(--azure); color: #fff !important; padding: 8px 16px !important; border-radius: 8px; font-weight: 600 !important; margin-left: 6px; }
+    .nav-cta:hover { background: var(--azure2) !important; }
+    .drop { display: none; position: absolute; top: 100%; left: 0; padding-top: 8px; z-index: 300; }
+    .drop-inner { background: #fff; border: 1px solid var(--border); border-radius: 12px; min-width: 200px; box-shadow: 0 16px 40px rgba(14,26,43,0.12); overflow: hidden; }
+    .nav-item:hover .drop { display: block; }
+    .drop a { display: block; padding: 11px 16px; font-size: 0.84rem; color: var(--ink); border-bottom: 1px solid var(--border); transition: background 0.13s; }
+    .drop a:last-child { border-bottom: none; }
+    .drop a:hover { background: var(--fog); color: var(--azure); }
+    .ham { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; border-radius: 8px; }
+    .ham span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
+
+    /* BANNER */
+    .journal-title-banner { background: #fff; border-bottom: 2px solid var(--border); }
+    .jtb-inner { max-width: 1240px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 20px; }
+    .jtb-logo-col { flex-shrink: 0; }
+    .jtb-real-logo { height: 80px; width: auto; display: block; }
+    .jtb-title-col { flex: 1; text-align: center; border-left: 2px solid var(--border); border-right: 2px solid var(--border); padding: 0 20px; }
+    .jtb-name { font-family: 'Merriweather', serif; font-size: clamp(0.85rem, 2vw, 1.35rem); font-weight: 700; color: var(--azure); letter-spacing: 0.02em; line-height: 1.35; }
+    .jtb-sub { font-size: 0.75rem; color: var(--muted); margin-top: 5px; font-style: italic; }
+    .jtb-issn-col { flex-shrink: 0; text-align: right; min-width: 140px; }
+    .jtb-issn-label { font-size: 1rem; font-weight: 700; color: var(--amber); }
+    .jtb-issn-url { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+    /* PAGE HERO */
+    .page-hero { background: linear-gradient(135deg, #dce8f8 0%, #e8f0fb 50%, #d6e4f7 100%); padding: 40px 16px; border-bottom: 1px solid var(--border); }
+    .page-hero-inner { max-width: 1240px; margin: 0 auto; }
+    .breadcrumb { font-size: 0.78rem; color: var(--muted); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+    .breadcrumb a { color: var(--azure); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .page-hero h1 { font-family: 'Merriweather', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .page-hero p { font-size: 0.9rem; color: var(--muted); max-width: 600px; }
+
+    /* LAYOUT */
+    .layout { max-width: 1240px; margin: 0 auto; padding: 40px 16px; display: grid; grid-template-columns: 1fr 300px; gap: 28px; }
+
+    /* CARDS */
+    .main-col { display: flex; flex-direction: column; gap: 24px; }
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .card-head { padding: 18px 24px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+    .card-head i { color: var(--azure); font-size: 1rem; }
+    .card-head h2 { font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); }
+    .card-body { padding: 24px; }
+    .card-body p { font-size: 0.9rem; line-height: 1.9; color: #3d4f63; margin-bottom: 16px; }
+    .card-body p:last-child { margin-bottom: 0; }
+    .intro-para { font-size: 0.95rem !important; color: var(--ink) !important; font-weight: 500; border-left: 3px solid var(--azure); padding-left: 16px; margin-bottom: 20px !important; }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+    .step { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .step:last-child { border-bottom: none; }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--azure); color: #fff; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-content h4 { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+    .step-content p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 0; }
+    .step-content ul { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+    .step-content ul li { font-size: 0.84rem; color: var(--muted); display: flex; align-items: flex-start; gap: 8px; }
+    .step-content ul li::before { content: '→'; color: var(--azure); flex-shrink: 0; }
+
+    /* DECISION BADGES */
+    .decision-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 600; padding: 6px 14px; border-radius: 8px; }
+    .badge-accept { background: #dcfce7; color: #166534; }
+    .badge-minor { background: #dbeafe; color: #1e40af; }
+    .badge-major { background: #fef3c7; color: #92400e; }
+    .badge-reject { background: #fee2e2; color: #991b1b; }
+
+    /* TWO COL GRID */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+    .info-box { background: var(--fog); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .info-box h4 { font-size: 0.88rem; font-weight: 600; color: var(--azure); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .info-box p { font-size: 0.83rem; color: var(--muted); line-height: 1.7; margin-bottom: 0; }
+
+    /* NOTE BOX */
+    .note-box { margin-top: 16px; padding: 14px 16px; background: #f0fdf4; border: 1px solid #86efac; border-radius: 10px; font-size: 0.85rem; color: #166534; display: flex; align-items: flex-start; gap: 10px; }
+    .note-box i { margin-top: 2px; flex-shrink: 0; }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 20px; }
+    .sb-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .sb-head { padding: 14px 18px; background: var(--azure); color: #fff; font-family: 'Merriweather', serif; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+    .sb-body { padding: 18px; }
+    .quick-fact { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border); }
+    .quick-fact:last-child { border-bottom: none; }
+    .qf-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--fog); display: flex; align-items: center; justify-content: center; color: var(--azure); font-size: 0.85rem; flex-shrink: 0; }
+    .qf-label { font-size: 0.72rem; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+    .qf-value { font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-top: 2px; }
+    .submit-cta { background: linear-gradient(135deg, var(--azure) 0%, var(--azure2) 100%); border-radius: 14px; padding: 22px 18px; text-align: center; color: #fff; }
+    .submit-cta h4 { font-family: 'Merriweather', serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .submit-cta p { font-size: 0.8rem; opacity: 0.8; line-height: 1.6; margin-bottom: 16px; }
+    .btn-white { display: block; background: #fff; color: var(--azure); font-weight: 700; font-size: 0.85rem; padding: 10px 16px; border-radius: 8px; transition: transform 0.15s; }
+    .btn-white:hover { transform: translateY(-1px); }
+    
+
+    /* FOOTER */
+    footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 40px 16px 28px; }
+    .footer-inner { max-width: 1240px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-brand .fa { font-family: 'Merriweather', serif; font-size: 1.3rem; color: #fff; font-weight: 700; }
+    .footer-brand .fs { font-size: 0.7rem; color: rgba(255,255,255,0.4); line-height: 1.5; margin-top: 8px; }
+    .footer-brand .issn-tag { display: inline-block; margin-top: 12px; background: rgba(212,149,42,0.15); border: 1px solid rgba(212,149,42,0.3); color: var(--amber2); font-size: 0.71rem; font-weight: 600; padding: 5px 10px; border-radius: 6px; }
+    .footer-col h5 { font-size: 0.77rem; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 12px; }
+    .footer-col a { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.4); margin-bottom: 8px; transition: color 0.15s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { padding-top: 20px; font-size: 0.76rem; text-align: center; }
+
+    /* MOBILE */
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .announce { font-size: 0.66rem; }
+      .published_by .sep { display: none; }
+      .header-wrap { height: 56px; padding: 0 12px; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; align-items: stretch; position: absolute; top: 56px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 8px 12px 16px; z-index: 299; box-shadow: 0 8px 24px rgba(14,26,43,0.1); max-height: 80vh; overflow-y: auto; }
+      nav.open .nav-link { padding: 11px 10px; font-size: 0.9rem; }
+      nav.open .drop { position: static; box-shadow: none; border: none; padding: 0 0 0 12px; }
+      nav.open .drop-inner { box-shadow: none; border: none; border-radius: 0; }
+      nav.open .drop a { font-size: 0.84rem; padding: 9px 12px; }
+      nav.open .nav-cta { margin: 8px 0 0; text-align: center; }
+      .ham { display: flex; }
+      header { position: relative; }
+      .jtb-inner { flex-direction: column; text-align: center; gap: 10px; padding: 12px 14px; }
+      .jtb-logo-col { justify-content: center; }
+      .jtb-real-logo { height: 64px; }
+      .jtb-title-col { border-left: none; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; width: 100%; }
+      .jtb-issn-col { text-align: center; min-width: unset; width: 100%; }
+      .layout { padding: 20px 12px; gap: 16px; }
+      .footer-top { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announce">
+    <div class="published_by">
+      Published by Praseonix
+      <span class="sep">|</span>
+      <span><i class="fa-solid fa-file-lines"></i> Call For Paper — Deadline: 30 April 2026</span>
+      <span class="sep">|</span>
+      <span>DOI Services Available</span>
+      <span class="sep">|</span>
+      <span>ISSN: 2582-5208</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-wrap">
+      <span class="logo-text">IJVRAS</span>
+      <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav id="navMenu">
+        <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">About <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="about_the_journal.html">About the Journal</a>
+            <a href="plagiarism.html">Plagiarism Policy</a>
+            <a href="peer_review_policy.html">Peer Review Policy</a>
+            <a href="ethics.html">Publication Ethics</a>
+          </div></div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Author <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="#">Publication Process</a><a href="#">Submit Paper Online</a>
+            <a href="#">Pay Publication Fee</a><a href="#">Track Your Paper</a>
+            <a href="#">Copyright Form</a><a href="#">Paper Format / Template</a>
+            <a href="#">Research Topics</a>
+          </div></div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="#">Indexing</a></div>
+        <div class="nav-item"><a class="nav-link" href="#">Open Access</a></div>
+        <div class="nav-item"><a class="nav-link" href="#">DOI</a></div>
+        <div class="nav-item"><a class="nav-link" href="#">Fee</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Archives <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="#">2025 Issues</a><a href="#">2024 Issues</a><a href="#">All Archives</a>
+          </div></div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="#">FAQ</a></div>
+        <div class="nav-item"><a class="nav-link nav-cta" href="#">Submit Paper</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="journal-title-banner">
+    <div class="jtb-inner">
+      <div class="jtb-logo-col"><img src="images/logo1.PNG" alt="IJVRAS Logo" class="jtb-real-logo" /></div>
+      <div class="jtb-title-col">
+        <div class="jtb-name">INTERNATIONAL JOURNAL OF VERSATILE RESEARCH &amp; ANALYTIC STUDIES</div>
+        <div class="jtb-sub">(Peer-Reviewed, Open Access, Fully Referred International Journal)</div>
+      </div>
+      <div class="jtb-issn-col">
+        <div class="jtb-issn-label">ISSN: 2582-5208</div>
+        <div class="jtb-issn-url">www.ijvras.com</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa-solid fa-chevron-right" style="font-size:0.6rem;"></i>
+        <span>Peer Review Policy</span>
+      </div>
+      <h1>Peer Review Policy</h1>
+      <p>Every paper we publish has been carefully reviewed by experts. Here's exactly how that process works.</p>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="main-col">
+
+      <div class="card">
+        <div class="card-head"><i class="fa-solid fa-circle-info"></i><h2>How We Review Papers</h2></div>
+        <div class="card-body">
+          <p class="intro-para">At IJVRAS, peer review isn't a formality — it's the backbone of everything we publish. Every manuscript goes through a structured double-blind review before it ever reaches our pages.</p>
+          <p>Double-blind means the reviewer doesn't know who wrote the paper, and the author doesn't know who reviewed it. This keeps things fair. The work is judged on its own merit, not on the name or institution behind it.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><i class="fa-solid fa-list-ol"></i><h2>Step-by-Step Review Process</h2></div>
+        <div class="card-body">
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Initial Check by Editorial Team</h4>
+                <p>When your paper arrives, our editorial team first checks whether it fits the journal's scope, meets our formatting requirements, and appears to be original work. This usually happens within 24 hours of submission.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Assigned to Expert Reviewers</h4>
+                <p>If it passes the initial check, the paper is sent to at least two reviewers who specialize in that particular subject area. We pick reviewers carefully — they need to actually know the field.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Reviewers Evaluate the Work</h4>
+                <p>Each reviewer looks at the paper closely and assesses it on four key criteria:</p>
+                <ul>
+                  <li>Is it original? Does it bring something new to the table?</li>
+                  <li>Is the technical and scientific quality solid?</li>
+                  <li>Is it clearly written and easy to follow?</li>
+                  <li>Does it fit the scope of IJVRAS?</li>
+                </ul>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>Editor Makes a Decision</h4>
+                <p>Based on what the reviewers say, the editor makes one of four decisions:</p>
+                <div class="decision-row">
+                  <span class="badge badge-accept"><i class="fa-solid fa-check"></i> Accept</span>
+                  <span class="badge badge-minor"><i class="fa-solid fa-pen"></i> Minor Revision</span>
+                  <span class="badge badge-major"><i class="fa-solid fa-wrench"></i> Major Revision</span>
+                  <span class="badge badge-reject"><i class="fa-solid fa-xmark"></i> Reject</span>
+                </div>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">5</div>
+              <div class="step-content">
+                <h4>Author Revises (If Needed)</h4>
+                <p>If revisions are requested, authors will receive clear, specific feedback from the reviewers. You'll know exactly what needs to change and why. Once revisions are submitted, the paper goes back for a final check before a decision is made.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><i class="fa-solid fa-clock"></i><h2>How Long Does It Take?</h2></div>
+        <div class="card-body">
+          <p>We know waiting for a review decision can be stressful, so we try to keep things moving. The typical timeline looks like this:</p>
+          <div class="two-col">
+            <div class="info-box">
+              <h4><i class="fa-solid fa-bolt"></i> Initial Screening</h4>
+              <p>Within 24 hours of submission, you'll hear back on whether your paper has passed the initial check.</p>
+            </div>
+            <div class="info-box">
+              <h4><i class="fa-solid fa-hourglass-half"></i> Full Review</h4>
+              <p>The full peer review typically takes 2–7 days, depending on how complex the manuscript is.</p>
+            </div>
+            <div class="info-box">
+              <h4><i class="fa-solid fa-rotate"></i> After Revisions</h4>
+              <p>Revised papers are re-checked quickly. We don't keep you waiting a second time around.</p>
+            </div>
+            <div class="info-box">
+              <h4><i class="fa-solid fa-rocket"></i> After Acceptance</h4>
+              <p>Once accepted, your paper can be published and live on the site in as little as 4 hours.</p>
+            </div>
+          </div>
+          <div class="note-box">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>We're committed to being transparent throughout the process. You'll receive updates at every key stage — you won't be left wondering what's happening with your submission.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <aside class="sidebar">
+      <div class="sb-card">
+        <div class="sb-head"><i class="fa-solid fa-circle-info"></i> Review at a Glance</div>
+        <div class="sb-body">
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-eye-slash"></i></div>
+            <div><div class="qf-label">Review Type</div><div class="qf-value">Double-Blind</div></div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-users"></i></div>
+            <div><div class="qf-label">Reviewers per Paper</div><div class="qf-value">At least 2</div></div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-clock"></i></div>
+            <div><div class="qf-label">Review Timeline</div><div class="qf-value">2–7 Days</div></div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-rocket"></i></div>
+            <div><div class="qf-label">Post-Acceptance</div><div class="qf-value">As fast as 4 hours</div></div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-lock"></i></div>
+            <div><div class="qf-label">Confidentiality</div><div class="qf-value">Strictly maintained</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-cta">
+        <h4>Ready to Submit?</h4>
+        <p>Our review process is fast, fair, and transparent. Submit today and hear back within days.</p>
+        <a href="#" class="btn-white">Submit Paper →</a>
+      </div>
+
+
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="fa">IJVRAS</div>
+          <div class="fs">International Journal of Versatile Research &amp; Analytic Studies<br>Peer-Reviewed · Open Access · Fast Publication</div>
+          <div class="issn-tag">ISSN: 2582-5208</div>
+        </div>
+        <div class="footer-col">
+          <h5>For Authors</h5>
+          <a href="#">Publication Process</a><a href="#">Submit Paper Online</a>
+          <a href="#">Paper Format / Template</a><a href="#">Copyright Form</a>
+          <a href="#">Pay Publication Fee</a><a href="#">Track Your Paper</a>
+        </div>
+        <div class="footer-col">
+          <h5>Journal</h5>
+          <a href="#">About IJVRAS</a><a href="#">Editorial Board</a>
+          <a href="#">Indexing</a><a href="#">Archives</a>
+          <a href="#">Conference</a><a href="#">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">Copyright © 2026 Praseonix. All rights reserved</div>
+    </div>
+  </footer>
+
+  <script>
+    const hamBtn = document.getElementById('hamBtn');
+    const navMenu = document.getElementById('navMenu');
+    hamBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+    document.addEventListener('click', e => {
+      if (!hamBtn.contains(e.target) && !navMenu.contains(e.target)) navMenu.classList.remove('open');
+    });
+  </script>
+</body>
+</html>
