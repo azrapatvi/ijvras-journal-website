@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register – IJVRAS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0e1a2b;
+            --azure: #1a5cb5;
+            --azure2: #2272d4;
+            --amber: #d4952a;
+            --amber2: #f0b444;
+            --fog: #f0f4fa;
+            --white: #ffffff;
+            --border: #dce4f0;
+            --muted: #6b7e96;
+            --card-r: 14px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: #f5f6f8;
+            color: var(--ink);
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ── ANNOUNCEMENT BAR ── */
+        .announce {
+            background: var(--azure);
+            color: var(--white);
+            font-size: 0.72rem;
+            letter-spacing: 0.06em;
+            padding: 7px 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .published_by {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .announce span {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        .announce-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .announce-btn-login {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 5px 13px;
+            border-radius: 6px;
+            letter-spacing: 0.05em;
+        }
+
+        .announce-btn-register {
+            background: var(--amber);
+            border: 1px solid var(--amber2);
+            color: var(--ink);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 5px 13px;
+            border-radius: 6px;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 2px 16px rgba(14, 26, 43, 0.06);
+        }
+
+        .header-wrap {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            padding: 0 16px;
+            height: 60px;
+        }
+
+        .header-wrap .logo-text {
+            justify-self: start;
+        }
+
+        .header-wrap nav {
+            justify-self: center;
+        }
+
+        .header-right {
+            justify-self: end;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-text {
+            font-family: 'Merriweather', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--azure);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 11px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--ink);
+            transition: background 0.15s, color 0.15s;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            background: var(--fog);
+            color: var(--azure);
+        }
+
+        .chevron {
+            font-size: 0.55rem;
+            opacity: 0.6;
+        }
+
+        .nav-cta {
+            background: var(--azure);
+            color: var(--white) !important;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            transition: background 0.15s, transform 0.15s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--azure2) !important;
+            transform: translateY(-1px);
+        }
+
+        .drop {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            padding-top: 8px;
+            background: transparent;
+            z-index: 300;
+        }
+
+        .drop-inner {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            min-width: 200px;
+            box-shadow: 0 16px 40px rgba(14, 26, 43, 0.12);
+            overflow: hidden;
+        }
+
+        .nav-item:hover .drop {
+            display: block;
+        }
+
+        .drop a {
+            display: block;
+            padding: 11px 16px;
+            font-size: 0.84rem;
+            color: var(--ink);
+            border-bottom: 1px solid var(--border);
+            transition: background 0.13s, color 0.13s;
+        }
+
+        .drop a:last-child {
+            border-bottom: none;
+        }
+
+        .drop a:hover {
+            background: var(--fog);
+            color: var(--azure);
+        }
+
+        .ham {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .ham span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--ink);
+            border-radius: 2px;
+            transition: 0.2s;
+        }
+
+        /* ── JOURNAL TITLE BANNER ── */
+        .journal-title-banner {
+            background: var(--white);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .jtb-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .jtb-logo-col {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .jtb-real-logo {
+            height: 80px;
+            width: auto;
+            display: block;
+        }
+
+        .jtb-title-col {
+            flex: 1;
+            text-align: center;
+            border-left: 2px solid var(--border);
+            border-right: 2px solid var(--border);
+            padding: 0 20px;
+        }
+
+        .jtb-name {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(0.85rem, 2vw, 1.35rem);
+            font-weight: 700;
+            color: var(--azure);
+            letter-spacing: 0.02em;
+            line-height: 1.35;
+        }
+
+        .jtb-sub {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .jtb-issn-col {
+            flex-shrink: 0;
+            text-align: right;
+            min-width: 140px;
+        }
+
+        .jtb-issn-label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--amber);
+            letter-spacing: 0.04em;
+        }
+
+        .jtb-issn-url {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* ── REGISTER PAGE ── */
+        .register-page {
+            min-height: calc(100vh - 300px);
+            background: linear-gradient(135deg, #dce8f8 0%, #e8f0fb 50%, #d6e4f7 100%);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 48px 16px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(26, 92, 181, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26, 92, 181, 0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+
+        /* KEY FIX: wider card, better proportioned */
+        .register-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            box-shadow: 0 24px 70px rgba(14, 36, 90, 0.13);
+            width: 100%;
+            max-width: 640px;
+            /* was 520px — now comfortably wide */
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .register-card-header {
+            background: linear-gradient(160deg, #0f3a7a 0%, #1a5cb5 100%);
+            padding: 36px 44px 30px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .register-card-header .user-icon {
+            width: 54px;
+            height: 54px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.3rem;
+        }
+
+        .register-card-header .journal-abbr {
+            font-family: 'Merriweather', serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            margin-bottom: 5px;
+        }
+
+        .register-card-header p {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+
+        .register-card-body {
+            padding: 36px 44px;
+        }
+
+        /* Progress steps */
+        .steps {
+            display: flex;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            flex: 1;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .step.completed:not(:last-child)::after {
+            background: var(--azure);
+        }
+
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: var(--muted);
+            position: relative;
+            z-index: 1;
+            transition: all 0.2s;
+        }
+
+        .step.active .step-circle {
+            border-color: var(--azure);
+            background: var(--azure);
+            color: #fff;
+        }
+
+        .step.completed .step-circle {
+            border-color: var(--azure);
+            background: var(--azure);
+            color: #fff;
+        }
+
+        .step-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--muted);
+            text-align: center;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .step.active .step-label,
+        .step.completed .step-label {
+            color: var(--azure);
+        }
+
+        /* Role selector */
+        .role-selector {
+            margin-bottom: 24px;
+        }
+
+        .role-selector>label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--muted);
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .role-tabs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .role-tab {
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.15s;
+            background: var(--fog);
+        }
+
+        .role-tab i {
+            display: block;
+            font-size: 1.15rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+            transition: color 0.15s;
+        }
+
+        .role-tab span {
+            font-size: 0.77rem;
+            font-weight: 600;
+            color: var(--muted);
+            transition: color 0.15s;
+        }
+
+        .role-tab:hover,
+        .role-tab.active {
+            border-color: var(--azure);
+            background: rgba(26, 92, 181, 0.08);
+        }
+
+        .role-tab:hover i,
+        .role-tab.active i,
+        .role-tab:hover span,
+        .role-tab.active span {
+            color: var(--azure);
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.79rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 7px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap i.field-icon {
+            position: absolute;
+            left: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: 0.85rem;
+            pointer-events: none;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 14px 12px 40px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            background: var(--white);
+            outline: none;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        .form-control:focus {
+            border-color: var(--azure);
+            box-shadow: 0 0 0 3px rgba(26, 92, 181, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: #b0bec8;
+        }
+
+        select.form-control {
+            padding-left: 40px;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7e96' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 0.85rem;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .password-toggle:hover {
+            color: var(--azure);
+        }
+
+        /* Password strength */
+        .pwd-strength {
+            margin-top: 8px;
+        }
+
+        .pwd-bar {
+            height: 4px;
+            border-radius: 4px;
+            background: var(--border);
+            overflow: hidden;
+            margin-bottom: 4px;
+        }
+
+        .pwd-fill {
+            height: 100%;
+            border-radius: 4px;
+            width: 0;
+            transition: width 0.3s, background 0.3s;
+        }
+
+        .pwd-label {
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+
+        /* Terms */
+        .terms-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 22px;
+            font-size: 0.81rem;
+            color: var(--muted);
+        }
+
+        .terms-row input[type="checkbox"] {
+            accent-color: var(--azure);
+            width: 16px;
+            height: 16px;
+            margin-top: 3px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .terms-row a {
+            color: var(--azure);
+        }
+
+        .terms-row a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-register {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--azure) 0%, var(--azure2) 100%);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 13px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(26, 92, 181, 0.3);
+        }
+
+        .btn-back {
+            flex: 0 0 auto;
+            padding: 12px 20px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            background: none;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--muted);
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .btn-back:hover {
+            border-color: var(--azure);
+            color: var(--azure);
+        }
+
+        .role-desc-box {
+            background: var(--fog);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin-bottom: 24px;
+            font-size: 0.83rem;
+            color: var(--muted);
+        }
+
+        .role-desc-box strong {
+            color: var(--ink);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .divider span {
+            font-size: 0.75rem;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .login-link-box {
+            text-align: center;
+            font-size: 0.84rem;
+            color: var(--muted);
+        }
+
+        .login-link-box a {
+            color: var(--azure);
+            font-weight: 600;
+        }
+
+        .login-link-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--ink);
+            color: rgba(255, 255, 255, 0.5);
+            padding: 40px 16px 28px;
+        }
+
+        .footer-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 36px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-brand .fa {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .footer-brand .fs {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.5;
+            margin-top: 8px;
+        }
+
+        .footer-brand .issn-tag {
+            display: inline-block;
+            margin-top: 12px;
+            background: rgba(212, 149, 42, 0.15);
+            border: 1px solid rgba(212, 149, 42, 0.3);
+            color: var(--amber2);
+            font-size: 0.71rem;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+        .footer-col h5 {
+            font-size: 0.77rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 8px;
+            transition: color 0.15s;
+        }
+
+        .footer-col a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            font-size: 0.76rem;
+            text-align: center;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 700px) {
+            .register-card-body {
+                padding: 28px 24px;
+            }
+
+            .register-card-header {
+                padding: 28px 24px 22px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-wrap {
+                height: 56px;
+                padding: 0 12px;
+                grid-template-columns: 1fr auto;
+            }
+
+            .header-wrap nav {
+                display: none;
+            }
+
+            .ham {
+                display: flex;
+            }
+
+            header {
+                position: relative;
+            }
+
+            nav.open {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                position: absolute;
+                top: 56px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                border-bottom: 1px solid var(--border);
+                padding: 8px 12px 16px;
+                z-index: 299;
+                box-shadow: 0 8px 24px rgba(14, 26, 43, 0.1);
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+
+            nav.open .nav-link {
+                padding: 11px 10px;
+                font-size: 0.9rem;
+            }
+
+            nav.open .drop {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding: 0 0 0 12px;
+            }
+
+            nav.open .drop-inner {
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+            }
+
+            nav.open .drop a {
+                font-size: 0.84rem;
+                padding: 9px 12px;
+            }
+
+            .header-right .nav-cta {
+                display: none;
+            }
+
+            .jtb-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+                padding: 12px 14px;
+            }
+
+            .jtb-title-col {
+                border-left: none;
+                border-right: none;
+                border-top: 1px solid var(--border);
+                border-bottom: 1px solid var(--border);
+                padding: 10px 0;
+                width: 100%;
+            }
+
+            .jtb-issn-col {
+                text-align: center;
+                min-width: unset;
+                width: 100%;
+            }
+
+            .register-page {
+                padding: 28px 14px 40px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announce">
+        <div class="published_by" style="flex:1; justify-content:center;">
+            Published by Praseonix
+            <span class="sep">|</span>
+            <span><i class="fa-solid fa-file-lines"></i> Call For Paper — Deadline: 30 April 2026</span>
+            <span class="sep">|</span>
+            <span>DOI Services Available</span>
+            <span class="sep">|</span>
+            <span>ISSN: 2582-5208</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+            <a href="login.html"
+                style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff; font-size:0.72rem; font-weight:600; padding:5px 13px; border-radius:6px; letter-spacing:0.05em;">Log
+                In</a>
+            <a href="register.html"
+                style="background:#d4952a; border:1px solid #f0b444; color:#0e1a2b; font-size:0.72rem; font-weight:700; padding:5px 13px; border-radius:6px; letter-spacing:0.05em;">Register</a>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-wrap">
+            <span class="logo-text">IJVRAS</span>
+            <nav id="navMenu">
+                <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
+                <div class="nav-item">
+                    <a class="nav-link" href="#">About <span class="chevron">▾</span></a>
+                    <div class="drop">
+                        <div class="drop-inner">
+                            <a href="about_the_journal.html">About the Journal</a><a href="plagiarism.html">Plagiarism
+                                Policy</a>
+                            <a href="peer_review_policy.html">Peer Review Policy</a><a href="ethics.html">Publication
+                                Ethics</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" href="#">Editorial<span class="chevron">▾</span></a>
+                    <div class="drop">
+                        <div class="drop-inner">
+                            <a href="about_the_journal.html">Editorial Board</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" href="#">Author <span class="chevron">▾</span></a>
+                    <div class="drop">
+                        <div class="drop-inner">
+                            <a href="#">Publication Process</a><a href="#">Submit Paper Online</a>
+                            <a href="#">Pay Publication Fee</a><a href="#">Track Your Paper</a>
+                            <a href="#">Copyright Form</a><a href="#">Paper Format / Template</a>
+                            <a href="#">Research Topics</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item"><a class="nav-link" href="#">Indexing</a></div>
+                <div class="nav-item"><a class="nav-link" href="#">Open Access</a></div>
+                <div class="nav-item"><a class="nav-link" href="#">DOI</a></div>
+                <div class="nav-item"><a class="nav-link" href="#">Fee</a></div>
+                <div class="nav-item">
+                    <a class="nav-link" href="#">Archives <span class="chevron">▾</span></a>
+                    <div class="drop">
+                        <div class="drop-inner">
+                            <a href="#">2025 Issues</a><a href="#">2024 Issues</a><a href="#">All Archives</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item"><a class="nav-link" href="#">FAQ</a></div>
+            </nav>
+            <div class="header-right">
+                <a class="nav-cta" href="#">Submit Paper</a>
+                <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- JOURNAL TITLE BANNER -->
+    <div class="journal-title-banner">
+        <div class="jtb-inner">
+            <div class="jtb-logo-col">
+                <img src="images/logo1.PNG" alt="IJVRAS Logo" class="jtb-real-logo" />
+            </div>
+            <div class="jtb-title-col">
+                <div class="jtb-name">INTERNATIONAL JOURNAL OF VERSATILE RESEARCH &amp; ANALYTIC STUDIES</div>
+                <div class="jtb-sub">(Peer-Reviewed, Open Access, Fully Referred International Journal)</div>
+            </div>
+            <div class="jtb-issn-col">
+                <div class="jtb-issn-label">ISSN: 2582-5208</div>
+                <div class="jtb-issn-url">www.ijvras.com</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REGISTER PAGE -->
+    <div class="register-page">
+        <div class="register-card">
+
+            <div class="register-card-header">
+                <div class="user-icon"><i class="fa-solid fa-user-plus"></i></div>
+                <div class="journal-abbr">Create Account</div>
+                <p>Join IJVRAS as an Author, Reviewer, or Editor</p>
+            </div>
+
+            <div class="register-card-body">
+
+                <!-- Steps indicator -->
+                <div class="steps">
+                    <div class="step active" id="step1">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Role</div>
+                    </div>
+                    <div class="step" id="step2">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Details</div>
+                    </div>
+                    <div class="step" id="step3">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Security</div>
+                    </div>
+                </div>
+
+                <form onsubmit="handleRegister(event)">
+
+                    <!-- STEP 1 — Role -->
+                    <div id="formStep1">
+                        <div class="role-selector">
+                            <label>I am registering as</label>
+                            <div class="role-tabs">
+                                <div class="role-tab active" data-role="author" onclick="selectRole(this)">
+                                    <i class="fa-solid fa-pen-nib"></i>
+                                    <span>Author</span>
+                                </div>
+                                <div class="role-tab" data-role="reviewer" onclick="selectRole(this)">
+                                    <i class="fa-solid fa-user-check"></i>
+                                    <span>Reviewer</span>
+                                </div>
+                                <div class="role-tab" data-role="editor" onclick="selectRole(this)">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                    <span>Editor</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="role-desc-box" id="roleDesc">
+                            <strong>Author Account</strong>
+                            Submit manuscripts, track review progress, respond to reviewer comments, and download
+                            acceptance certificates after publication.
+                        </div>
+
+                        <div class="form-group">
+                            <label>Area of Expertise / Research Field</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-flask field-icon"></i>
+                                <select class="form-control" id="researchField">
+                                    <option value="">— Select your primary field —</option>
+                                    <optgroup label="Engineering & Technology">
+                                        <option>Computer Science</option>
+                                        <option>Electronics &amp; Communications</option>
+                                        <option>Civil Engineering</option>
+                                        <option>Mechanical Engineering</option>
+                                        <option>Electrical Engineering</option>
+                                        <option>Chemical Engineering</option>
+                                        <option>Aerospace Engineering</option>
+                                        <option>Biomedical Engineering</option>
+                                        <option>AI &amp; Machine Learning</option>
+                                        <option>Cyber Security</option>
+                                        <option>Robotics &amp; Automation</option>
+                                        <option>Information Technology</option>
+                                    </optgroup>
+                                    <optgroup label="Sciences">
+                                        <option>Applied Physics</option>
+                                        <option>Applied Chemistry</option>
+                                        <option>Mathematics &amp; Statistics</option>
+                                        <option>Biotechnology</option>
+                                        <option>Microbiology</option>
+                                        <option>Environmental Science</option>
+                                        <option>Materials Science</option>
+                                        <option>Nanotechnology</option>
+                                        <option>Agricultural Science</option>
+                                        <option>Forensic Science</option>
+                                    </optgroup>
+                                    <optgroup label="Medical & Pharmacy">
+                                        <option>Pharmacy</option>
+                                        <option>Pharmacology</option>
+                                        <option>Public Health</option>
+                                        <option>Nursing</option>
+                                        <option>Dentistry</option>
+                                        <option>Ayurveda &amp; Medicine</option>
+                                    </optgroup>
+                                    <optgroup label="Management & Commerce">
+                                        <option>Management Studies</option>
+                                        <option>Business Administration</option>
+                                        <option>Finance &amp; Banking</option>
+                                        <option>Economics</option>
+                                        <option>Marketing</option>
+                                    </optgroup>
+                                    <optgroup label="Social Sciences & Humanities">
+                                        <option>Sociology</option>
+                                        <option>Psychology</option>
+                                        <option>Political Science</option>
+                                        <option>Education &amp; Pedagogy</option>
+                                        <option>Law &amp; Legal Studies</option>
+                                        <option>Journalism &amp; Mass Comm.</option>
+                                    </optgroup>
+                                    <optgroup label="Other">
+                                        <option>Architecture &amp; Urban Planning</option>
+                                        <option>Energy Studies</option>
+                                        <option>Interdisciplinary Studies</option>
+                                        <option>Other</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-register" onclick="goToStep(2)">
+                            Continue <i class="fa-solid fa-arrow-right" style="margin-left:8px;"></i>
+                        </button>
+                    </div>
+
+                    <!-- STEP 2 — Personal Details -->
+                    <div id="formStep2" style="display:none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-user field-icon"></i>
+                                    <input type="text" class="form-control" placeholder="First name" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-user field-icon"></i>
+                                    <input type="text" class="form-control" placeholder="Last name" required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <div class="input-wrap">
+                                <i class="fa-regular fa-envelope field-icon"></i>
+                                <input type="email" class="form-control" placeholder="you@institution.edu" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Institution / Organisation</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-building-columns field-icon"></i>
+                                <input type="text" class="form-control" placeholder="University or organisation name" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Country</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-earth-asia field-icon"></i>
+                                <select class="form-control">
+                                    <option value="">— Select country —</option>
+                                    <option>India</option>
+                                    <option>United States</option>
+                                    <option>United Kingdom</option>
+                                    <option>Canada</option>
+                                    <option>Australia</option>
+                                    <option>Germany</option>
+                                    <option>France</option>
+                                    <option>China</option>
+                                    <option>Japan</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number <span
+                                    style="color:var(--muted);font-weight:400;">(optional)</span></label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-phone field-icon"></i>
+                                <input type="tel" class="form-control" placeholder="+91 00000 00000" />
+                            </div>
+                        </div>
+
+                        <div style="display:flex; gap:12px;">
+                            <button type="button" class="btn-back" onclick="goToStep(1)">
+                                <i class="fa-solid fa-arrow-left"></i> Back
+                            </button>
+                            <button type="button" class="btn-register" style="flex:1;" onclick="goToStep(3)">
+                                Continue <i class="fa-solid fa-arrow-right" style="margin-left:8px;"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3 — Password & Terms -->
+                    <div id="formStep3" style="display:none;">
+                        <div class="form-group">
+                            <label>Create Password</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-lock field-icon"></i>
+                                <input type="password" id="regPassword" class="form-control"
+                                    placeholder="Minimum 8 characters" oninput="checkStrength(this.value)" required />
+                                <button type="button" class="password-toggle" onclick="toggleReg()">
+                                    <i class="fa-regular fa-eye" id="regEye"></i>
+                                </button>
+                            </div>
+                            <div class="pwd-strength">
+                                <div class="pwd-bar">
+                                    <div class="pwd-fill" id="pwdFill"></div>
+                                </div>
+                                <div class="pwd-label" id="pwdLabel">Enter a password</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <div class="input-wrap">
+                                <i class="fa-solid fa-lock field-icon"></i>
+                                <input type="password" id="regConfirm" class="form-control"
+                                    placeholder="Re-enter your password" required />
+                            </div>
+                        </div>
+
+                        <div class="terms-row">
+                            <input type="checkbox" id="terms" required />
+                            <label for="terms">I agree to the <a href="#">Terms of Use</a>, <a href="#">Privacy
+                                    Policy</a>, and the <a href="#">Publication Ethics</a> of IJVRAS.</label>
+                        </div>
+
+                        <div style="display:flex; gap:12px; margin-bottom:22px;">
+                            <button type="button" class="btn-back" onclick="goToStep(2)">
+                                <i class="fa-solid fa-arrow-left"></i> Back
+                            </button>
+                            <button type="submit" class="btn-register" style="flex:1;">
+                                <i class="fa-solid fa-user-plus" style="margin-right:8px;"></i>Create Account
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+                <div class="divider"><span>Already have an account?</span></div>
+                <div class="login-link-box">
+                    <a href="login.html">← Sign in to your account</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="fa">IJVRAS</div>
+                    <div class="fs">International Journal of Versatile Research &amp; Analytic Studies<br>Peer-Reviewed
+                        · Open Access · Fast Publication</div>
+                    <div class="issn-tag">ISSN: 2582-5208</div>
+                </div>
+                <div class="footer-col">
+                    <h5>For Authors</h5>
+                    <a href="#">Publication Process</a>
+                    <a href="#">Submit Paper Online</a>
+                    <a href="#">Paper Format / Template</a>
+                    <a href="#">Copyright Form</a>
+                    <a href="#">Pay Publication Fee</a>
+                    <a href="#">Track Your Paper</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Journal</h5>
+                    <a href="#">About IJVRAS</a>
+                    <a href="#">Editorial Board</a>
+                    <a href="#">Indexing</a>
+                    <a href="#">Archives</a>
+                    <a href="#">Conference</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">Copyright © 2026 Praseonix. All rights reserved</div>
+        </div>
+    </footer>
+
+    <script>
+        const hamBtn = document.getElementById('hamBtn');
+        const navMenu = document.getElementById('navMenu');
+        hamBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+        document.addEventListener('click', e => {
+            if (!hamBtn.contains(e.target) && !navMenu.contains(e.target)) navMenu.classList.remove('open');
+        });
+
+        let currentRole = 'author';
+        const roleDescriptions = {
+            author: { title: 'Author Account', desc: 'Submit manuscripts, track review progress, respond to reviewer comments, and download acceptance certificates after publication.' },
+            reviewer: { title: 'Reviewer Account', desc: 'Accept or decline review invitations, submit detailed peer review reports, and help maintain the quality of published research.' },
+            editor: { title: 'Editor Account', desc: 'Manage incoming submissions, assign suitable reviewers, make final editorial decisions, and coordinate the publication workflow.' }
+        };
+
+        function selectRole(tab) {
+            document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            currentRole = tab.dataset.role;
+            const d = roleDescriptions[currentRole];
+            document.getElementById('roleDesc').innerHTML = `<strong>${d.title}</strong>${d.desc}`;
+        }
+
+        function goToStep(num) {
+            [1, 2, 3].forEach(n => {
+                document.getElementById('formStep' + n).style.display = n === num ? 'block' : 'none';
+                const stepEl = document.getElementById('step' + n);
+                stepEl.classList.remove('active', 'completed');
+                if (n < num) stepEl.classList.add('completed');
+                if (n === num) stepEl.classList.add('active');
+                const circle = document.querySelector('#step' + n + ' .step-circle');
+                if (n < num) circle.innerHTML = '<i class="fa-solid fa-check" style="font-size:0.65rem;"></i>';
+                else circle.textContent = n;
+            });
+        }
+
+        function checkStrength(val) {
+            const fill = document.getElementById('pwdFill');
+            const label = document.getElementById('pwdLabel');
+            let strength = 0;
+            if (val.length >= 8) strength++;
+            if (/[A-Z]/.test(val)) strength++;
+            if (/[0-9]/.test(val)) strength++;
+            if (/[^A-Za-z0-9]/.test(val)) strength++;
+            const levels = [
+                { w: '0%', color: 'var(--border)', text: 'Enter a password' },
+                { w: '25%', color: '#ef4444', text: 'Weak' },
+                { w: '50%', color: '#f59e0b', text: 'Fair' },
+                { w: '75%', color: '#3b82f6', text: 'Good' },
+                { w: '100%', color: '#22c55e', text: 'Strong' }
+            ];
+            const l = levels[strength];
+            fill.style.width = l.w;
+            fill.style.background = l.color;
+            label.textContent = l.text;
+            label.style.color = l.color === 'var(--border)' ? 'var(--muted)' : l.color;
+        }
+
+        function toggleReg() {
+            const pwd = document.getElementById('regPassword');
+            const icon = document.getElementById('regEye');
+            if (pwd.type === 'password') { pwd.type = 'text'; icon.className = 'fa-regular fa-eye-slash'; }
+            else { pwd.type = 'password'; icon.className = 'fa-regular fa-eye'; }
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const pwd = document.getElementById('regPassword').value;
+            const confirm = document.getElementById('regConfirm').value;
+            if (pwd !== confirm) { alert('Passwords do not match. Please re-enter.'); return; }
+            const btn = e.target.querySelector('[type="submit"]');
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right:8px;"></i> Creating Account...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-user-plus" style="margin-right:8px;"></i> Create Account';
+                btn.disabled = false;
+                alert('Account creation will connect to your backend. Role: ' + currentRole.charAt(0).toUpperCase() + currentRole.slice(1));
+            }, 1800);
+        }
+    </script>
+</body>
+
+</html>

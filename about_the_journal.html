@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About the Journal – IJVRAS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0e1a2b;
+      --ink2: #1c3150;
+      --azure: #1a5cb5;
+      --azure2: #2272d4;
+      --amber: #d4952a;
+      --amber2: #f0b444;
+      --fog: #f0f4fa;
+      --white: #ffffff;
+      --border: #dce4f0;
+      --muted: #6b7e96;
+      --card-r: 14px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      background: #f5f6f8;
+      color: var(--ink);
+      overflow-x: hidden;
+      font-size: 16px;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announce {
+  background: var(--azure);
+  color: var(--white);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  padding: 7px 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+    .announce span { color: rgba(255,255,255,0.55); }
+    .published_by { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 16px rgba(14,26,43,0.06);
+    }
+    .header-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      height: 60px;
+    }
+    .logo-text {
+      font-family: 'Merriweather', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--azure);
+    }
+    nav { display: flex; align-items: center; gap: 2px; }
+    .nav-item { position: relative; }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 11px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    .nav-link:hover { background: var(--fog); color: var(--azure); }
+    .chevron { font-size: 0.55rem; opacity: 0.6; }
+    .nav-cta {
+      background: var(--azure);
+      color: var(--white) !important;
+      padding: 8px 16px !important;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      margin-left: 6px;
+      transition: background 0.15s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--azure2) !important; transform: translateY(-1px); }
+    .drop {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      padding-top: 8px;
+      background: transparent;
+      z-index: 300;
+    }
+    .drop-inner {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      min-width: 200px;
+      box-shadow: 0 16px 40px rgba(14,26,43,0.12);
+      overflow: hidden;
+    }
+    .nav-item:hover .drop { display: block; }
+    .drop a {
+      display: block;
+      padding: 11px 16px;
+      font-size: 0.84rem;
+      color: var(--ink);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.13s, color 0.13s;
+    }
+    .drop a:last-child { border-bottom: none; }
+    .drop a:hover { background: var(--fog); color: var(--azure); }
+    .ham {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+    }
+    .ham span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.2s; }
+
+    /* ── JOURNAL TITLE BANNER ── */
+    .journal-title-banner {
+      background: var(--white);
+      border-bottom: 2px solid var(--border);
+    }
+    .jtb-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .jtb-logo-col { flex-shrink: 0; display: flex; align-items: center; }
+    .jtb-real-logo { height: 80px; width: auto; display: block; }
+    .jtb-title-col {
+      flex: 1;
+      text-align: center;
+      border-left: 2px solid var(--border);
+      border-right: 2px solid var(--border);
+      padding: 0 20px;
+    }
+    .jtb-name {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(0.85rem, 2vw, 1.35rem);
+      font-weight: 700;
+      color: var(--azure);
+      letter-spacing: 0.02em;
+      line-height: 1.35;
+    }
+    .jtb-sub { font-size: 0.75rem; color: var(--muted); margin-top: 5px; font-style: italic; }
+    .jtb-issn-col { flex-shrink: 0; text-align: right; min-width: 140px; }
+    .jtb-issn-label { font-size: 1rem; font-weight: 700; color: var(--amber); letter-spacing: 0.04em; }
+    .jtb-issn-url { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, #dce8f8 0%, #e8f0fb 50%, #d6e4f7 100%);
+      padding: 40px 16px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(26,92,181,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,92,181,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .page-hero-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .breadcrumb {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .breadcrumb a { color: var(--azure); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .page-hero h1 {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .page-hero p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 600px;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .about-layout {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 40px 16px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 28px;
+    }
+
+    /* ── CONTENT AREA ── */
+    .about-content { display: flex; flex-direction: column; gap: 24px; }
+
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--card-r);
+      overflow: hidden;
+    }
+    .content-card-head {
+      padding: 18px 24px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .content-card-head i { color: var(--azure); font-size: 1rem; }
+    .content-card-head h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .content-card-body { padding: 24px; }
+    .content-card-body p {
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: #3d4f63;
+      margin-bottom: 16px;
+    }
+    .content-card-body p:last-child { margin-bottom: 0; }
+
+    /* highlight intro paragraph */
+    .intro-para {
+      font-size: 0.95rem !important;
+      color: var(--ink) !important;
+      font-weight: 500;
+      border-left: 3px solid var(--azure);
+      padding-left: 16px;
+      margin-bottom: 20px !important;
+    }
+
+    /* ── FEATURES LIST ── */
+    .features-list { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
+    .feature-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--fog);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .feature-row:hover {
+      border-color: rgba(26,92,181,0.3);
+      box-shadow: 0 4px 16px rgba(26,92,181,0.07);
+    }
+    .feat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .fi-blue { background: var(--azure); }
+    .fi-green { background: #1a9b6c; }
+    .fi-cyan { background: #0ea5e9; }
+    .fi-amber { background: var(--amber); }
+    .fi-purple { background: #7c3aed; }
+    .fi-rose { background: #e11d48; }
+    .feat-text h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .feat-text p {
+      font-size: 0.82rem !important;
+      color: var(--muted) !important;
+      line-height: 1.6 !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* ── SCOPE TABLE ── */
+    .scope-intro {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .scope-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .scope-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--fog);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .scope-item i { color: var(--azure); font-size: 0.8rem; flex-shrink: 0; }
+
+    /* ── ETHICS SECTION ── */
+    .ethics-text {
+      font-size: 0.88rem;
+      line-height: 1.85;
+      color: #3d4f63;
+    }
+    .ethics-note {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: #fef9ec;
+      border: 1px solid #f5d78a;
+      border-radius: 10px;
+      font-size: 0.84rem;
+      color: #7a5200;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .ethics-note i { margin-top: 2px; flex-shrink: 0; }
+
+    /* ── RIGHT SIDEBAR ── */
+    .about-sidebar { display: flex; flex-direction: column; gap: 20px; }
+    .sb-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--card-r);
+      overflow: hidden;
+    }
+    .sb-head {
+      padding: 14px 18px;
+      background: var(--azure);
+      color: var(--white);
+      font-family: 'Merriweather', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sb-body { padding: 18px; }
+
+    .quick-fact {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .quick-fact:last-child { border-bottom: none; padding-bottom: 0; }
+    .qf-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--fog);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--azure);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .qf-label { font-size: 0.72rem; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+    .qf-value { font-size: 0.85rem; font-weight: 600; color: var(--ink); margin-top: 2px; }
+
+    .submit-cta {
+      background: linear-gradient(135deg, var(--azure) 0%, var(--azure2) 100%);
+      border-radius: var(--card-r);
+      padding: 22px 18px;
+      text-align: center;
+      color: var(--white);
+    }
+    .submit-cta h4 {
+      font-family: 'Merriweather', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .submit-cta p {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .btn-white {
+      display: block;
+      background: var(--white);
+      color: var(--azure);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 10px 16px;
+      border-radius: 8px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-white:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .related-links a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.84rem;
+      color: var(--ink);
+      transition: color 0.15s;
+    }
+    .related-links a:last-child { border-bottom: none; }
+    .related-links a:hover { color: var(--azure); }
+    .related-links a i { color: var(--muted); font-size: 0.8rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.5);
+      padding: 40px 16px 28px;
+    }
+    .footer-inner { max-width: 1240px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .fa {
+      font-family: 'Merriweather', serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      font-weight: 700;
+    }
+    .footer-brand .fs {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+    .footer-brand .issn-tag {
+      display: inline-block;
+      margin-top: 12px;
+      background: rgba(212,149,42,0.15);
+      border: 1px solid rgba(212,149,42,0.3);
+      color: var(--amber2);
+      font-size: 0.71rem;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+    .footer-col h5 {
+      font-size: 0.77rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+      transition: color 0.15s;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { padding-top: 20px; font-size: 0.76rem; text-align: center; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .about-layout { grid-template-columns: 1fr; }
+      .about-sidebar { order: -1; display: grid; grid-template-columns: 1fr 1fr; }
+      .submit-cta { grid-column: 1 / -1; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .announce { font-size: 0.66rem; padding: 6px 10px; }
+      .published_by .sep { display: none; }
+      .header-wrap { height: 56px; padding: 0 12px; }
+      .logo-text { font-size: 1rem; }
+      nav { display: none; }
+      nav.open {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 12px 16px;
+        z-index: 299;
+        box-shadow: 0 8px 24px rgba(14,26,43,0.1);
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+      nav.open .nav-link { padding: 11px 10px; font-size: 0.9rem; border-radius: 8px; }
+      nav.open .drop { position: static; box-shadow: none; border: none; padding: 0 0 0 12px; }
+      nav.open .drop-inner { box-shadow: none; border: none; border-radius: 0; }
+      nav.open .drop a { font-size: 0.84rem; padding: 9px 12px; border-radius: 6px; }
+      nav.open .nav-cta { margin: 8px 0 0; text-align: center; padding: 12px 16px !important; font-size: 0.9rem !important; }
+      .ham { display: flex; }
+      header { position: relative; }
+      .jtb-inner { flex-direction: column; text-align: center; gap: 10px; padding: 12px 14px; }
+      .jtb-logo-col { justify-content: center; }
+      .jtb-real-logo { height: 64px; }
+      .jtb-title-col { border-left: none; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; width: 100%; }
+      .jtb-name { font-size: 0.88rem; }
+      .jtb-issn-col { text-align: center; min-width: unset; width: 100%; }
+      .about-layout { padding: 20px 12px; gap: 16px; }
+      .about-sidebar { grid-template-columns: 1fr; }
+      .scope-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 24px; }
+      footer { padding: 32px 14px 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce">
+  <div class="published_by" style="flex:1; justify-content:center;">
+    Published by Praseonix
+    <span class="sep">|</span>
+    <span><i class="fa-solid fa-file-lines"></i> Call For Paper — Deadline: 30 April 2026</span>
+    <span class="sep">|</span>
+    <span>DOI Services Available</span>
+    <span class="sep">|</span>
+    <span>ISSN: 2582-5208</span>
+  </div>
+  <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+    <a href="login.html" style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff; font-size:0.72rem; font-weight:600; padding:5px 13px; border-radius:6px; letter-spacing:0.05em;">Log In</a>
+    <a href="register.html" style="background:#d4952a; border:1px solid #f0b444; color:#0e1a2b; font-size:0.72rem; font-weight:700; padding:5px 13px; border-radius:6px; letter-spacing:0.05em;">Register</a>
+  </div>
+</div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-wrap">
+      <span class="logo-text">IJVRAS</span>
+      <nav id="navMenu">
+        <div class="nav-item"><a class="nav-link" href="#">Home</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">About <span class="chevron">▾</span></a>
+          <div class="drop">
+            <div class="drop-inner">
+              <a href="about_the_journal.html">About the Journal</a><a href="plagiarism.html">Plagiarism Policy</a>
+              <a href="peer_review_policy.html">Peer Review Policy</a><a href="ethics.html">Publication Ethics</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Editorial<span class="chevron">▾</span></a>
+          <div class="drop">
+            <div class="drop-inner">
+              <a href="about_the_journal.html">Editorial Board</a>
+              
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Author <span class="chevron">▾</span></a>
+          <div class="drop">
+            <div class="drop-inner">
+              <a href="#">Publication Process</a><a href="#">Submit Paper Online</a>
+              <a href="#">Pay Publication Fee</a><a href="#">Track Your Paper</a>
+              <a href="#">Copyright Form</a><a href="#">Paper Format / Template</a>
+              <a href="#">Research Topics</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="#">Indexing</a></div>
+        <div class="nav-item"><a class="nav-link" href="#">Open Access</a></div>
+        <div class="nav-item"><a class="nav-link" href="#">DOI</a></div>
+        <div class="nav-item"><a class="nav-link" href="#">Fee</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Archives <span class="chevron">▾</span></a>
+          <div class="drop">
+            <div class="drop-inner">
+              <a href="#">2025 Issues</a><a href="#">2024 Issues</a><a href="#">All Archives</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="#">FAQ</a></div>
+      </nav>
+      <div class="header-right">
+        <a class="nav-cta" href="#">Submit Paper</a>
+        <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    </div>
+  </header>
+
+  <!-- JOURNAL TITLE BANNER -->
+  <div class="journal-title-banner">
+    <div class="jtb-inner">
+      <div class="jtb-logo-col">
+        <img src="images/logo1.PNG" alt="IJVRAS Logo" class="jtb-real-logo" />
+      </div>
+      <div class="jtb-title-col">
+        <div class="jtb-name">INTERNATIONAL JOURNAL OF VERSATILE RESEARCH &amp; ANALYTIC STUDIES</div>
+        <div class="jtb-sub">(Peer-Reviewed, Open Access, Fully Referred International Journal)</div>
+      </div>
+      <div class="jtb-issn-col">
+        <div class="jtb-issn-label">ISSN: 2582-5208</div>
+        <div class="jtb-issn-url">www.ijvras.com</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa-solid fa-chevron-right" style="font-size:0.6rem;"></i>
+        <span>About the Journal</span>
+      </div>
+      <h1>About the Journal</h1>
+      <p>Get to know who we are, what we stand for, and why researchers from around the world trust IJVRAS.</p>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="about-layout">
+
+    <!-- CONTENT AREA -->
+    <div class="about-content">
+
+      <!-- Who We Are -->
+      <div class="content-card">
+        <div class="content-card-head">
+          <i class="fa-solid fa-circle-info"></i>
+          <h2>Who We Are</h2>
+        </div>
+        <div class="content-card-body">
+          <p class="intro-para">
+            IJVRAS — International Journal of Versatile Research &amp; Analytic Studies — is a peer-reviewed, open-access journal that welcomes original research from a wide range of fields, including science, engineering, technology, and management.
+          </p>
+          <p>
+            We started this journal with a simple idea: good research should reach people, not sit behind paywalls. Whether you're a student submitting your first paper or an experienced researcher looking for a credible home for your work, IJVRAS is built for you. We keep the process straightforward, the costs low, and the quality high.
+          </p>
+          <p>
+            Every paper we receive goes through a genuine peer-review process. We don't believe in rubber-stamping submissions — if your work needs revision, our reviewers will tell you clearly and constructively. If it's ready, we'll get it published fast. That's the deal.
+          </p>
+        </div>
+      </div>
+
+      <!-- Our Mission -->
+      <div class="content-card">
+        <div class="content-card-head">
+          <i class="fa-solid fa-bullseye"></i>
+          <h2>What We're Here For</h2>
+        </div>
+        <div class="content-card-body">
+          <p>
+            Research only makes a difference when it gets shared. Our goal is to give researchers — whether they're from well-funded universities or small colleges — a real platform to publish their findings and have them read by people across the globe.
+          </p>
+          <p>
+            We especially welcome work that crosses disciplinary lines. Some of the most interesting problems today don't fit neatly into one field. A study combining data analytics with environmental science, or technology with social impact — that's exactly the kind of thinking we want to encourage.
+          </p>
+          <p>
+            We also make a point of supporting early-career researchers. Getting your first paper published can feel daunting. We try to make that experience as smooth and supportive as possible.
+          </p>
+        </div>
+      </div>
+
+      <!-- Key Features -->
+      <div class="content-card">
+        <div class="content-card-head">
+          <i class="fa-solid fa-star"></i>
+          <h2>What Makes IJVRAS Different</h2>
+        </div>
+        <div class="content-card-body">
+          <div class="features-list">
+            <div class="feature-row">
+              <div class="feat-icon fi-blue"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="feat-text">
+                <h4>Genuine Peer Review</h4>
+                <p>Every submission is reviewed by subject-matter experts — not just for grammar and formatting, but for scientific validity, originality, and contribution to the field. We take this seriously.</p>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feat-icon fi-green"><i class="fa-solid fa-globe"></i></div>
+              <div class="feat-text">
+                <h4>Truly Open Access</h4>
+                <p>Once your paper is published, anyone in the world can read it for free. No subscriptions, no logins, no fees for the reader. We believe knowledge should be free to access.</p>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feat-icon fi-cyan"><i class="fa-solid fa-bolt"></i></div>
+              <div class="feat-text">
+                <h4>Fast Turnaround</h4>
+                <p>Our review process typically takes 2–3 days. Once accepted, your paper can be online in as little as 4 hours. We know your time matters, and we don't make you wait months for an answer.</p>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feat-icon fi-purple"><i class="fa-solid fa-users"></i></div>
+              <div class="feat-text">
+                <h4>International Editorial Board</h4>
+                <p>Our reviewers and editors come from different countries and academic backgrounds. This diversity ensures your work is evaluated with a broad, informed perspective.</p>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feat-icon fi-amber"><i class="fa-solid fa-link"></i></div>
+              <div class="feat-text">
+                <h4>DOI Assignment</h4>
+                <p>Every accepted paper gets a Digital Object Identifier (DOI), making it permanently citable and easy to find through academic search engines and databases.</p>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feat-icon fi-rose"><i class="fa-solid fa-chart-bar"></i></div>
+              <div class="feat-text">
+                <h4>Wide Indexing &amp; Visibility</h4>
+                <p>We work to ensure your published research is indexed and discoverable, including through Google Scholar, so it gets the reach it deserves.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+
+      <!-- Ethics -->
+      <div class="content-card">
+        <div class="content-card-head">
+          <i class="fa-solid fa-scale-balanced"></i>
+          <h2>Our Commitment to Ethics</h2>
+        </div>
+        <div class="content-card-body">
+          <p class="ethics-text">
+            We hold ourselves and our authors to a clear standard: honesty, transparency, and originality. Submitted papers are checked for plagiarism, and we have a zero-tolerance policy for fabricated data or results. These aren't just rules we post on a page — they reflect how we actually operate.
+          </p>
+          <p class="ethics-text">
+            Our review process is double-blind, which means reviewers don't know who wrote the paper, and authors don't know who reviewed it. This helps keep things fair and focused purely on the quality of the work.
+          </p>
+          <p class="ethics-text">
+            If there's ever a concern about a published paper — whether raised by a reader, reviewer, or author — we take it seriously and investigate it properly. Corrections, retractions, and expressions of concern are handled openly and without delay.
+          </p>
+          <div class="ethics-note">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>IJVRAS follows internationally recognized publication ethics guidelines. Authors are expected to ensure their submissions are original, properly cited, and have not been published or submitted elsewhere simultaneously.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="about-sidebar">
+
+      <!-- Quick Facts -->
+      <div class="sb-card">
+        <div class="sb-head"><i class="fa-solid fa-circle-info"></i> Quick Facts</div>
+        <div class="sb-body">
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-hashtag"></i></div>
+            <div>
+              <div class="qf-label">ISSN</div>
+              <div class="qf-value">2582-5208</div>
+            </div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-star"></i></div>
+            <div>
+              <div class="qf-label">Impact Factor</div>
+              <div class="qf-value">8.187</div>
+            </div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div>
+              <div class="qf-label">Publication Speed</div>
+              <div class="qf-value">As fast as 4 hours</div>
+            </div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-eye"></i></div>
+            <div>
+              <div class="qf-label">Review Type</div>
+              <div class="qf-value">Double-blind</div>
+            </div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-globe"></i></div>
+            <div>
+              <div class="qf-label">Access Type</div>
+              <div class="qf-value">Open Access</div>
+            </div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-gavel"></i></div>
+            <div>
+              <div class="qf-label">License</div>
+              <div class="qf-value">CC BY-NC-ND 4.0</div>
+            </div>
+          </div>
+          <div class="quick-fact">
+            <div class="qf-icon"><i class="fa-solid fa-building"></i></div>
+            <div>
+              <div class="qf-label">Publisher</div>
+              <div class="qf-value">Praseonix</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit CTA -->
+      <div class="submit-cta">
+        <h4>Ready to Publish?</h4>
+        <p>Submit your research paper today and get a decision within 2–3 days.</p>
+        <a href="#" class="btn-white">Submit Paper →</a>
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="fa">IJVRAS</div>
+          <div class="fs">International Journal of Versatile Research &amp; Analytic Studies<br>Peer-Reviewed · Open Access · Fast Publication</div>
+          <div class="issn-tag">ISSN: 2582-5208</div>
+        </div>
+        <div class="footer-col">
+          <h5>For Authors</h5>
+          <a href="#">Publication Process</a>
+          <a href="#">Submit Paper Online</a>
+          <a href="#">Paper Format / Template</a>
+          <a href="#">Copyright Form</a>
+          <a href="#">Pay Publication Fee</a>
+          <a href="#">Track Your Paper</a>
+        </div>
+        <div class="footer-col">
+          <h5>Journal</h5>
+          <a href="#">About IJVRAS</a>
+          <a href="#">Editorial Board</a>
+          <a href="#">Indexing</a>
+          <a href="#">Archives</a>
+          <a href="#">Conference</a>
+          <a href="#">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">Copyright © 2026 Praseonix. All rights reserved</div>
+    </div>
+  </footer>
+
+  <script>
+    const hamBtn = document.getElementById('hamBtn');
+    const navMenu = document.getElementById('navMenu');
+    hamBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+    document.addEventListener('click', e => {
+      if (!hamBtn.contains(e.target) && !navMenu.contains(e.target)) navMenu.classList.remove('open');
+    });
+  </script>
+
+</body>
+</html>
