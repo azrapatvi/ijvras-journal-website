@@ -562,6 +562,11 @@
       .footer-top { grid-template-columns: 1fr; gap: 24px; }
       footer { padding: 32px 14px 24px; }
     }
+    @media (max-width: 640px) {
+  .hide-sm { display: none; }
+  .announce { flex-wrap: nowrap; gap: 6px; }
+  .published_by { gap: 6px; }
+}
   </style>
 </head>
 
@@ -570,20 +575,19 @@
   <!-- ANNOUNCEMENT BAR -->
   <div class="announce">
   <div class="published_by" style="flex:1; justify-content:center;">
-    Published by Praseonix
+    <span>Published by Praseonix</span>
     <span class="sep">|</span>
-    <span><i class="fa-solid fa-file-lines"></i> Call For Paper — Deadline: 30 April 2026</span>
-    <span class="sep">|</span>
-    <span>DOI Services Available</span>
-    <span class="sep">|</span>
+    <span class="hide-sm"><i class="fa-solid fa-file-lines"></i> Call For Paper — Deadline: 30 April 2026</span>
+    <span class="sep hide-sm">|</span>
+    <span class="hide-sm">DOI Services Available</span>
+    <span class="sep hide-sm">|</span>
     <span>ISSN: 2582-5208</span>
   </div>
-  <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
-    <a href="login.html" style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff; font-size:0.72rem; font-weight:600; padding:5px 13px; border-radius:6px; letter-spacing:0.05em;">Log In</a>
-    <a href="register.html" style="background:#d4952a; border:1px solid #f0b444; color:#0e1a2b; font-size:0.72rem; font-weight:700; padding:5px 13px; border-radius:6px; letter-spacing:0.05em;">Register</a>
+  <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+    <a href="login.html" style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff; font-size:0.72rem; font-weight:600; padding:5px 10px; border-radius:6px; letter-spacing:0.05em; white-space:nowrap;">Log In</a>
+    <a href="register.html" style="background:#d4952a; border:1px solid #f0b444; color:#0e1a2b; font-size:0.72rem; font-weight:700; padding:5px 10px; border-radius:6px; letter-spacing:0.05em; white-space:nowrap;">Register</a>
   </div>
 </div>
-
   <!-- HEADER -->
   <header>
     <div class="header-wrap">
