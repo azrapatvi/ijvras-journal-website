@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editorial Board – IJVRAS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0e1a2b;
+      --ink2: #1c3150;
+      --azure: #1a5cb5;
+      --azure2: #2272d4;
+      --amber: #d4952a;
+      --amber2: #f0b444;
+      --fog: #f0f4fa;
+      --white: #ffffff;
+      --border: #dce4f0;
+      --muted: #6b7e96;
+      --card-r: 14px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; line-height: 1.7; background: #f5f6f8; color: var(--ink); overflow-x: hidden; font-size: 16px; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announce {
+      background: var(--azure); color: var(--white); font-size: 0.72rem; letter-spacing: 0.06em;
+      padding: 7px 16px; font-weight: 500; display: flex; align-items: center; justify-content: space-between;
+    }
+    .announce span { color: rgba(255,255,255,0.55); }
+    .published_by { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+    /* ── HEADER ── */
+    header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 16px rgba(14,26,43,0.06); }
+    .header-wrap { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; height: 60px; }
+    .header-right { display: flex; align-items: center; gap: 8px; }
+    .logo-text { font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: var(--azure); }
+    nav { display: flex; align-items: center; gap: 2px; }
+    .nav-item { position: relative; }
+    .nav-link { display: flex; align-items: center; gap: 5px; padding: 8px 11px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--ink); transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-link:hover { background: var(--fog); color: var(--azure); }
+    .chevron { font-size: 0.55rem; opacity: 0.6; }
+    .nav-cta { background: var(--azure); color: var(--white) !important; padding: 8px 16px !important; border-radius: 8px; font-weight: 600 !important; margin-left: 6px; transition: background 0.15s, transform 0.15s !important; }
+    .nav-cta:hover { background: var(--azure2) !important; transform: translateY(-1px); }
+    .drop { display: none; position: absolute; top: 100%; left: 0; padding-top: 8px; background: transparent; z-index: 300; }
+    .drop-inner { background: var(--white); border: 1px solid var(--border); border-radius: 12px; min-width: 200px; box-shadow: 0 16px 40px rgba(14,26,43,0.12); overflow: hidden; }
+    .nav-item:hover .drop { display: block; }
+    .drop a { display: block; padding: 11px 16px; font-size: 0.84rem; color: var(--ink); border-bottom: 1px solid var(--border); transition: background 0.13s, color 0.13s; }
+    .drop a:last-child { border-bottom: none; }
+    .drop a:hover { background: var(--fog); color: var(--azure); }
+    .ham { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; border-radius: 8px; }
+    .ham span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.2s; }
+
+    /* ── JOURNAL TITLE BANNER ── */
+    .journal-title-banner { background: var(--white); border-bottom: 2px solid var(--border); }
+    .jtb-inner { max-width: 1240px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 20px; }
+    .jtb-logo-col { flex-shrink: 0; display: flex; align-items: center; }
+    .jtb-real-logo { height: 50px; width: auto; display: block; }
+    .jtb-title-col { flex: 1; text-align: center; border-left: 2px solid var(--border); border-right: 2px solid var(--border); padding: 0 20px; }
+    .jtb-name { font-family: 'Merriweather', serif; font-size: clamp(0.85rem, 2vw, 1.35rem); font-weight: 700; color: var(--azure); letter-spacing: 0.02em; line-height: 1.35; }
+    .jtb-sub { font-size: 0.75rem; color: var(--muted); margin-top: 5px; font-style: italic; }
+    .jtb-issn-col { flex-shrink: 0; text-align: right; min-width: 140px; }
+    .jtb-issn-label { font-size: 1rem; font-weight: 700; color: var(--amber); letter-spacing: 0.04em; }
+    .jtb-issn-url { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, #0f3a7a 0%, #1a5cb5 50%, #163d80 100%);
+      padding: 48px 16px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .page-hero-inner { position: relative; z-index: 1; }
+    .page-hero h1 { font-family: 'Merriweather', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); color: #fff; font-weight: 700; margin-bottom: 10px; }
+    .page-hero p { color: rgba(255,255,255,0.7); font-size: 0.95rem; max-width: 560px; margin: 0 auto; }
+    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+    .breadcrumb a { color: rgba(255,255,255,0.7); }
+    .breadcrumb a:hover { color: #fff; }
+
+    /* ── MAIN CONTENT ── */
+    .eb-wrap { max-width: 1200px; margin: 0 auto; padding: 44px 16px 60px; }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-icon {
+      width: 44px; height: 44px; border-radius: 12px; background: var(--azure);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .section-icon.amber { background: linear-gradient(135deg, var(--amber), var(--amber2)); }
+    .section-icon.green { background: #1a9b6c; }
+    .section-header h2 { font-family: 'Merriweather', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); }
+    .section-header .sub { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+
+    .eb-section { margin-bottom: 52px; }
+
+    /* ── MEMBER CARDS GRID ── */
+    .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+    .members-grid.single { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+
+    .member-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 20px 22px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .member-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--azure), var(--azure2));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .member-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,92,181,0.12); border-color: rgba(26,92,181,0.25); }
+    .member-card:hover::before { opacity: 1; }
+
+    .member-card.editor-in-chief::before { background: linear-gradient(90deg, var(--amber), var(--amber2)); opacity: 1; }
+    .member-card.editor-in-chief { border-color: rgba(212,149,42,0.3); }
+
+    .member-avatar {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--border);
+      margin: 0 auto 14px;
+      display: block;
+      transition: border-color 0.2s;
+    }
+    .member-card:hover .member-avatar { border-color: var(--azure); }
+    .member-card.editor-in-chief .member-avatar { border-color: var(--amber); }
+
+    .member-avatar-placeholder {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--fog), var(--border));
+      margin: 0 auto 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; color: var(--muted);
+      border: 3px solid var(--border);
+    }
+
+    .member-name { font-size: 0.9rem; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 5px; }
+    .member-role {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: #dbeafe; color: #1e40af;
+      margin-bottom: 8px;
+      letter-spacing: 0.03em;
+    }
+    .member-role.chief { background: #fef3c7; color: #92400e; }
+    .member-role.editor { background: #dcfce7; color: #166534; }
+    .member-role.assoc { background: #f3e8ff; color: #6b21a8; }
+
+    .member-dept { font-size: 0.76rem; color: var(--muted); line-height: 1.4; }
+    .view-profile {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 12px; font-size: 0.75rem; font-weight: 600;
+      color: var(--azure); opacity: 0; transition: opacity 0.2s;
+    }
+    .member-card:hover .view-profile { opacity: 1; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(14,26,43,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.active { display: flex; }
+
+    .modal {
+      background: var(--white);
+      border-radius: 20px;
+      max-width: 580px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 32px 80px rgba(14,26,43,0.25);
+      animation: modalIn 0.25s ease;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-top {
+      background: linear-gradient(135deg, #0f3a7a 0%, #1a5cb5 100%);
+      padding: 28px 28px 0;
+      border-radius: 20px 20px 0 0;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: none; color: #fff; font-size: 1rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.3); }
+
+    .modal-profile {
+      display: flex; align-items: flex-end; gap: 20px;
+      padding-bottom: 0;
+    }
+    .modal-avatar {
+      width: 110px; height: 110px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 4px solid rgba(255,255,255,0.3);
+      flex-shrink: 0;
+      margin-bottom: -20px;
+    }
+    .modal-avatar-placeholder {
+      width: 110px; height: 110px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; color: rgba(255,255,255,0.6);
+      border: 4px solid rgba(255,255,255,0.2);
+      flex-shrink: 0;
+      margin-bottom: -20px;
+    }
+    .modal-title { padding-bottom: 24px; }
+    .modal-name { font-family: 'Merriweather', serif; font-size: 1.2rem; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 6px; }
+    .modal-badge {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 100px;
+      background: rgba(212,149,42,0.25);
+      border: 1px solid rgba(212,149,42,0.4);
+      color: var(--amber2);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .modal-body { padding: 32px 28px 28px; }
+
+    .modal-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .modal-info-item { display: flex; flex-direction: column; gap: 3px; }
+    .modal-info-label { font-size: 0.7rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
+    .modal-info-value { font-size: 0.86rem; color: var(--ink); font-weight: 500; line-height: 1.45; }
+    .modal-info-value a { color: var(--azure); }
+    .modal-info-value a:hover { text-decoration: underline; }
+    .modal-info-item.full { grid-column: 1 / -1; }
+
+    .modal-bio {
+      background: var(--fog);
+      border-left: 3px solid var(--azure);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 40px 16px 28px; }
+    .footer-inner { max-width: 1240px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-brand .fa { font-family: 'Merriweather', serif; font-size: 1.3rem; color: var(--white); font-weight: 700; }
+    .footer-brand .fs { font-size: 0.7rem; color: rgba(255,255,255,0.4); line-height: 1.5; margin-top: 8px; }
+    .footer-brand .issn-tag { display: inline-block; margin-top: 12px; background: rgba(212,149,42,0.15); border: 1px solid rgba(212,149,42,0.3); color: var(--amber2); font-size: 0.71rem; font-weight: 600; padding: 5px 10px; border-radius: 6px; }
+    .footer-col h5 { font-size: 0.77rem; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 12px; }
+    .footer-col a { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.4); margin-bottom: 8px; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { padding-top: 20px; font-size: 0.76rem; text-align: center; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .announce { font-size: 0.66rem; padding: 6px 10px; }
+      .header-wrap { height: 56px; padding: 0 12px; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; align-items: stretch; position: absolute; top: 56px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 8px 12px 16px; z-index: 299; box-shadow: 0 8px 24px rgba(14,26,43,0.1); max-height: 80vh; overflow-y: auto; }
+      nav.open .nav-link { padding: 11px 10px; font-size: 0.9rem; border-radius: 8px; }
+      nav.open .drop { position: static; box-shadow: none; border: none; border-radius: 0; padding: 0 0 0 12px; }
+      nav.open .drop-inner { box-shadow: none; border: none; border-radius: 0; }
+      nav.open .drop a { font-size: 0.84rem; padding: 9px 12px; border-radius: 6px; }
+      nav.open .nav-cta { display: none; }
+      .ham { display: flex; }
+      .header-right .nav-cta { display: none; }
+      header { position: relative; }
+      .jtb-inner { flex-direction: column; text-align: center; gap: 10px; padding: 12px 14px; }
+      .jtb-logo-col { justify-content: center; }
+      .jtb-title-col { border-left: none; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; width: 100%; }
+      .jtb-name { font-size: 0.88rem; }
+      .jtb-issn-col { text-align: center; min-width: unset; width: 100%; }
+      .members-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .modal-info-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 24px; }
+      .modal-profile { flex-direction: column; align-items: flex-start; }
+      .modal-avatar, .modal-avatar-placeholder { margin-bottom: -10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announce">
+    <div class="published_by" style="flex:1; justify-content:center;">
+      Published by Praseonix
+      <span class="sep">|</span>
+      <span><i class="fa-solid fa-file-lines"></i> Call For Paper — Deadline: 30 April 2026</span>
+      <span class="sep">|</span>
+      <span>DOI Services Available</span>
+      <span class="sep">|</span>
+      <span>ISSN: 2582-5208</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+      <a href="login.html" style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff; font-size:0.72rem; font-weight:600; padding:5px 13px; border-radius:6px; letter-spacing:0.05em;">Log In</a>
+      <a href="register.html" style="background:#d4952a; border:1px solid #f0b444; color:#0e1a2b; font-size:0.72rem; font-weight:700; padding:5px 13px; border-radius:6px; letter-spacing:0.05em;">Register</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-wrap">
+      <img src="images/logo1.PNG" alt="IJVRAS Logo" class="jtb-real-logo" />
+      <nav id="navMenu">
+        <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">About <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="about_the_journal.html">About the Journal</a><a href="plagiarism.html">Plagiarism Policy</a>
+            <a href="peer_review_policy.html">Peer Review Policy</a><a href="ethics.html">Publication Ethics</a>
+          </div></div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Editorial<span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="editorial_board.html">Editorial Board</a>
+          </div></div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Author <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="#">Publication Process</a><a href="#">Submit Paper Online</a>
+            <a href="#">Pay Publication Fee</a><a href="#">Track Your Paper</a>
+            <a href="#">Copyright Form</a><a href="#">Paper Format / Template</a>
+            <a href="#">Research Topics</a>
+          </div></div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="indexing.html">Indexing</a></div>
+        <div class="nav-item"><a class="nav-link" href="#">DOI</a></div>
+        <div class="nav-item"><a class="nav-link" href="fee.html">Fee</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Archives <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="#">2025 Issues</a><a href="#">2024 Issues</a><a href="#">All Archives</a>
+          </div></div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="#">FAQ</a></div>
+      </nav>
+      <div class="header-right">
+        <a class="nav-cta" href="#">Submit Paper</a>
+        <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="journal-title-banner">
+    <div class="jtb-inner">
+      <div class="jtb-logo-col"><span class="logo-text">IJVRAS</span></div>
+      <div class="jtb-title-col">
+        <div class="jtb-name">INTERNATIONAL JOURNAL OF VERSATILE RESEARCH &amp; ANALYTIC STUDIES</div>
+        <div class="jtb-sub">(Peer-Reviewed, Open Access, Fully Referred International Journal)</div>
+      </div>
+      <div class="jtb-issn-col">
+        <div class="jtb-issn-label">ISSN: 2582-5208</div>
+        <div class="jtb-issn-url">www.ijvras.com</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa-solid fa-chevron-right" style="font-size:0.6rem;"></i>
+        <span>Editorial Board</span>
+      </div>
+      <h1><i class="fa-solid fa-users" style="margin-right:12px; opacity:0.8;"></i>Editorial Board</h1>
+      <p>Meet the distinguished team of academic professionals who guide IJVRAS's publication standards and research excellence.</p>
+    </div>
+  </div>
+
+  <div class="eb-wrap">
+
+    <!-- EDITOR IN CHIEF -->
+    <div class="eb-section">
+      <div class="section-header">
+        <div class="section-icon amber"><i class="fa-solid fa-crown"></i></div>
+        <div>
+          <h2>Editor in Chief</h2>
+          <div class="sub">Responsible for overall editorial direction and quality</div>
+        </div>
+      </div>
+      <div class="members-grid single">
+        <div class="member-card editor-in-chief" onclick="openModal('eic')">
+          <img src="images/parag.jpeg" alt="Dr. Parag Premchand Mangave" class="member-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="member-avatar-placeholder" style="display:none;"><i class="fa-solid fa-user"></i></div>
+          <div class="member-name">Dr. Parag Premchand Mangave</div>
+          <span class="member-role chief">Editor in Chief</span>
+          <div class="member-dept">Automation &amp; Robotics Engineering<br>SITCOE, Ichalkaranji</div>
+          <div class="view-profile"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Profile</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOARD OF EDITORS -->
+    <div class="eb-section">
+      <div class="section-header">
+        <div class="section-icon green"><i class="fa-solid fa-pen-nib"></i></div>
+        <div>
+          <h2>Board of Editors</h2>
+          <div class="sub">Senior editors overseeing manuscript review and publication</div>
+        </div>
+      </div>
+      <div class="members-grid">
+        <div class="member-card" onclick="openModal('ed1')">
+          <img src="images/Nikhil.jpeg" alt="Prof. Nikhil A. Bhosale" class="member-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="member-avatar-placeholder" style="display:none;"><i class="fa-solid fa-user"></i></div>
+          <div class="member-name">Prof. Nikhil A. Bhosale</div>
+          <span class="member-role editor">
+Managing editor</span>
+          <div class="member-dept">ME Design Engineering</div>
+          <div class="view-profile"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Profile</div>
+        </div>
+
+        <div class="member-card" onclick="openModal('ed2')">
+          <img src="images/chandrashekar.jpeg" alt="Prof. Chandrashekar R. Bhosale" class="member-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="member-avatar-placeholder" style="display:none;"><i class="fa-solid fa-user"></i></div>
+          <div class="member-name">Prof. Chandrashekar R. Bhosale</div>
+          <span class="member-role assoc">Associate Editor</span>
+          <div class="member-dept">MTech Vehicle Engineering &amp; Transport Management</div>
+          <div class="view-profile"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Profile</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOARD OF REVIEWERS -->
+    <div class="eb-section">
+      <div class="section-header">
+        <div class="section-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div>
+          <h2>Board of Reviewers</h2>
+          <div class="sub">Expert reviewers ensuring rigorous peer-review standards</div>
+        </div>
+      </div>
+      <div class="members-grid">
+        <div class="member-card" onclick="openModal('rev1')">
+          <img src="images/ravikant.jpeg" alt="Prof. Ravikant Appaso Hatgine" class="member-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="member-avatar-placeholder" style="display:none;"><i class="fa-solid fa-user"></i></div>
+          <div class="member-name">Prof. Ravikant Appaso Hatgine</div>
+          <span class="member-role">Reviewer</span>
+          <div class="member-dept">Computer Science &amp; Engineering<br>DKTE'S Polytechnic</div>
+          <div class="view-profile"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Profile</div>
+        </div>
+
+        <div class="member-card" onclick="openModal('rev2')">
+          <img src="images/patil.jpeg" alt="Patil Rahul Mahavir" class="member-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="member-avatar-placeholder" style="display:none;"><i class="fa-solid fa-user"></i></div>
+          <div class="member-name">Patil Rahul Mahavir</div>
+          <span class="member-role">Reviewer</span>
+          <div class="member-dept">Computer Engineering<br>SIT Polytechnic, Yadrav</div>
+          <div class="view-profile"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Profile</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ MODALS ══ -->
+
+  <!-- Editor in Chief Modal -->
+  <div class="modal-overlay" id="modal-eic" onclick="closeModalOutside(event, 'eic')">
+    <div class="modal">
+      <div class="modal-top">
+        <button class="modal-close" onclick="closeModal('eic')"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-profile">
+          <img src="images/parag.jpeg" alt="Dr. Parag Premchand Mangave" class="modal-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="modal-avatar-placeholder" style="display:none;"><i class="fa-solid fa-user"></i></div>
+          <div class="modal-title">
+            <div class="modal-name">Dr. Parag Premchand Mangave</div>
+            <span class="modal-badge">Editor in Chief</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info-grid">
+          <div class="modal-info-item">
+            <span class="modal-info-label"><i class="fa-solid fa-briefcase"></i> Designation</span>
+            <span class="modal-info-value">Assistant Professor</span>
+          </div>
+          <div class="modal-info-item">
+            <span class="modal-info-label"><i class="fa-solid fa-building-columns"></i> Department</span>
+            <span class="modal-info-value">Automation and Robotics Engineering</span>
+          </div>
+          <div class="modal-info-item full">
+            <span class="modal-info-label"><i class="fa-solid fa-school"></i> Institution</span>
+            <span class="modal-info-value">Sharad Institute of Technology College of Engineering, Yadrav, Ichalkaranji</span>
+          </div>
+          <div class="modal-info-item full">
+            <span class="modal-info-label"><i class="fa-solid fa-graduation-cap"></i> Highest Qualification &amp; Specialization</span>
+            <span class="modal-info-value">Ph.D. — Mechanical Engineering</span>
+          </div>
+          <div class="modal-info-item full">
+            <span class="modal-info-label"><i class="fa-solid fa-envelope"></i> Official Email</span>
+            <span class="modal-info-value"><a href="mailto:paragmangave@sitcoe.org.in">paragmangave@sitcoe.org.in</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviewer 1 Modal -->
+  <div class="modal-overlay" id="modal-rev1" onclick="closeModalOutside(event, 'rev1')">
+    <div class="modal">
+      <div class="modal-top">
+        <button class="modal-close" onclick="closeModal('rev1')"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-profile">
+          <img src="images/ravikant.jpeg" alt="Prof. Ravikant Appaso Hatgine" class="modal-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="modal-avatar-placeholder" style="display:none;"><i class="fa-solid fa-user"></i></div>
+          <div class="modal-title">
+            <div class="modal-name">Prof. Ravikant Appaso Hatgine</div>
+            <span class="modal-badge">Board of Reviewers</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info-grid">
+          <div class="modal-info-item">
+            <span class="modal-info-label"><i class="fa-solid fa-briefcase"></i> Designation</span>
+            <span class="modal-info-value">Head of Department</span>
+          </div>
+          <div class="modal-info-item">
+            <span class="modal-info-label"><i class="fa-solid fa-building-columns"></i> Department</span>
+            <span class="modal-info-value">Computer Science and Engineering</span>
+          </div>
+          <div class="modal-info-item full">
+            <span class="modal-info-label"><i class="fa-solid fa-school"></i> Institution</span>
+            <span class="modal-info-value">DKTE'S Yashwantrao Chavan Polytechnic, Ichalkarnji</span>
+          </div>
+          <div class="modal-info-item full">
+            <span class="modal-info-label"><i class="fa-solid fa-graduation-cap"></i> Highest Qualification &amp; Specialization</span>
+            <span class="modal-info-value">MTech — Computer Science and Engineering; Ph.D. (Pursuing)</span>
+          </div>
+          <div class="modal-info-item full">
+            <span class="modal-info-label"><i class="fa-solid fa-envelope"></i> Official Email</span>
+            <span class="modal-info-value"><a href="mailto:ravihatgine@gmail.com">ravihatgine@gmail.com</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviewer 2 Modal -->
+  <div class="modal-overlay" id="modal-rev2" onclick="closeModalOutside(event, 'rev2')">
+    <div class="modal">
+      <div class="modal-top">
+        <button class="modal-close" onclick="closeModal('rev2')"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-profile">
+          <img src="images/patil.jpeg" alt="Patil Rahul Mahavir" class="modal-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="modal-avatar-placeholder" style="display:none;"><i class="fa-solid fa-user"></i></div>
+          <div class="modal-title">
+            <div class="modal-name">Patil Rahul Mahavir</div>
+            <span class="modal-badge">Board of Reviewers</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info-grid">
+          <div class="modal-info-item">
+            <span class="modal-info-label"><i class="fa-solid fa-briefcase"></i> Designation</span>
+            <span class="modal-info-value">Head of Department</span>
+          </div>
+          <div class="modal-info-item">
+            <span class="modal-info-label"><i class="fa-solid fa-building-columns"></i> Department</span>
+            <span class="modal-info-value">Computer Engineering</span>
+          </div>
+          <div class="modal-info-item full">
+            <span class="modal-info-label"><i class="fa-solid fa-school"></i> Institution</span>
+            <span class="modal-info-value">Sharad Institute of Technology Polytechnic, Yadrav</span>
+          </div>
+          <div class="modal-info-item full">
+            <span class="modal-info-label"><i class="fa-solid fa-graduation-cap"></i> Highest Qualification &amp; Specialization</span>
+            <span class="modal-info-value">M.Tech — Computer Science &amp; Engineering; Ph.D.* — Computer Science &amp; Artificial Intelligence</span>
+          </div>
+          <div class="modal-info-item full">
+            <span class="modal-info-label"><i class="fa-solid fa-envelope"></i> Official Email</span>
+            <span class="modal-info-value"><a href="mailto:rahulmpatil@sitpolytechnic.org">rahulmpatil@sitpolytechnic.org</a></span>
+          </div>
+        </div>
+        <div class="modal-bio">
+          An academic professional with expertise in Computer Science and Artificial Intelligence, currently serving as Head of the Computer Engineering Department. Actively involved in teaching, research, and academic development, with a focus on emerging technologies and innovation.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Editor 1 Modal -->
+  <div class="modal-overlay" id="modal-ed1" onclick="closeModalOutside(event, 'ed1')">
+    <div class="modal">
+      <div class="modal-top">
+        <button class="modal-close" onclick="closeModal('ed1')"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-profile">
+          <img src="images/Nikhil.jpeg" alt="Prof. Nikhil A. Bhosale" class="modal-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="modal-avatar-placeholder" style="display:none;"><i class="fa-solid fa-user"></i></div>
+          <div class="modal-title">
+            <div class="modal-name">Prof. Nikhil A. Bhosale</div>
+            <span class="modal-badge">Board of Editors</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info-grid">
+          <div class="modal-info-item">
+            <span class="modal-info-label"><i class="fa-solid fa-briefcase"></i> Designation</span>
+            <span class="modal-info-value">Assistant Professor</span>
+          </div>
+          <div class="modal-info-item full">
+            <span class="modal-info-label"><i class="fa-solid fa-graduation-cap"></i> Highest Qualification &amp; Specialization</span>
+            <span class="modal-info-value">ME — Design Engineering</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Editor 2 Modal -->
+  <div class="modal-overlay" id="modal-ed2" onclick="closeModalOutside(event, 'ed2')">
+    <div class="modal">
+      <div class="modal-top">
+        <button class="modal-close" onclick="closeModal('ed2')"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-profile">
+          <img src="images/chandrashekar.jpeg" alt="Prof. Chandrashekar R. Jadhav" class="modal-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="modal-avatar-placeholder" style="display:none;"><i class="fa-solid fa-user"></i></div>
+          <div class="modal-title">
+            <div class="modal-name">Prof. Chandrashekar R. Bhosale</div>
+            <span class="modal-badge">Associate Editor</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info-grid">
+          <div class="modal-info-item">
+            <span class="modal-info-label"><i class="fa-solid fa-briefcase"></i> Designation</span>
+            <span class="modal-info-value">Assistant Professor</span>
+          </div>
+          <div class="modal-info-item full">
+            <span class="modal-info-label"><i class="fa-solid fa-graduation-cap"></i> Highest Qualification &amp; Specialization</span>
+            <span class="modal-info-value">MTech — Vehicle Engineering &amp; Transport Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="fa">IJVRAS</div>
+          <div class="fs">International Journal of Versatile Research &amp; Analytic Studies<br>Peer-Reviewed · Open Access · Fast Publication</div>
+          <div class="issn-tag">ISSN: 2582-5208</div>
+        </div>
+        <div class="footer-col">
+          <h5>For Authors</h5>
+          <a href="">Publication Process</a><a href="#">Submit Paper Online</a>
+          <a href="#">Paper Format / Template</a><a href="#">Copyright Form</a>
+          <a href="fee.html">Pay Publication Fee</a><a href="#">Track Your Paper</a>
+        </div>
+        <div class="footer-col">
+          <h5>Journal</h5>
+          <a href="about_the_journal.html">About IJVRAS</a><a href="editorial_board.html">Editorial Board</a>
+          <a href="indexing.html">Indexing</a><a href="#">Archives</a>
+          <a href="#">Conference</a><a href="#">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">Copyright © 2026 Praseonix. All rights reserved</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const hamBtn = document.getElementById('hamBtn');
+    const navMenu = document.getElementById('navMenu');
+    hamBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+    document.addEventListener('click', e => {
+      if (!hamBtn.contains(e.target) && !navMenu.contains(e.target)) navMenu.classList.remove('open');
+    });
+
+    // Modal functions
+    function openModal(id) {
+      document.getElementById('modal-' + id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+      document.getElementById('modal-' + id).classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function closeModalOutside(e, id) {
+      if (e.target === document.getElementById('modal-' + id)) closeModal(id);
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(m => {
+          m.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      }
+    });
+  </script>
+</body>
+</html>

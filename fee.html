@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publication Fee – IJVRAS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0e1a2b;
+      --ink2: #1c3150;
+      --azure: #1a5cb5;
+      --azure2: #2272d4;
+      --amber: #d4952a;
+      --amber2: #f0b444;
+      --fog: #f0f4fa;
+      --white: #ffffff;
+      --border: #dce4f0;
+      --muted: #6b7e96;
+      --card-r: 14px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      background: #f5f6f8;
+      color: var(--ink);
+      overflow-x: hidden;
+      font-size: 16px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announce {
+      background: var(--azure);
+      color: var(--white);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      padding: 7px 16px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .announce span {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .published_by {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* ── HEADER — matches index.html exactly (flex, not grid) ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 16px rgba(14, 26, 43, 0.06);
+    }
+
+    .header-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      height: 60px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-text {
+      font-family: 'Merriweather', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--azure);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 11px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover {
+      background: var(--fog);
+      color: var(--azure);
+    }
+
+    .chevron {
+      font-size: 0.55rem;
+      opacity: 0.6;
+    }
+
+    .nav-cta {
+      background: var(--azure);
+      color: var(--white) !important;
+      padding: 8px 16px !important;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      margin-left: 6px;
+      transition: background 0.15s, transform 0.15s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--azure2) !important;
+      transform: translateY(-1px);
+    }
+
+    .drop {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      padding-top: 8px;
+      background: transparent;
+      z-index: 300;
+    }
+
+    .drop-inner {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      min-width: 200px;
+      box-shadow: 0 16px 40px rgba(14, 26, 43, 0.12);
+      overflow: hidden;
+    }
+
+    .nav-item:hover .drop {
+      display: block;
+    }
+
+    .drop a {
+      display: block;
+      padding: 11px 16px;
+      font-size: 0.84rem;
+      color: var(--ink);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.13s, color 0.13s;
+    }
+
+    .drop a:last-child {
+      border-bottom: none;
+    }
+
+    .drop a:hover {
+      background: var(--fog);
+      color: var(--azure);
+    }
+
+    .ham {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    .ham span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: 0.2s;
+    }
+
+    /* ── JOURNAL TITLE BANNER ── */
+    .journal-title-banner {
+      background: var(--white);
+      border-bottom: 2px solid var(--border);
+    }
+
+    .jtb-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .jtb-logo-col {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .jtb-real-logo {
+      height: 50px;
+      width: auto;
+      display: block;
+    }
+
+    .jtb-title-col {
+      flex: 1;
+      text-align: center;
+      border-left: 2px solid var(--border);
+      border-right: 2px solid var(--border);
+      padding: 0 20px;
+    }
+
+    .jtb-name {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(0.85rem, 2vw, 1.35rem);
+      font-weight: 700;
+      color: var(--azure);
+      letter-spacing: 0.02em;
+      line-height: 1.35;
+    }
+
+    .jtb-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 5px;
+      font-style: italic;
+    }
+
+    .jtb-issn-col {
+      flex-shrink: 0;
+      text-align: right;
+      min-width: 140px;
+    }
+
+    .jtb-issn-label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--amber);
+      letter-spacing: 0.04em;
+    }
+
+    .jtb-issn-url {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, #dce8f8 0%, #e8f0fb 50%, #d6e4f7 100%);
+      padding: 40px 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(26, 92, 181, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26, 92, 181, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .page-hero h1 {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .page-hero p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* ── FEE PAGE CONTENT ── */
+    .fee-wrap {
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 0 16px 60px;
+    }
+
+    .fee-note {
+      background: #eefaf4;
+      border: 1px solid #a8ddc4;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 0.85rem;
+      color: #0d6040;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .fee-note i {
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .fee-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-bottom: 30px;
+    }
+
+    .fee-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .fee-card.featured {
+      border-color: var(--azure);
+    }
+
+    .fee-card-head {
+      padding: 22px 24px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fee-card.featured .fee-card-head {
+      background: var(--azure);
+    }
+
+    .fee-flag {
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .fee-country {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .fee-card.featured .fee-country {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .fee-amount {
+      font-family: 'Merriweather', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .fee-card.featured .fee-amount {
+      color: #fff;
+    }
+
+    .fee-currency {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .fee-card.featured .fee-currency {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .fee-card-body {
+      padding: 18px 24px;
+    }
+
+    .fee-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 0.83rem;
+      color: var(--muted);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--fog);
+    }
+
+    .fee-item:last-child {
+      border-bottom: none;
+    }
+
+    .fee-item i {
+      color: #1a9b6c;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    /* PROCESS */
+    .process-box {
+      background: var(--fog);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 30px;
+    }
+
+    .process-title {
+      font-family: 'Merriweather', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .process-title i {
+      color: var(--azure);
+    }
+
+    .steps {
+      display: flex;
+    }
+
+    .step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      width: 100%;
+      height: 1.5px;
+      background: var(--border);
+      z-index: 0;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--azure);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-label {
+      font-size: 0.74rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.5);
+      padding: 40px 16px 28px;
+    }
+
+    .footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-brand .fa {
+      font-family: 'Merriweather', serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .footer-brand .fs {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+
+    .footer-brand .issn-tag {
+      display: inline-block;
+      margin-top: 12px;
+      background: rgba(212, 149, 42, 0.15);
+      border: 1px solid rgba(212, 149, 42, 0.3);
+      color: var(--amber2);
+      font-size: 0.71rem;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+
+    .footer-col h5 {
+      font-size: 0.77rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 8px;
+      transition: color 0.15s;
+    }
+
+    .footer-col a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      padding-top: 20px;
+      font-size: 0.76rem;
+      text-align: center;
+    }
+
+    /* ══ RESPONSIVE — copied from index.html ══ */
+    @media (max-width: 640px) {
+      .announce {
+        font-size: 0.66rem;
+        padding: 6px 10px;
+      }
+
+      .published_by {
+        gap: 5px;
+      }
+
+      .published_by .sep {
+        display: none;
+      }
+
+      .header-wrap {
+        height: 56px;
+        padding: 0 12px;
+      }
+
+      .logo-text {
+        font-size: 1rem;
+      }
+
+      nav {
+        display: none;
+      }
+
+      nav.open {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 8px 12px 16px;
+        z-index: 299;
+        box-shadow: 0 8px 24px rgba(14, 26, 43, 0.1);
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      nav.open .nav-link {
+        padding: 11px 10px;
+        font-size: 0.9rem;
+        border-radius: 8px;
+      }
+
+      nav.open .nav-link:hover {
+        background: var(--fog);
+      }
+
+      nav.open .drop {
+        position: static;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        padding: 0 0 0 12px;
+      }
+
+      nav.open .drop-inner {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+      }
+
+      nav.open .drop a {
+        font-size: 0.84rem;
+        padding: 9px 12px;
+        border-radius: 6px;
+      }
+
+      nav.open .nav-cta {
+        display: none;
+      }
+
+      .ham {
+        display: flex;
+      }
+
+      .header-right .nav-cta {
+        display: none;
+      }
+
+      header {
+        position: relative;
+      }
+
+      .jtb-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding: 12px 14px;
+      }
+
+      .jtb-logo-col {
+        justify-content: center;
+      }
+
+      .jtb-real-logo {
+        height: 50px;
+      }
+
+      .jtb-title-col {
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 0;
+        width: 100%;
+      }
+
+      .jtb-name {
+        font-size: 0.88rem;
+      }
+
+      .jtb-issn-col {
+        text-align: center;
+        min-width: unset;
+        width: 100%;
+      }
+
+      .fee-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      footer {
+        padding: 32px 14px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announce">
+    <div class="published_by" style="flex:1; justify-content:center;">
+      Published by Praseonix
+      <span class="sep">|</span>
+      <span><i class="fa-solid fa-file-lines"></i> Call For Paper — Deadline: 30 April 2026</span>
+      <span class="sep">|</span>
+      <span>DOI Services Available</span>
+      <span class="sep">|</span>
+      <span>ISSN: 2582-5208</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+      <a href="login.html"
+        style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff; font-size:0.72rem; font-weight:600; padding:5px 13px; border-radius:6px; letter-spacing:0.05em;">Log
+        In</a>
+      <a href="register.html"
+        style="background:#d4952a; border:1px solid #f0b444; color:#0e1a2b; font-size:0.72rem; font-weight:700; padding:5px 13px; border-radius:6px; letter-spacing:0.05em;">Register</a>
+    </div>
+  </div>
+
+  <!-- HEADER — identical structure to index.html -->
+  <header>
+    <div class="header-wrap">
+      <img src="images/logo1.PNG" alt="IJVRAS Logo" class="jtb-real-logo" />
+
+      <nav id="navMenu">
+        <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">About <span class="chevron">▾</span></a>
+          <div class="drop">
+            <div class="drop-inner">
+              <a href="about_the_journal.html">About the Journal</a>
+              <a href="plagiarism.html">Plagiarism Policy</a>
+              <a href="peer_review_policy.html">Peer Review Policy</a>
+              <a href="ethics.html">Publication Ethics</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Editorial <span class="chevron">▾</span></a>
+          <div class="drop">
+            <div class="drop-inner">
+              <a href="editorial_board.html">Editorial Board</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Author <span class="chevron">▾</span></a>
+          <div class="drop">
+            <div class="drop-inner">
+              <a href="#">Publication Process</a>
+              <a href="#">Submit Paper Online</a>
+              <a href="#">Pay Publication Fee</a>
+              <a href="#">Track Your Paper</a>
+              <a href="#">Copyright Form</a>
+              <a href="#">Paper Format / Template</a>
+              <a href="#">Research Topics</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="indexing.html">Indexing</a></div>
+        
+        <div class="nav-item"><a class="nav-link" href="doi.html">DOI</a></div>
+        <div class="nav-item"><a class="nav-link" href="fee.html">Fee</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Archives <span class="chevron">▾</span></a>
+          <div class="drop">
+            <div class="drop-inner">
+              <a href="#">2025 Issues</a>
+              <a href="#">2024 Issues</a>
+              <a href="#">All Archives</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="#">FAQ</a></div>
+      </nav>
+
+      <div class="header-right">
+        <a class="nav-cta" href="#">Submit Paper</a>
+        <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="journal-title-banner">
+    <div class="jtb-inner">
+      <div class="jtb-logo-col">
+        <span class="logo-text">IJVRAS</span>
+      </div>
+      <div class="jtb-title-col">
+        <div class="jtb-name">INTERNATIONAL JOURNAL OF VERSATILE RESEARCH &amp; ANALYTIC STUDIES</div>
+        <div class="jtb-sub">(Peer-Reviewed, Open Access, Fully Referred International Journal)</div>
+      </div>
+      <div class="jtb-issn-col">
+        <div class="jtb-issn-label">ISSN: 2582-5208</div>
+        <div class="jtb-issn-url">www.ijvras.com</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <h1>Publication Fee</h1>
+    <p>Transparent, low-cost publishing. No submission fee — pay only after your paper is accepted.</p>
+  </div>
+
+  <!-- FEE CONTENT -->
+  <div class="fee-wrap">
+
+    <div class="fee-note">
+      <i class="fa-solid fa-circle-check" style="color:#1a9b6c;"></i>
+      <div><strong>No submission fee.</strong> Submitting your paper and peer review are completely free. The
+        publication fee is charged only upon acceptance.</div>
+    </div>
+
+    <div class="fee-grid">
+      <!-- Indian -->
+      <div class="fee-card featured">
+        <div class="fee-card-head">
+          <span class="fee-flag">🇮🇳</span>
+          <div class="fee-country">Indian Authors</div>
+          <div>
+            <span class="fee-amount">₹600</span>
+            <span class="fee-currency"> INR</span>
+          </div>
+        </div>
+        <div class="fee-card-body">
+          <div class="fee-item"><i class="fa-solid fa-check"></i> One-time publication fee</div>
+          <div class="fee-item"><i class="fa-solid fa-check"></i> DOI assignment included</div>
+          <div class="fee-item"><i class="fa-solid fa-check"></i> Digital certificate provided</div>
+          <div class="fee-item"><i class="fa-solid fa-check"></i> Open access — free for all readers</div>
+        </div>
+      </div>
+
+      <!-- International -->
+      <div class="fee-card">
+        <div class="fee-card-head">
+          <span class="fee-flag">🌍</span>
+          <div class="fee-country">International Authors</div>
+          <div>
+            <span class="fee-amount" style="color:var(--azure);">$10</span>
+            <span class="fee-currency"> USD</span>
+          </div>
+        </div>
+        <div class="fee-card-body">
+          <div class="fee-item"><i class="fa-solid fa-check"></i> One-time publication fee</div>
+          <div class="fee-item"><i class="fa-solid fa-check"></i> DOI assignment included</div>
+          <div class="fee-item"><i class="fa-solid fa-check"></i> Digital certificate provided</div>
+          <div class="fee-item"><i class="fa-solid fa-check"></i> Open access — free for all readers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Process -->
+    <div class="process-box">
+      <div class="process-title"><i class="fa-solid fa-route"></i> Payment Process</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-label">Submit Paper<br>(Free)</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-label">Peer Review<br>(24–48 hrs)</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-label">Receive<br>Acceptance</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-label">Pay Fee &amp;<br>Get Published</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="fa">IJVRAS</div>
+          <div class="fs">International Journal of Versatile Research &amp; Analytic Studies<br>Peer-Reviewed · Open
+            Access · Fast Publication</div>
+          <div class="issn-tag">ISSN: 2582-5208</div>
+        </div>
+        <div class="footer-col">
+          <h5>For Authors</h5>
+          <a href="#">Publication Process</a><a href="#">Submit Paper Online</a>
+          <a href="#">Paper Format / Template</a><a href="#">Copyright Form</a>
+          <a href="#">Pay Publication Fee</a><a href="#">Track Your Paper</a>
+        </div>
+        <div class="footer-col">
+          <h5>Journal</h5>
+          <a href="#">About IJVRAS</a><a href="#">Editorial Board</a>
+          <a href="#">Indexing</a><a href="#">Archives</a>
+          <a href="#">Conference</a><a href="#">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">Copyright © 2026 Praseonix. All rights reserved</div>
+    </div>
+  </footer>
+
+  <script>
+    const hamBtn = document.getElementById('hamBtn');
+    const navMenu = document.getElementById('navMenu');
+    hamBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+    document.addEventListener('click', e => {
+      if (!hamBtn.contains(e.target) && !navMenu.contains(e.target)) navMenu.classList.remove('open');
+    });
+  </script>
+
+</body>
+
+</html>
