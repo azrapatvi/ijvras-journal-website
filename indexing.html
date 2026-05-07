@@ -173,23 +173,28 @@
       margin-bottom: 14px;
     }
 
-    /* Google Scholar card */
-    .gs-card {
+    /* ── INDEX CARD (shared styles) ── */
+    .index-card {
       background: var(--white);
       border: 1.5px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
+      margin-bottom: 24px;
     }
 
-    .gs-card-head {
-      background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%);
+    .index-card-head {
       padding: 28px 30px;
       display: flex;
       align-items: center;
       gap: 20px;
     }
 
-    .gs-logo-circle {
+    /* Google Scholar colours */
+    .gs-head { background: linear-gradient(135deg, #4285f4 0%, #1a73e8 100%); }
+    /* ScienceDirect colours */
+    .sd-head { background: linear-gradient(135deg, #e87722 0%, #c85f00 100%); }
+
+    .index-logo-circle {
       width: 64px;
       height: 64px;
       background: #fff;
@@ -202,7 +207,10 @@
       font-size: 1.8rem;
     }
 
-    .gs-head-text h2 {
+    .gs-icon { color: #4285f4; }
+    .sd-icon { color: #e87722; }
+
+    .index-head-text h2 {
       font-family: 'Merriweather', serif;
       font-size: 1.3rem;
       font-weight: 700;
@@ -210,16 +218,16 @@
       margin-bottom: 4px;
     }
 
-    .gs-head-text p {
+    .index-head-text p {
       font-size: 0.8rem;
       color: rgba(255,255,255,0.8);
     }
 
-    .gs-card-body {
+    .index-card-body {
       padding: 26px 30px;
     }
 
-    .gs-desc {
+    .index-desc {
       font-size: 0.88rem;
       color: var(--muted);
       line-height: 1.85;
@@ -228,42 +236,7 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .gs-facts {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 22px;
-    }
-
-    .gs-fact {
-      background: var(--fog);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 16px;
-      text-align: center;
-    }
-
-    .gs-fact-icon {
-      font-size: 1.1rem;
-      color: #4285f4;
-      margin-bottom: 6px;
-    }
-
-    .gs-fact-val {
-      font-family: 'Merriweather', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.2;
-    }
-
-    .gs-fact-label {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    .gs-link-row {
+    .index-link-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -271,33 +244,38 @@
       flex-wrap: wrap;
     }
 
+    /* badges */
     .gs-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: #e8f0fe;
-      border: 1px solid #c5d8fc;
-      color: #1a73e8;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 7px 14px;
-      border-radius: 100px;
+      display: inline-flex; align-items: center; gap: 7px;
+      background: #e8f0fe; border: 1px solid #c5d8fc;
+      color: #1a73e8; font-size: 0.78rem; font-weight: 600;
+      padding: 7px 14px; border-radius: 100px;
+    }
+    .sd-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: #fff3e8; border: 1px solid #ffd1a8;
+      color: #c85f00; font-size: 0.78rem; font-weight: 600;
+      padding: 7px 14px; border-radius: 100px;
     }
 
+    /* visit buttons */
     .gs-visit-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: #4285f4;
-      color: #fff;
-      font-size: 0.82rem;
-      font-weight: 600;
-      padding: 10px 20px;
-      border-radius: 8px;
+      display: inline-flex; align-items: center; gap: 7px;
+      background: #4285f4; color: #fff;
+      font-size: 0.82rem; font-weight: 600;
+      padding: 10px 20px; border-radius: 8px;
       transition: background 0.15s, transform 0.15s;
     }
-
     .gs-visit-btn:hover { background: #1a73e8; transform: translateY(-1px); }
+
+    .sd-visit-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: #e87722; color: #fff;
+      font-size: 0.82rem; font-weight: 600;
+      padding: 10px 20px; border-radius: 8px;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .sd-visit-btn:hover { background: #c85f00; transform: translateY(-1px); }
 
     /* note box */
     .index-note {
@@ -369,19 +347,18 @@
       .jtb-name { font-size: 0.88rem; }
       .jtb-issn-col { text-align: center; min-width: unset; width: 100%; }
 
-      .gs-card-head { flex-direction: column; text-align: center; padding: 22px 20px; gap: 12px; }
-      .gs-facts { grid-template-columns: 1fr 1fr; }
-      .gs-link-row { flex-direction: column; align-items: flex-start; }
-      .gs-card-body { padding: 20px; }
+      .index-card-head { flex-direction: column; text-align: center; padding: 22px 20px; gap: 12px; }
+      .index-link-row { flex-direction: column; align-items: flex-start; }
+      .index-card-body { padding: 20px; }
 
       .footer-top { grid-template-columns: 1fr; gap: 24px; }
       footer { padding: 32px 14px 24px; }
     }
     @media (max-width: 640px) {
-  .hide-sm { display: none; }
-  .announce { flex-wrap: nowrap; gap: 6px; }
-  .published_by { gap: 6px; }
-}
+      .hide-sm { display: none; }
+      .announce { flex-wrap: nowrap; gap: 6px; }
+      .published_by { gap: 6px; }
+    }
   </style>
 </head>
 
@@ -389,20 +366,19 @@
 
   <!-- ANNOUNCE -->
   <div class="announce">
-  <div class="published_by" style="flex:1; justify-content:center;">
-    <span>Published by Praseonix</span>
-    <span class="sep">|</span>
-    <span class="hide-sm"><i class="fa-solid fa-file-lines"></i> Call For Paper — Deadline: 30 April 2026</span>
-    <span class="sep hide-sm">|</span>
-    
-    <span class="sep hide-sm">|</span>
-    <span>ISSN: 2582-5208</span>
+    <div class="published_by" style="flex:1; justify-content:center;">
+      <span>Published by Praseonix</span>
+      <span class="sep">|</span>
+      <span class="hide-sm"><i class="fa-solid fa-file-lines"></i> Call For Paper — Deadline: 30 April 2026</span>
+      <span class="sep hide-sm">|</span>
+      <span class="sep hide-sm">|</span>
+      <span>ISSN: 2582-5208</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+      <a href="https://ijvras.com/index.php/ijvras/login" style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff; font-size:0.72rem; font-weight:600; padding:5px 10px; border-radius:6px; letter-spacing:0.05em; white-space:nowrap;">Log In</a>
+      <a href="https://ijvras.com/index.php/ijvras/user/register" style="background:#d4952a; border:1px solid #f0b444; color:#0e1a2b; font-size:0.72rem; font-weight:700; padding:5px 10px; border-radius:6px; letter-spacing:0.05em; white-space:nowrap;">Register</a>
+    </div>
   </div>
-  <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
-    <a href="https://ijvras.com/index.php/ijvras/login" style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff; font-size:0.72rem; font-weight:600; padding:5px 10px; border-radius:6px; letter-spacing:0.05em; white-space:nowrap;">Log In</a>
-    <a href="https://ijvras.com/index.php/ijvras/user/register" style="background:#d4952a; border:1px solid #f0b444; color:#0e1a2b; font-size:0.72rem; font-weight:700; padding:5px 10px; border-radius:6px; letter-spacing:0.05em; white-space:nowrap;">Register</a>
-  </div>
-</div>
 
   <!-- HEADER -->
   <header>
@@ -434,12 +410,10 @@
             <a href="#">Track Your Paper</a>
             <a href="#">Copyright Form</a>
             <a href="#">Paper Format / Template</a>
-            
           </div></div>
         </div>
         <div class="nav-item"><a class="nav-link active" href="indexing.html">Indexing</a></div>
         <div class="nav-item"><a class="nav-link" href="pub_process.html">Publication Process</a></div>
-      
         <div class="nav-item"><a class="nav-link" href="fee.html">Fee</a></div>
         <div class="nav-item">
           <a class="nav-link" href="#">Archives <span class="chevron">▾</span></a>
@@ -468,7 +442,6 @@
       </div>
       <div class="jtb-issn-col">
         <div class="jtb-issn-label">ISSN: 2582-5208</div>
-        
       </div>
     </div>
   </div>
@@ -483,32 +456,54 @@
   <div class="index-wrap">
 
     <div class="index-intro">
-      <strong>IJVRAS</strong> is committed to making published research widely accessible and discoverable. Our journal is currently indexed in <strong>Google Scholar</strong>, one of the most widely used academic search engines in the world, ensuring that your research reaches readers and researchers globally.
+      <strong>IJVRAS</strong> is committed to making published research widely accessible and discoverable. Our journal is currently indexed in <strong>Google Scholar</strong> and <strong>ScienceDirect</strong> — two of the most trusted and widely used academic platforms in the world — ensuring that your research reaches readers and researchers globally.
     </div>
 
     <div class="section-label">Current Indexing</div>
 
-    <div class="gs-card">
-      <div class="gs-card-head">
-        <div class="gs-logo-circle">
-  <i class="fa-solid fa-graduation-cap"></i>
-</div>
-        <div class="gs-head-text">
+    <!-- Google Scholar Card -->
+    <div class="index-card">
+      <div class="index-card-head gs-head">
+        <div class="index-logo-circle">
+          <i class="fa-solid fa-graduation-cap gs-icon"></i>
+        </div>
+        <div class="index-head-text">
           <h2>Google Scholar</h2>
           <p>Free academic search engine by Google</p>
         </div>
       </div>
-      <div class="gs-card-body">
-        <p class="gs-desc">
-          Google Scholar is a freely accessible web search engine that indexes the full text of scholarly literature across many publishing formats and disciplines. All articles published in IJVRAS are indexed and searchable on Google Scholar, making them citable and discoverable by millions of researchers worldwide.
+      <div class="index-card-body">
+        <p class="index-desc">
+          Google Scholar is a free search engine that anyone can use to find research papers, articles, and journals. All articles published in IJVRAS are listed on Google Scholar, so researchers from any country can easily find and cite your work.
         </p>
-
-        
-
-        <div class="gs-link-row">
+        <div class="index-link-row">
           <span class="gs-badge"><i class="fa-solid fa-circle-check"></i> Actively Indexed</span>
           <a href="https://scholar.google.com" target="_blank" rel="noopener" class="gs-visit-btn">
             Visit Google Scholar <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ScienceDirect Card -->
+    <div class="index-card">
+      <div class="index-card-head sd-head">
+        <div class="index-logo-circle">
+          <i class="fa-solid fa-flask sd-icon"></i>
+        </div>
+        <div class="index-head-text">
+          <h2>ScienceDirect</h2>
+          <p>Leading scientific database by Elsevier</p>
+        </div>
+      </div>
+      <div class="index-card-body">
+        <p class="index-desc">
+          ScienceDirect is one of the biggest and most respected databases for scientific and research articles in the world. It is run by Elsevier and is used by universities, libraries, and researchers everywhere. IJVRAS articles indexed on ScienceDirect get more visibility, more readers, and more citations — helping your research make a bigger impact.
+        </p>
+        <div class="index-link-row">
+          <span class="sd-badge"><i class="fa-solid fa-circle-check"></i> Actively Indexed</span>
+          <a href="https://www.sciencedirect.com" target="_blank" rel="noopener" class="sd-visit-btn">
+            Visit ScienceDirect <i class="fa-solid fa-arrow-up-right-from-square"></i>
           </a>
         </div>
       </div>
