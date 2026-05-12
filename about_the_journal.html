@@ -553,7 +553,7 @@
       .ham { display: flex; }
       header { position: relative; }
       .jtb-inner { flex-direction: column; text-align: center; gap: 10px; padding: 12px 14px; }
-      .jtb-logo-col { justify-content: center; }
+      .jtb-logo-col { justify-content: center; display: none; }
       .jtb-real-logo { height: 50px; }
       .jtb-title-col { border-left: none; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; width: 100%; }
       .jtb-name { font-size: 0.88rem; }
@@ -568,6 +568,25 @@
   .hide-sm { display: none; }
   .announce { flex-wrap: nowrap; gap: 6px; }
   .published_by { gap: 6px; }
+  .jtb-logo-col { display: none; }  /* hides IJVRAS text in banner on mobile */
+}
+
+/* IJVRAS title in navbar — mobile only */
+.nav-mobile-title {
+  display: none;
+}
+@media (max-width: 640px) {
+  .nav-mobile-title {
+    display: block;
+    font-family: 'Merriweather', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--azure);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
 }
   </style>
 </head>
@@ -593,8 +612,8 @@
   <!-- HEADER -->
   <header>
     <div class="header-wrap">
-      <img src="images/logo1.PNG" alt="IJVRAS Logo" class="jtb-real-logo" />
-
+  <img src="images/logo1.PNG" alt="IJVRAS Logo" class="jtb-real-logo" />
+  <span class="nav-mobile-title">IJVRAS</span>
       
       <nav id="navMenu">
         <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
