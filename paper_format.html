@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paper Format / Template – IJVRAS</title>
+  <link rel="icon" type="image/png" href="images/logo1.PNG">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0e1a2b;
+      --ink2: #1c3150;
+      --azure: #1a5cb5;
+      --azure2: #2272d4;
+      --amber: #d4952a;
+      --amber2: #f0b444;
+      --fog: #f0f4fa;
+      --white: #ffffff;
+      --border: #dce4f0;
+      --muted: #6b7e96;
+      --card-r: 14px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; line-height: 1.7; background: #f5f6f8; color: var(--ink); overflow-x: hidden; font-size: 16px; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ANNOUNCE */
+    .announce {
+      background: var(--azure);
+      color: var(--white);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      padding: 7px 16px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .published_by { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+    /* HEADER */
+    header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 16px rgba(14,26,43,0.06); }
+    .header-wrap { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; height: 60px; }
+    .header-right { display: flex; align-items: center; gap: 8px; }
+    .logo-text { font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: var(--azure); }
+    nav { display: flex; align-items: center; gap: 2px; }
+    .nav-item { position: relative; }
+    .nav-link { display: flex; align-items: center; gap: 5px; padding: 8px 11px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--ink); transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-link:hover, .nav-link.active { background: var(--fog); color: var(--azure); }
+    .chevron { font-size: 0.55rem; opacity: 0.6; }
+    .nav-cta { background: var(--azure); color: var(--white) !important; padding: 8px 16px !important; border-radius: 8px; font-weight: 600 !important; margin-left: 6px; transition: background 0.15s, transform 0.15s !important; }
+    .nav-cta:hover { background: var(--azure2) !important; transform: translateY(-1px); }
+    .drop { display: none; position: absolute; top: 100%; left: 0; padding-top: 8px; background: transparent; z-index: 300; }
+    .drop-inner { background: var(--white); border: 1px solid var(--border); border-radius: 12px; min-width: 200px; box-shadow: 0 16px 40px rgba(14,26,43,0.12); overflow: hidden; }
+    .nav-item:hover .drop { display: block; }
+    .drop a { display: block; padding: 11px 16px; font-size: 0.84rem; color: var(--ink); border-bottom: 1px solid var(--border); transition: background 0.13s, color 0.13s; }
+    .drop a:last-child { border-bottom: none; }
+    .drop a:hover { background: var(--fog); color: var(--azure); }
+    .ham { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; border-radius: 8px; }
+    .ham span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.2s; }
+
+    /* JOURNAL TITLE BANNER */
+    .journal-title-banner { background: var(--white); border-bottom: 2px solid var(--border); }
+    .jtb-inner { max-width: 1240px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 20px; }
+    .jtb-logo-col { flex-shrink: 0; display: flex; align-items: center; }
+    .jtb-real-logo { height: 50px; width: auto; display: block; }
+    .jtb-title-col { flex: 1; text-align: center; border-left: 2px solid var(--border); border-right: 2px solid var(--border); padding: 0 20px; }
+    .jtb-name { font-family: 'Merriweather', serif; font-size: clamp(0.85rem, 2vw, 1.35rem); font-weight: 700; color: var(--azure); letter-spacing: 0.02em; line-height: 1.35; }
+    .jtb-sub { font-size: 0.75rem; color: var(--muted); margin-top: 5px; font-style: italic; }
+    .jtb-issn-col { flex-shrink: 0; text-align: right; min-width: 140px; }
+    .jtb-issn-label { font-size: 1rem; font-weight: 700; color: var(--amber); letter-spacing: 0.04em; }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: linear-gradient(135deg, #dce8f8 0%, #e8f0fb 50%, #d6e4f7 100%);
+      padding: 36px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header-inner { max-width: 1240px; margin: 0 auto; }
+    .breadcrumb { font-size: 0.78rem; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .breadcrumb a { color: var(--azure); }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .page-header h1 { font-family: 'Merriweather', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: var(--ink); }
+    .page-header p { font-size: 0.9rem; color: var(--muted); margin-top: 8px; max-width: 600px; }
+
+    /* MAIN CONTENT */
+    .main-wrap { max-width: 1240px; margin: 40px auto; padding: 0 24px 60px; }
+
+    /* PDF VIEWER CARD */
+    .pdf-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--card-r);
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(14,26,43,0.07);
+    }
+    .pdf-card-head {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .pdf-card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Merriweather', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .pdf-card-title i { color: var(--azure); }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--amber) 0%, var(--amber2) 100%);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 10px 22px;
+      border-radius: 9px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-download:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,149,42,0.4); }
+
+    /* Desktop: tall embedded viewer */
+    .pdf-embed-wrap {
+      background: #e8edf5;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .pdf-embed-wrap embed {
+      width: 100%;
+      height: 85vh;
+      min-height: 700px;
+      border: none;
+      display: block;
+    }
+
+    /* Mobile: hide embed, show open/download buttons instead */
+    .pdf-mobile-fallback {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      text-align: center;
+      gap: 18px;
+      background: #f0f4fa;
+    }
+    .pdf-mobile-fallback i { font-size: 3.5rem; color: var(--azure); }
+    .pdf-mobile-fallback p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; max-width: 320px; }
+    .pdf-mobile-btns { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 300px; }
+    .btn-open-pdf {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--azure);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 13px 22px;
+      border-radius: 9px;
+      transition: background 0.15s;
+    }
+    .btn-open-pdf:hover { background: var(--azure2); }
+    .btn-dl-mobile {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--amber) 0%, var(--amber2) 100%);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 13px 22px;
+      border-radius: 9px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-dl-mobile:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,149,42,0.4); }
+
+    /* INFO SECTION */
+    .info-section {
+      background: var(--fog);
+      border: 1px solid var(--border);
+      border-radius: var(--card-r);
+      padding: 22px 24px;
+      margin-top: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .info-section i { color: var(--azure); font-size: 1.1rem; flex-shrink: 0; margin-top: 3px; }
+    .info-section p { font-size: 0.86rem; color: var(--muted); line-height: 1.75; }
+    .info-section p strong { color: var(--ink); }
+
+    /* FOOTER */
+    footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 40px 16px 28px; }
+    .footer-inner { max-width: 1240px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-brand .fa { font-family: 'Merriweather', serif; font-size: 1.3rem; color: var(--white); font-weight: 700; }
+    .footer-brand .fs { font-size: 0.7rem; color: rgba(255,255,255,0.4); line-height: 1.5; margin-top: 8px; }
+    .footer-brand .issn-tag { display: inline-block; margin-top: 12px; background: rgba(212,149,42,0.15); border: 1px solid rgba(212,149,42,0.3); color: var(--amber2); font-size: 0.71rem; font-weight: 600; padding: 5px 10px; border-radius: 6px; }
+    .footer-col h5 { font-size: 0.77rem; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 12px; }
+    .footer-col a { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.4); margin-bottom: 8px; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { padding-top: 20px; font-size: 0.76rem; text-align: center; }
+
+    /* RESPONSIVE */
+    .nav-mobile-title { display: none; }
+    @media (max-width: 640px) {
+      .hide-sm { display: none; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; align-items: stretch; position: absolute; top: 56px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 8px 12px 16px; z-index: 299; box-shadow: 0 8px 24px rgba(14,26,43,0.1); max-height: 80vh; overflow-y: auto; }
+      nav.open .nav-link { padding: 11px 10px; font-size: 0.9rem; border-radius: 8px; }
+      nav.open .drop { position: static; box-shadow: none; border: none; padding: 0 0 0 12px; }
+      nav.open .drop-inner { box-shadow: none; border: none; border-radius: 0; }
+      nav.open .drop a { font-size: 0.84rem; padding: 9px 12px; border-radius: 6px; }
+      nav.open .nav-cta { display: none; }
+      .ham { display: flex; }
+      .header-right .nav-cta { display: none; }
+      header { position: relative; }
+      .nav-mobile-title { display: block; font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: var(--azure); position: absolute; left: 50%; transform: translateX(-50%); pointer-events: none; }
+      .jtb-inner { flex-direction: column; text-align: center; gap: 10px; padding: 12px 14px; }
+      .jtb-logo-col { display: none; }
+      .jtb-title-col { border-left: none; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; width: 100%; }
+      .jtb-issn-col { text-align: center; min-width: unset; width: 100%; }
+      .footer-top { grid-template-columns: 1fr; gap: 24px; }
+      .pdf-embed-wrap embed { display: none; }
+      .pdf-embed-wrap { min-height: unset; }
+      .pdf-mobile-fallback { display: flex; }
+      .pdf-card-head { flex-direction: column; align-items: flex-start; }
+      .main-wrap { padding: 0 12px 40px; margin: 20px auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ANNOUNCE BAR -->
+  <div class="announce">
+    <div class="published_by" style="flex:1; justify-content:center;">
+      <span>Published by Praseonix</span>
+      <span class="sep">|</span>
+      <span class="hide-sm"><i class="fa-solid fa-file-lines"></i> Call For Paper</span>
+      <span class="sep hide-sm">|</span>
+      <span>ISSN:</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px; flex-shrink:0;">
+      <a href="https://ijvras.com/index.php/ijvras/login" style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#fff; font-size:0.72rem; font-weight:600; padding:5px 10px; border-radius:6px; letter-spacing:0.05em; white-space:nowrap;">Log In</a>
+      <a href="https://ijvras.com/index.php/ijvras/user/register" style="background:#d4952a; border:1px solid #f0b444; color:#0e1a2b; font-size:0.72rem; font-weight:700; padding:5px 10px; border-radius:6px; letter-spacing:0.05em; white-space:nowrap;">Register</a>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-wrap">
+      <img src="images/logo1.PNG" alt="IJVRAS Logo" class="jtb-real-logo" />
+      <span class="nav-mobile-title">IJVRAS</span>
+      <nav id="navMenu">
+        <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">About <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="about_the_journal.html">About the Journal</a>
+            <a href="plagiarism.html">Plagiarism Policy</a>
+            <a href="peer_review_policy.html">Peer Review Policy</a>
+            <a href="ethics.html">Publication Ethics</a>
+          </div></div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Editorial <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="editorial_board.html">Editorial Board</a>
+          </div></div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link active" href="#">Author <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="#">Track Your Paper</a>
+            <a href="#">Copyright Form</a>
+            <a href="paper_format.html">Paper Format / Template</a>
+          </div></div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="indexing.html">Indexing</a></div>
+        <div class="nav-item"><a class="nav-link" href="pub_process.html">Publication Process</a></div>
+        <div class="nav-item"><a class="nav-link" href="fee.html">Fee</a></div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Archives <span class="chevron">▾</span></a>
+          <div class="drop"><div class="drop-inner">
+            <a href="#">2025 Issues</a><a href="#">2024 Issues</a><a href="#">All Archives</a>
+          </div></div>
+        </div>
+        <div class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></div>
+      </nav>
+      <div class="header-right">
+        <a class="nav-cta" href="https://ijvras.com/index.php/ijvras/submission">Submit Paper</a>
+        <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- JOURNAL TITLE BANNER -->
+  <div class="journal-title-banner">
+    <div class="jtb-inner">
+      <div class="jtb-logo-col"><span class="logo-text">IJVRAS</span></div>
+      <div class="jtb-title-col">
+        <div class="jtb-name">INTERNATIONAL JOURNAL OF VERSATILE RESEARCH &amp; ANALYTIC STUDIES</div>
+        <div class="jtb-sub">(Peer-Reviewed, Open Access, Fully Referred International Journal)</div>
+      </div>
+      <div class="jtb-issn-col">
+        <div class="jtb-issn-label">ISSN: </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fa-solid fa-chevron-right" style="font-size:0.6rem;"></i>
+        <span>Author</span>
+        <i class="fa-solid fa-chevron-right" style="font-size:0.6rem;"></i>
+        <span>Paper Format / Template</span>
+      </div>
+      <h1><i class="fa-regular fa-file-pdf" style="color:var(--azure);margin-right:10px;"></i>Paper Format / Template</h1>
+      <p>Download the official IJVRAS manuscript template and follow the formatting guidelines before submitting your paper.</p>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-wrap">
+
+    <!-- PDF CARD -->
+    <div class="pdf-card">
+      <div class="pdf-card-head">
+        <div class="pdf-card-title">
+          <i class="fa-regular fa-file-pdf" style="font-size:1.3rem;"></i>
+          IJVRAS Manuscript Template
+        </div>
+        <a href="pdfs/paper_format.pdf" download="IJVRAS_Paper_Format_Template.pdf" class="btn-download">
+          <i class="fa-solid fa-download"></i> Download Template
+        </a>
+      </div>
+      <div class="pdf-embed-wrap">
+        <embed src="pdfs/paper_format.pdf" type="application/pdf" width="100%" />
+        <!-- Shown only on mobile instead of embed -->
+        <div class="pdf-mobile-fallback">
+          <i class="fa-regular fa-file-pdf"></i>
+          <p>PDF preview is best viewed on desktop. On mobile, tap below to open or download the template.</p>
+          <div class="pdf-mobile-btns">
+            <a href="paper_format.pdf" target="_blank" class="btn-open-pdf">
+              <i class="fa-regular fa-eye"></i> View PDF
+            </a>
+            <a href="paper_format.pdf" download="IJVRAS_Paper_Format_Template.pdf" class="btn-dl-mobile">
+              <i class="fa-solid fa-download"></i> Download Template
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO NOTE -->
+    <div class="info-section">
+      <i class="fa-solid fa-circle-info"></i>
+      <p>
+        <strong>Note:</strong> Authors must strictly follow this template when preparing their manuscript for submission.
+        Papers not formatted according to the template may be returned for revision before review.
+        For any queries, please contact the editorial office.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="fa">IJVRAS</div>
+          <div class="fs">International Journal of Versatile Research &amp; Analytic Studies<br>Peer-Reviewed · Open Access · Fast Publication</div>
+          <div class="issn-tag">ISSN:</div>
+        </div>
+        <div class="footer-col">
+          <h5>For Authors</h5>
+          <a href="pub_process.html">Publication Process</a>
+          <a href="https://ijvras.com/index.php/ijvras/submission">Submit Paper Online</a>
+          <a href="paper_format.html">Paper Format / Template</a>
+          <a href="#">Copyright Form</a>
+          <a href="#">Pay Publication Fee</a>
+          <a href="#">Track Your Paper</a>
+        </div>
+        <div class="footer-col">
+          <h5>Journal</h5>
+          <a href="about_the_journal.html">About IJVRAS</a>
+          <a href="editorial_board.html">Editorial Board</a>
+          <a href="indexing.html">Indexing</a>
+          <a href="#">Archives</a>
+          <a href="#">Conference</a>
+          <a href="#">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">Copyright © 2026 Praseonix. All rights reserved</div>
+    </div>
+  </footer>
+
+  <script>
+    const hamBtn = document.getElementById('hamBtn');
+    const navMenu = document.getElementById('navMenu');
+    hamBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+    document.addEventListener('click', e => {
+      if (!hamBtn.contains(e.target) && !navMenu.contains(e.target)) navMenu.classList.remove('open');
+    });
+  </script>
+
+</body>
+</html>
