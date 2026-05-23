@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paper Format / Template – IJVRAS</title>
+  <title>Contact Us – IJVRAS</title>
   <link rel="icon" type="image/png" href="images/logo1.PNG">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    .nav-link.active { color: var(--azure); background: var(--fog); }
     :root {
       --ink: #0e1a2b;
       --ink2: #1c3150;
@@ -29,42 +30,40 @@
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
 
-    /* ANNOUNCE */
+    /* ── ANNOUNCEMENT BAR ── */
     .announce {
-      background: var(--azure);
-      color: var(--white);
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      padding: 7px 16px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      background: var(--azure); color: var(--white); font-size: 0.72rem;
+      letter-spacing: 0.06em; padding: 7px 16px; font-weight: 500;
+      display: flex; align-items: center; justify-content: space-between;
     }
+    .announce span { color: rgba(255,255,255,0.55); }
     .published_by { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
 
-    /* HEADER */
+    /* ── HEADER ── */
     header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 16px rgba(14,26,43,0.06); }
     .header-wrap { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; height: 60px; }
     .header-right { display: flex; align-items: center; gap: 8px; }
     .logo-text { font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: var(--azure); }
+
     nav { display: flex; align-items: center; gap: 2px; }
     .nav-item { position: relative; }
     .nav-link { display: flex; align-items: center; gap: 5px; padding: 8px 11px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--ink); transition: background 0.15s, color 0.15s; white-space: nowrap; }
-    .nav-link:hover, .nav-link.active { background: var(--fog); color: var(--azure); }
+    .nav-link:hover { background: var(--fog); color: var(--azure); }
     .chevron { font-size: 0.55rem; opacity: 0.6; }
     .nav-cta { background: var(--azure); color: var(--white) !important; padding: 8px 16px !important; border-radius: 8px; font-weight: 600 !important; margin-left: 6px; transition: background 0.15s, transform 0.15s !important; }
     .nav-cta:hover { background: var(--azure2) !important; transform: translateY(-1px); }
+
     .drop { display: none; position: absolute; top: 100%; left: 0; padding-top: 8px; background: transparent; z-index: 300; }
     .drop-inner { background: var(--white); border: 1px solid var(--border); border-radius: 12px; min-width: 200px; box-shadow: 0 16px 40px rgba(14,26,43,0.12); overflow: hidden; }
     .nav-item:hover .drop { display: block; }
     .drop a { display: block; padding: 11px 16px; font-size: 0.84rem; color: var(--ink); border-bottom: 1px solid var(--border); transition: background 0.13s, color 0.13s; }
     .drop a:last-child { border-bottom: none; }
     .drop a:hover { background: var(--fog); color: var(--azure); }
+
     .ham { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; border-radius: 8px; }
     .ham span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.2s; }
 
-    /* JOURNAL TITLE BANNER */
+    /* ── JOURNAL TITLE BANNER ── */
     .journal-title-banner { background: var(--white); border-bottom: 2px solid var(--border); }
     .jtb-inner { max-width: 1240px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 20px; }
     .jtb-logo-col { flex-shrink: 0; display: flex; align-items: center; }
@@ -74,140 +73,123 @@
     .jtb-sub { font-size: 0.75rem; color: var(--muted); margin-top: 5px; font-style: italic; }
     .jtb-issn-col { flex-shrink: 0; text-align: right; min-width: 140px; }
     .jtb-issn-label { font-size: 1rem; font-weight: 700; color: var(--amber); letter-spacing: 0.04em; }
+    .jtb-issn-url { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
 
-    /* PAGE HEADER */
-    .page-header {
+    /* ── PAGE HEADER ── */
+    .page-hero {
       background: linear-gradient(135deg, #dce8f8 0%, #e8f0fb 50%, #d6e4f7 100%);
-      padding: 36px 16px;
-      border-bottom: 1px solid var(--border);
+      padding: 44px 16px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .page-header-inner { max-width: 1240px; margin: 0 auto; }
-    .breadcrumb { font-size: 0.78rem; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
-    .breadcrumb a { color: var(--azure); }
-    .breadcrumb a:hover { text-decoration: underline; }
-    .page-header h1 { font-family: 'Merriweather', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: var(--ink); }
-    .page-header p { font-size: 0.9rem; color: var(--muted); margin-top: 8px; max-width: 600px; }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(26,92,181,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26,92,181,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .page-hero h1 {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--azure);
+      position: relative;
+      z-index: 1;
+    }
+    .page-hero p {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+    }
 
-    /* MAIN CONTENT */
-    .main-wrap { max-width: 1240px; margin: 40px auto; padding: 0 24px 60px; }
+    /* ── CONTACT CARDS GRID ── */
+    .contact-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 16px 60px;
+    }
 
-    /* PDF VIEWER CARD */
-    .pdf-card {
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .contact-card {
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: var(--card-r);
+      border-radius: 18px;
+      padding: 30px 26px 28px;
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 24px rgba(14,26,43,0.07);
+      transition: box-shadow 0.2s, transform 0.2s;
     }
-    .pdf-card-head {
-      padding: 18px 24px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+    .contact-card:hover {
+      box-shadow: 0 12px 36px rgba(26,92,181,0.1);
+      transform: translateY(-3px);
     }
-    .pdf-card-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Merriweather', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--ink);
-    }
-    .pdf-card-title i { color: var(--azure); }
-    .btn-download {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--amber) 0%, var(--amber2) 100%);
-      color: var(--ink);
-      font-weight: 700;
-      font-size: 0.88rem;
-      padding: 10px 22px;
-      border-radius: 9px;
-      transition: transform 0.15s, box-shadow 0.15s;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-download:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,149,42,0.4); }
 
-    /* Desktop: tall embedded viewer */
-    .pdf-embed-wrap {
-      background: #e8edf5;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
+    /* Decorative circle in card background */
+    .contact-card::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      opacity: 0.12;
+      pointer-events: none;
     }
-    .pdf-embed-wrap embed {
-      width: 100%;
-      height: 85vh;
-      min-height: 700px;
-      border: none;
+    .card-blue::after  { background: #1a5cb5; }
+    .card-green::after { background: #1a9b6c; }
+    .card-rose::after  { background: #e25c8a; }
+    .card-amber::after { background: #d4952a; }
+    .card-teal::after  { background: #0ea5e9; }
+    .card-red::after   { background: #ef4444; }
+
+    .card-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+    .icon-blue  { background: linear-gradient(135deg, #2272d4, #1a5cb5); }
+    .icon-green { background: linear-gradient(135deg, #22c55e, #1a9b6c); }
+    .icon-rose  { background: linear-gradient(135deg, #f472b6, #e25c8a); }
+    .icon-amber { background: linear-gradient(135deg, #f0b444, #d4952a); }
+    .icon-teal  { background: linear-gradient(135deg, #38bdf8, #0ea5e9); }
+    .icon-red   { background: linear-gradient(135deg, #f87171, #ef4444); }
+
+    .contact-card h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .contact-card p,
+    .contact-card a {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
       display: block;
     }
+    .contact-card a:hover { color: var(--azure); }
 
-    /* Mobile: hide embed, show open/download buttons instead */
-    .pdf-mobile-fallback {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 24px;
-      text-align: center;
-      gap: 18px;
-      background: #f0f4fa;
-    }
-    .pdf-mobile-fallback i { font-size: 3.5rem; color: var(--azure); }
-    .pdf-mobile-fallback p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; max-width: 320px; }
-    .pdf-mobile-btns { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 300px; }
-    .btn-open-pdf {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--azure);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.92rem;
-      padding: 13px 22px;
-      border-radius: 9px;
-      transition: background 0.15s;
-    }
-    .btn-open-pdf:hover { background: var(--azure2); }
-    .btn-dl-mobile {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: linear-gradient(135deg, var(--amber) 0%, var(--amber2) 100%);
-      color: var(--ink);
-      font-weight: 700;
-      font-size: 0.92rem;
-      padding: 13px 22px;
-      border-radius: 9px;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .btn-dl-mobile:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,149,42,0.4); }
-
-    /* INFO SECTION */
-    .info-section {
-      background: var(--fog);
-      border: 1px solid var(--border);
-      border-radius: var(--card-r);
-      padding: 22px 24px;
-      margin-top: 20px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-    .info-section i { color: var(--azure); font-size: 1.1rem; flex-shrink: 0; margin-top: 3px; }
-    .info-section p { font-size: 0.86rem; color: var(--muted); line-height: 1.75; }
-    .info-section p strong { color: var(--ink); }
-
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 40px 16px 28px; }
     .footer-inner { max-width: 1240px; margin: 0 auto; }
     .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -219,43 +201,51 @@
     .footer-col a:hover { color: var(--white); }
     .footer-bottom { padding-top: 20px; font-size: 0.76rem; text-align: center; }
 
-    /* RESPONSIVE */
-    .nav-mobile-title { display: none; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .contact-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 640px) {
-      .hide-sm { display: none; }
+      .announce { font-size: 0.66rem; padding: 6px 10px; }
+      .published_by { gap: 5px; }
+      .published_by .sep { display: none; }
+      .header-wrap { height: 56px; padding: 0 12px; }
+      .logo-text { font-size: 1rem; }
       nav { display: none; }
       nav.open { display: flex; flex-direction: column; align-items: stretch; position: absolute; top: 56px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 8px 12px 16px; z-index: 299; box-shadow: 0 8px 24px rgba(14,26,43,0.1); max-height: 80vh; overflow-y: auto; }
       nav.open .nav-link { padding: 11px 10px; font-size: 0.9rem; border-radius: 8px; }
-      nav.open .drop { position: static; box-shadow: none; border: none; padding: 0 0 0 12px; }
+      nav.open .drop { position: static; box-shadow: none; border: none; border-radius: 0; padding: 0 0 0 12px; }
       nav.open .drop-inner { box-shadow: none; border: none; border-radius: 0; }
       nav.open .drop a { font-size: 0.84rem; padding: 9px 12px; border-radius: 6px; }
       nav.open .nav-cta { display: none; }
       .ham { display: flex; }
       .header-right .nav-cta { display: none; }
       header { position: relative; }
-      .nav-mobile-title { display: block; font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: var(--azure); position: absolute; left: 50%; transform: translateX(-50%); pointer-events: none; }
       .jtb-inner { flex-direction: column; text-align: center; gap: 10px; padding: 12px 14px; }
       .jtb-logo-col { display: none; }
       .jtb-title-col { border-left: none; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; width: 100%; }
       .jtb-issn-col { text-align: center; min-width: unset; width: 100%; }
+      .contact-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 24px; }
-      .pdf-embed-wrap embed { display: none; }
-      .pdf-embed-wrap { min-height: unset; }
-      .pdf-mobile-fallback { display: flex; }
-      .pdf-card-head { flex-direction: column; align-items: flex-start; }
-      .main-wrap { padding: 0 12px 40px; margin: 20px auto; }
+      .hide-sm { display: none; }
+    }
+    .nav-mobile-title { display: none; }
+    @media (max-width: 640px) {
+      .nav-mobile-title { display: block; font-family: 'Merriweather', serif; font-size: 1.1rem; font-weight: 700; color: var(--azure); position: absolute; left: 50%; transform: translateX(-50%); pointer-events: none; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ANNOUNCE BAR -->
+  <!-- ANNOUNCEMENT BAR -->
   <div class="announce">
     <div class="published_by" style="flex:1; justify-content:center;">
       <span>Published by Praseonix</span>
       <span class="sep">|</span>
       <span class="hide-sm"><i class="fa-solid fa-file-lines"></i> Call For Paper</span>
+      <span class="sep hide-sm">|</span>
       <span class="sep hide-sm">|</span>
       <span>ISSN:</span>
     </div>
@@ -274,40 +264,47 @@
         <div class="nav-item"><a class="nav-link" href="index.html">Home</a></div>
         <div class="nav-item">
           <a class="nav-link" href="#">About <span class="chevron">▾</span></a>
-          <div class="drop"><div class="drop-inner">
-            <a href="about_the_journal.html">About the Journal</a>
-            <a href="plagiarism.html">Plagiarism Policy</a>
-            <a href="peer_review_policy.html">Peer Review Policy</a>
-            <a href="ethics.html">Publication Ethics</a>
-          </div></div>
+          <div class="drop">
+            <div class="drop-inner">
+              <a href="about_the_journal.html">About the Journal</a>
+              <a href="plagiarism.html">Plagiarism Policy</a>
+              <a href="peer_review_policy.html">Peer Review Policy</a>
+              <a href="ethics.html">Publication Ethics</a>
+            </div>
+          </div>
         </div>
         <div class="nav-item">
-          <a class="nav-link" href="#">Editorial <span class="chevron">▾</span></a>
-          <div class="drop"><div class="drop-inner">
-            <a href="editorial_board.html">Editorial Board</a>
-          </div></div>
+          <a class="nav-link" href="#">Editorial<span class="chevron">▾</span></a>
+          <div class="drop">
+            <div class="drop-inner">
+              <a href="editorial_board.html">Editorial Board</a>
+            </div>
+          </div>
         </div>
         <div class="nav-item">
-          <a class="nav-link active" href="#">Author <span class="chevron">▾</span></a>
-          <div class="drop"><div class="drop-inner">
-            <a href="#">Track Your Paper</a>
-            <a href="#">Copyright Form</a>
-            <a href="certificate.html">Certificate</a>
-            <a href="paper_format.html">Paper Format / Template</a>
-          </div></div>
+          <a class="nav-link" href="#">Author <span class="chevron">▾</span></a>
+          <div class="drop">
+            <div class="drop-inner">
+              <a href="#">Track Your Paper</a>
+              <a href="#">Copyright Form</a>
+              <a href="certificate.html">Certificate</a>
+              <a href="paper_format.html">Paper Format / Template</a>
+            </div>
+          </div>
         </div>
         <div class="nav-item"><a class="nav-link" href="indexing.html">Indexing</a></div>
         <div class="nav-item"><a class="nav-link" href="pub_process.html">Publication Process</a></div>
         <div class="nav-item"><a class="nav-link" href="fee.html">Fee</a></div>
         <div class="nav-item">
           <a class="nav-link" href="#">Archives <span class="chevron">▾</span></a>
-          <div class="drop"><div class="drop-inner">
-            <a href="#">2025 Issues</a><a href="#">2024 Issues</a><a href="#">All Archives</a>
-          </div></div>
+          <div class="drop">
+            <div class="drop-inner">
+              <a href="#">2025 Issues</a><a href="#">2024 Issues</a><a href="#">All Archives</a>
+            </div>
+          </div>
         </div>
         <div class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></div>
-        <div class="nav-item"><a class="nav-link" href="contact_us.html">Contact Us</a></div>
-    
+        <div class="nav-item"><a class="nav-link active" href="contact_us.html">Contact Us</a></div>
       </nav>
       <div class="header-right">
         <a class="nav-cta" href="https://ijvras.com/index.php/ijvras/submission">Submit Paper</a>
@@ -330,63 +327,60 @@
     </div>
   </div>
 
-  <!-- PAGE HEADER -->
-  <div class="page-header">
-    <div class="page-header-inner">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <i class="fa-solid fa-chevron-right" style="font-size:0.6rem;"></i>
-        <span>Author</span>
-        <i class="fa-solid fa-chevron-right" style="font-size:0.6rem;"></i>
-        <span>Paper Format / Template</span>
-      </div>
-      <h1><i class="fa-regular fa-file-pdf" style="color:var(--azure);margin-right:10px;"></i>Paper Format / Template</h1>
-      <p>Download the official IJVRAS manuscript template and follow the formatting guidelines before submitting your paper.</p>
-    </div>
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <h1>Contact Us</h1>
+    <p>Get in touch with the IJVRAS team — we're here to help.</p>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="main-wrap">
+  <!-- CONTACT CARDS -->
+  <div class="contact-section">
+    <div class="contact-grid">
 
-    <!-- PDF CARD -->
-    <div class="pdf-card">
-      <div class="pdf-card-head">
-        <div class="pdf-card-title">
-          <i class="fa-regular fa-file-pdf" style="font-size:1.3rem;"></i>
-          IJVRAS Manuscript Template
-        </div>
-        <a href="pdfs/paper_format.pdf" download="IJVRAS_Paper_Format_Template.pdf" class="btn-download">
-          <i class="fa-solid fa-download"></i> Download Template
-        </a>
+      <!-- Head Office -->
+      <div class="contact-card card-blue">
+        <div class="card-icon-wrap icon-blue"><i class="fa-solid fa-building"></i></div>
+        <h3>Head Office</h3>
+        <p>Praseonix Software Solution Pvt. Ltd.</p>
+        <p>Baramati, Pune, Maharashtra</p>
       </div>
-      <div class="pdf-embed-wrap">
-        <embed src="pdfs/paper_format.pdf" type="application/pdf" width="100%" />
-        <!-- Shown only on mobile instead of embed -->
-        <div class="pdf-mobile-fallback">
-          <i class="fa-regular fa-file-pdf"></i>
-          <p>PDF preview is best viewed on desktop. On mobile, tap below to open or download the template.</p>
-          <div class="pdf-mobile-btns">
-            <a href="paper_format.pdf" target="_blank" class="btn-open-pdf">
-              <i class="fa-regular fa-eye"></i> View PDF
-            </a>
-            <a href="paper_format.pdf" download="IJVRAS_Paper_Format_Template.pdf" class="btn-dl-mobile">
-              <i class="fa-solid fa-download"></i> Download Template
-            </a>
-          </div>
-        </div>
+
+      <!-- Email Us -->
+      <div class="contact-card card-green">
+        <div class="card-icon-wrap icon-green"><i class="fa-solid fa-envelope"></i></div>
+        <h3>Email Us</h3>
+        <a href="mailto:praseonixsoftwaresolution@gmail.com">praseonixsoftwaresolution@gmail.com</a>
       </div>
-    </div>
 
-    <!-- INFO NOTE -->
-    <div class="info-section">
-      <i class="fa-solid fa-circle-info"></i>
-      <p>
-        <strong>Note:</strong> Authors must strictly follow this template when preparing their manuscript for submission.
-        Papers not formatted according to the template may be returned for revision before review.
-        For any queries, please contact the editorial office.
-      </p>
-    </div>
+      <!-- Call Us -->
+      <div class="contact-card card-rose">
+        <div class="card-icon-wrap icon-rose"><i class="fa-solid fa-phone"></i></div>
+        <h3>Call Us</h3>
+        <a href="tel:+918788310843">+91 8788310843</a>
+      </div>
 
+      <!-- Website -->
+      <div class="contact-card card-teal">
+        <div class="card-icon-wrap icon-teal"><i class="fa-solid fa-globe"></i></div>
+        <h3>Website</h3>
+        <a href="https://www.ijvras.com" target="_blank">www.ijvras.com</a>
+      </div>
+
+      <!-- Publishing Body -->
+      <div class="contact-card card-amber">
+        <div class="card-icon-wrap icon-amber"><i class="fa-solid fa-newspaper"></i></div>
+        <h3>Publishing Body</h3>
+        <p>Praseonix</p>
+      </div>
+
+      <!-- Location -->
+      <div class="contact-card card-red">
+        <div class="card-icon-wrap icon-red"><i class="fa-solid fa-location-dot"></i></div>
+        <h3>Location</h3>
+        <p>Baramati, Pune,<br>Maharashtra, India</p>
+      </div>
+
+    </div>
   </div>
 
   <!-- FOOTER -->
@@ -414,7 +408,7 @@
           <a href="indexing.html">Indexing</a>
           <a href="#">Archives</a>
           <a href="#">Conference</a>
-          <a href="#">Contact Us</a>
+          <a href="contact.html">Contact Us</a>
         </div>
       </div>
       <div class="footer-bottom">Copyright © 2026 Praseonix. All rights reserved</div>
